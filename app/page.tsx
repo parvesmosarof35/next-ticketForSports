@@ -1,38 +1,41 @@
-"use client"
-
 import { Navbar } from "@/components/commom/navbar"
 import { Hero } from "@/components/landing/hero"
-import { SocialProof } from "@/components/landing/social-proof"
-import { HowItWorks } from "@/components/landing/how-it-works"
-import { ValueProps } from "@/components/landing/value-props"
+import { TopMatches } from "@/components/landing/topMatches"
+import { TopCompetitions } from "@/components/landing/topCompetitions"
+import { TopVenues } from "@/components/landing/value-props"
 import { Features } from "@/components/landing/features"
 import { Testimonials } from "@/components/landing/testimonials"
-import { Pricing } from "@/components/landing/pricing"
+
 import { Footer } from "@/components/commom/footer"
-import TopHost from "@/components/landing/top-host"
-import TopInfluencer from "@/components/landing/top-influencer"
+import { TopSportsEvents } from "@/components/landing/topSportsEvents"
 import { WhyChoose } from "@/components/landing/why-choose"
+import TopFootballClubs from "@/components/landing/topFootballClubs"
+import { TopFixtures } from "@/components/landing/topFixtures"
+import { Reliable } from "@/components/landing/reliable"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background font-sans">
       <Navbar />
       <Hero />
-      <SocialProof />
+      <TopMatches />
       <div id="how-it-works">
-        <HowItWorks />
+        <TopCompetitions />
       </div>
-      <TopHost />
-      <TopInfluencer />
-      <ValueProps />
+      <div id="sports-events">
+        <TopSportsEvents />
+      </div>
+      <TopFootballClubs />
+      <TopVenues />
       <div id="features">
         <Features />
       </div>
-      <div id="pricing">
-        <Pricing />
+      <div id="fixtures">
+        <TopFixtures />
       </div>
-      <Testimonials />
+      <Reliable />
       <WhyChoose />
+      <Testimonials />
       <Footer />
     </main>
   )

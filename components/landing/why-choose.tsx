@@ -1,39 +1,47 @@
-import { Award, Shield, Star, Users, Zap, MessageSquare } from "lucide-react"
+import { Search, Shield, Heart } from "lucide-react"
 
 export function WhyChoose() {
-    return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-foreground mb-4">Why Choose Hostinflu?</h2>
-                    <p className="text-lg text-muted-foreground">
-                        A trusted collaboration platform connecting professional hosts and verified influencers
-                    </p>
-                </div>
+  const features = [
+    {
+      icon: <Search className="w-6 h-6 text-white" />,
+      title: "We find the best tickets",
+      description: "Our platform scans hundreds of sellers to bring you the most competitive prices for every event."
+    },
+    {
+      icon: <Shield className="w-6 h-6 text-white" />,
+      title: "Safe & secure site",
+      description: "Your data is protected with industry-leading encryption and secure payment processing."
+    },
+    {
+      icon: <Heart className="w-6 h-6 text-white" />,
+      title: "Fans love us",
+      description: "Join over 78,000 satisfied customers who trust us for their event tickets."
+    }
+  ]
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {[
-                        { icon: Award, title: "Verified Influencers", description: "Secure vetting ensures authentic creators" },
-                        {
-                            icon: Shield,
-                            title: "Secure Deals & Payments",
-                            description: "Every collaboration generates agreements",
-                        },
-                        { icon: Star, title: "Smart Credit System", description: "Flexible compensation with transparency" },
-                        { icon: Users, title: "Hassle-free Onboarding", description: "Easy setup and account management" },
-                        { icon: Zap, title: "Easy Airbnb Verification", description: "Verify Airbnb listings instantly" },
-                        { icon: MessageSquare, title: "Transparent Ratings", description: "Rate collaborations openly" },
-                    ].map((item, idx) => (
-                        <div key={idx} className="p-6 text-center hover:shadow-lg transition rounded-lg">
-                            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                                <item.icon className="w-6 h-6 text-primary" />
-                            </div>
-                            <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#111827]">
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white mb-3">Why Choose Us</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10 text-center">
+          {features.map((feature, index) => (
+            <div 
+              key={index}
+              className="bg-gray-800 p-8 rounded-lg hover:shadow-lg transition-all hover:bg-gray-700"
+            >
+              <div className="size-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                {feature.icon}
+              </div>
+              <h3 className="text-2xl font-semibold text-white mb-3">{feature.title}</h3>
+              <p className="text-gray-200">{feature.description}</p>
             </div>
-        </section>
-    )
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }

@@ -1,53 +1,68 @@
-import { Button } from "@/components/ui/button"
+"use client";
 
-export function ValueProps() {
-    return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-            <div className="max-w-7xl mx-auto">
-                <section className="px-5lg:px-0 text-foreground">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-4xl font-bold mb-4">Start collaboration today!</h2>
-                        <p className="text-lg mb-8 opacity-90">
-                            Join thousands of hosts and influencers creating authentic connections.
-                        </p>
-                    </div>
-                </section>
-                <div className="grid md:grid-cols-2 gap-8">
-                    {/* Hosts Card */}
-                    <div className="bg-primary/10 border-2 border-primary/20 p-8 rounded-2xl">
-                        <h3 className="text-2xl font-bold text-foreground mb-6">Promote your Airbnb effortlessly.</h3>
-                        <ul className="space-y-4 mb-8">
-                            {["Verified Influencers", "Increased Bookings", "Authentic Content", "Performance Analytics"].map(
-                                (item, idx) => (
-                                    <li key={idx} className="flex items-center gap-3 text-foreground">
-                                        <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-xs text-primary-foreground">
-                                            ✓
-                                        </div>
-                                        {item}
-                                    </li>
-                                ),
-                            )}
-                        </ul>
-                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6">Host a Listing</Button>
-                    </div>
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
-                    {/* Influencers Card */}
-                    <div className="bg-accent/10 border-2 border-accent/20 p-8 rounded-2xl">
-                        <h3 className="text-2xl font-bold text-foreground mb-6">Earn by creating travel content.</h3>
-                        <ul className="space-y-4 mb-8">
-                            {["Paid Stays", "Brand Sponsorships", "Easy Monetization", "Travel Opportunities"].map((item, idx) => (
-                                <li key={idx} className="flex items-center gap-3 text-foreground">
-                                    <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center text-xs text-accent-foreground">
-                                        ✓
-                                    </div>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Button className="bg-accent text-accent-foreground hover:bg-accent/90 px-6">Join as Influencer</Button>
-                    </div>
-                </div>
+export function TopVenues() {
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#111827]">
+      <div className="container mx-auto">
+        {/* Header with title and button */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-white mb-4 md:mb-0">Top Stadiums</h2>
+          <Link
+            href="/venues"
+            className="bg-[#1d8ffe] hover:bg-[#0d7ed9] text-white px-8 py-3 rounded-full text-lg font-medium transition-colors"
+          >
+            More Venues
+          </Link>
+        </div>
+
+
+        {/* Stadium Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Each Stadium Card */}
+          {[
+            {
+              name: "Camp Nou",
+              image: "/topStadium (1).png", // Replace with actual image path
+            },
+            {
+              name: "Old Trafford",
+              image: "/topStadium (2).png", // Replace with actual image path
+            },
+            {
+              name: "Anfield",
+              image: "/topStadium (3).png", // Replace with actual image path
+            },
+            {
+              name: "Allianz Arena",
+              image: "/topStadium (4).png", // Replace with actual image path
+            },
+          ].map((venue, index) => (
+            <div
+              key={index}
+              className="relative h-88 rounded-lg overflow-hidden group"
+            >
+              <Image
+                src={venue.image} // Replace with actual image path
+                alt={venue.name}
+                width={500}
+                height={500}
+                objectFit="cover" // Ensures the image covers the area
+                className="rounded-lg"
+              />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 bg-black/10 ">
+                <h3 className="text-3xl text-white font-semibold">{venue.name}</h3>
+                <button className="mt-4 bg-[#1d8ffe] text-white px-2 py-3 rounded-full text-lg font-medium hover:bg-[#0d7ed9] transition-colors w-1/2">
+                  View Tickets
+                </button>
+              </div>
             </div>
-        </section>
-    )
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
