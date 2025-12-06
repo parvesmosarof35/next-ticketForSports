@@ -69,7 +69,7 @@ function FootballDropdown() {
               {displayedLeagues.map((league, index) => (
                 <Link
                   key={index}
-                  href={`/league/${league.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\s+/g, '-'))}`}
                   className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white text-sm rounded-md transition-all border border-white/10 hover:border-white/20"
                 >
                   {league}
@@ -96,7 +96,7 @@ function FootballDropdown() {
               {tournaments.map((tournament, index) => (
                 <Link
                   key={index}
-                  href={`/tournament/${tournament.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
                   className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white text-sm rounded-md transition-all border border-white/10 hover:border-white/20"
                 >
                   {tournament}
