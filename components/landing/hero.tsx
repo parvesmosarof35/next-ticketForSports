@@ -89,13 +89,13 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
-                     className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl"
+                     className="relative max-w-8xl mx-auto rounded-3xl overflow-hidden shadow-2xl"
                 >
                     <div className="overflow-hidden" ref={emblaRef}>
                         <div className="flex">
                             {slides.map((slide) => (
                                 <div className="flex-[0_0_100%] min-w-0" key={slide.id}>
-                                    <div className="grid grid-cols-1 md:grid-cols-12 h-[500px] md:h-[500px] w-full">
+                                    <div className="grid grid-cols-1 md:grid-cols-12 h-[500px] md:h-[600px] w-full">
                                         {/* Left Panel: Blue Content */}
                                         <div className="md:col-span-5 bg-[#0066FF] text-white p-8 md:p-12 flex flex-col justify-center relative">
                                             <div className="space-y-6 z-10">

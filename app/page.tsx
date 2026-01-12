@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/commom/navbar"
 import { Hero } from "@/components/landing/hero"
 import { TopMatches } from "@/components/landing/topMatches"
 import { TopCompetitions } from "@/components/landing/topCompetitions"
@@ -6,7 +5,6 @@ import { TopVenues } from "@/components/landing/value-props"
 import { Features } from "@/components/landing/features"
 import { Testimonials } from "@/components/landing/testimonials"
 
-import { Footer } from "@/components/commom/footer"
 import { TopSportsEvents } from "@/components/landing/topSportsEvents"
 import { WhyChoose } from "@/components/landing/why-choose"
 import TopFootballClubs from "@/components/landing/topFootballClubs"
@@ -16,7 +14,6 @@ import { Reliable } from "@/components/landing/reliable"
 export default function Home() {
   return (
     <main className="min-h-screen bg-background font-sans">
-      <Navbar />
       <Hero />
       <TopMatches />
       <div id="how-it-works">
@@ -39,7 +36,6 @@ export default function Home() {
       <Reliable />
       <WhyChoose />
       <Testimonials />
-      <Footer />
     </main>
   )
 }

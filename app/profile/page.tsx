@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -186,7 +186,7 @@ export default function ProfilePage() {
                 </div>
             </div>
 
-            <Footer />
+     
         </div>
     );
 }

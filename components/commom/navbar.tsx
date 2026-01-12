@@ -23,6 +23,7 @@ import { motion } from "framer-motion";
 function FootballDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMoreLeagues, setShowMoreLeagues] = useState(false);
+  const navigate = useRouter();
 
   const leagues = [
     "Premier League", "La Liga", "Serie A", "Bundesliga", 
@@ -49,7 +50,9 @@ function FootballDropdown() {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)} // Ensure the dropdown closes only when both the button and the dropdown content are no longer hovered
     >
-      <button className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+      <button
+      onClick={() => navigate.push("/football")}
+      className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">
         Football
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>

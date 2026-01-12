@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ClientLayout from "./client-layout";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,9 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased`} suppressHydrationWarning>
         <AuthProvider>
-          {children}
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </AuthProvider>
         <Analytics />
       </body>

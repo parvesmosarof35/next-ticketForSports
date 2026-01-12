@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -136,7 +136,7 @@ export default function ChangePasswordPage() {
                 </div>
             </div>
 
-            <Footer />
+     
         </div>
     );
 }

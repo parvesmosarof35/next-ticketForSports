@@ -14,7 +14,7 @@ import {
     Hash,
 } from "lucide-react";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -300,7 +300,7 @@ export default function DealDetailsPage({ params }: { params: { id: string } }) 
                 </div>
             )}
 
-            <Footer />
+     
         </div>
     );
 }

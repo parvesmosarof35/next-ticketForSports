@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function PrivacyPolicyPage() {
@@ -161,7 +161,7 @@ export default function PrivacyPolicyPage() {
                 </div>
             </div>
 
-            <Footer />
+     
         </div>
     );
 }

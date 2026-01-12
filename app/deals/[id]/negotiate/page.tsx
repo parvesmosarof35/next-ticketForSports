@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -444,7 +444,7 @@ export default function NegotiateDealPage() {
                 </div>
             )}
 
-            <Footer />
+     
         </div>
     );
 }

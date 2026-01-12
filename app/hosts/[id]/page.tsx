@@ -35,7 +35,7 @@ const hostData = {
 };
 
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 
 export default function HostProfilePage({ params }: { params: { id: string } }) {
     return (
@@ -244,7 +244,7 @@ export default function HostProfilePage({ params }: { params: { id: string } }) 
                     </Card>
                 </div>
             </div>
-            <Footer />
+     
         </div>
     );
 }

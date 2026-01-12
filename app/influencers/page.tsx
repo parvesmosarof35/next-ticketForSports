@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, Users, Video } from "lucide-react";
@@ -152,7 +152,7 @@ export default function InfluencersPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
+     
         </div>
     );
 }

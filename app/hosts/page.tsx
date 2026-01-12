@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Building2, Home, Hotel, Tent } from "lucide-react";
@@ -158,7 +158,7 @@ export default function HostsPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
+     
         </div>
     );
 }

@@ -1,13 +1,13 @@
 "use client";
 
 import { Navbar } from "@/components/commom/navbar";
-import { Footer } from "@/components/commom/footer";
+ 
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function TermsAndConditionsPage() {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
-            <Navbar />
+        
 
             <div className="flex-grow pt-24 pb-12">
                 <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -161,7 +161,7 @@ export default function TermsAndConditionsPage() {
                 </div>
             </div>
 
-            <Footer />
+     
         </div>
     );
 }

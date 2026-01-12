@@ -11,7 +11,7 @@
   --card-foreground: oklch(0.18 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0 0);
-  --primary: #10B981CC;
+  --primary: #10b981cc;
   /* Teal */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.96 0.01 0);
@@ -121,6 +121,10 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 
   body {
