@@ -27,11 +27,11 @@ export default function Home() {
         <Features />
       </div>
 
-      <div id="sports-events">
+      {/* <div id="sports-events">
         <TopSportsEvents />
       </div>
       <TopFootballClubs />
-      <TopVenues />
+      <TopVenues /> */}
    
       <div id="fixtures">
         <TopFixtures />

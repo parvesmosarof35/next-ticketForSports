@@ -38,15 +38,15 @@ export function Footer() {
   ]
 
   return (
-<footer className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
-  <div className="container mx-auto max-w-7xl">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-white text-[#05305F] py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
-            <h4 className="font-bold text-lg mb-4">Popular Football Events</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#05305F]">Popular Football Events</h4>
             <ul className="space-y-2">
               {popularEvents.map((event) => (
                 <li key={event.name}>
-                  <Link href={event.href} className="hover:text-blue-600 transition-colors">
+                  <Link href={event.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {event.name}
                   </Link>
                 </li>
@@ -55,11 +55,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Top Clubs</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#05305F]">Top Clubs</h4>
             <ul className="space-y-2">
               {topClubs.map((club) => (
                 <li key={club.name}>
-                  <Link href={club.href} className="hover:text-blue-600 transition-colors">
+                  <Link href={club.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {club.name}
                   </Link>
                 </li>
@@ -68,11 +68,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Useful Links</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#05305F]">Useful Links</h4>
             <ul className="space-y-2">
               {usefulLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="hover:text-blue-600 transition-colors">
+                  <Link href={link.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -81,11 +81,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Browse</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#05305F]">Browse</h4>
             <ul className="space-y-2">
               {browse.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="hover:text-blue-600 transition-colors">
+                  <Link href={item.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -94,47 +94,43 @@ export function Footer() {
           </div>
         </div>
 
- <div className="flex justify-center mb-8">
-      <Image 
-        src="/navlogolight.png" 
-        alt="Logo" 
-        width={200} 
-        height={40} 
-        className="h-10 w-auto"
-      />
-    </div>
+        <div className="flex justify-center mb-8">
+          <Image 
+            src="/navlogo.png" 
+            alt="Logo" 
+            width={200} 
+            height={40} 
+            className="h-10 w-auto"
+          />
+        </div>
 
-    <div className="text-center text-gray-400 mb-8">
-      <p>© TicketforSport 2025 — All rights reserved.</p>
-    </div>
+        <div className="text-center text-gray-500 mb-8">
+          <p>© TicketforSport 2025 — All rights reserved.</p>
+        </div>
 
-
-
- <div className="flex justify-center space-x-4">
-      <a 
-        href="#" 
-        className="w-10 h-10 rounded-md bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-        aria-label="Facebook"
-      >
-        <Facebook className="w-5 h-5" />
-      </a>
-      <a 
-        href="#" 
-        className="w-10 h-10 rounded-md bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-        aria-label="Twitter"
-      >
-        <Twitter className="w-5 h-5" />
-      </a>
-      <a 
-        href="#" 
-        className="w-10 h-10 rounded-md bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-        aria-label="Instagram"
-      >
-        <Instagram className="w-5 h-5" />
-      </a>
-    </div>
-
-
+        <div className="flex justify-center space-x-4">
+          <a 
+            href="#" 
+            className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#0645A0] hover:text-white transition-colors"
+            aria-label="Facebook"
+          >
+            <Facebook className="w-5 h-5" />
+          </a>
+          <a 
+            href="#" 
+            className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#0645A0] hover:text-white transition-colors"
+            aria-label="Twitter"
+          >
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a 
+            href="#" 
+            className="w-10 h-10 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-[#0645A0] hover:text-white transition-colors"
+            aria-label="Instagram"
+          >
+            <Instagram className="w-5 h-5" />
+          </a>
+        </div>
 
       </div>
     </footer>

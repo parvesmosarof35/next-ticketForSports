@@ -5,30 +5,30 @@ import { Search, ShieldCheck, Award } from "lucide-react";
 export function Reliable() {
   const features = [
     {
-      icon: <Search className="w-8 h-8 text-gray-100" />,
+      icon: <Search className="w-8 h-8 text-[#0645A0]" />,
       title: "Compare Tickets in One Place",
       description: "Browse thousands of events and compare prices from top sellers instantly."
     },
     {
-      icon: <ShieldCheck className="w-8 h-8 text-gray-100" />,
+      icon: <ShieldCheck className="w-8 h-8 text-[#0645A0]" />,
       title: "Only Verified Sellers",
       description: "All sellers are vetted and verified to ensure safe and secure transactions."
     },
     {
-      icon: <Award className="w-8 h-8 text-gray-100" />,
+      icon: <Award className="w-8 h-8 text-[#0645A0]" />,
       title: "Best Seat Guaranteed",
       description: "Find the perfect seat at the best price with our advanced search filters."
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-[#05305F]">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#05305F]">
             TicketforSport — Reliable Tickets at the Right Price
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
             We prioritize your security and ensure all transactions are protected with the latest encryption technology.
           </p>
         </div>
@@ -37,13 +37,13 @@ export function Reliable() {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-linear-to-br from-gray-900 to-gray-800 rounded-xl p-8 border border-gray-800 hover:border-blue-500 transition-all duration-300"
+              className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-xl transition-all duration-300"
             >
-              <div className="bg-blue-600 w-16 h-16 rounded-lg flex items-center justify-center mb-6 mx-auto">
+              <div className="bg-[#E6F0FA] w-16 h-16 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 {feature.icon}
               </div>
               <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-gray-300 text-lg">{feature.description}</p>
+              <p className="text-gray-600 text-lg">{feature.description}</p>
             </div>
           ))}
         </div>
