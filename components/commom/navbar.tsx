@@ -154,7 +154,7 @@ export function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/navlogo.png" alt="Logo" width={200} height={50} />
+          <Image src="/navlogolight.png" alt="Logo" width={200} height={50} />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

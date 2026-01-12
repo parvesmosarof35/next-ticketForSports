@@ -22,14 +22,17 @@ export default function Home() {
       <div id="how-it-works">
         <TopCompetitions />
       </div>
+
+         <div id="features">
+        <Features />
+      </div>
+
       <div id="sports-events">
         <TopSportsEvents />
       </div>
       <TopFootballClubs />
       <TopVenues />
-      <div id="features">
-        <Features />
-      </div>
+   
       <div id="fixtures">
         <TopFixtures />
       </div>
