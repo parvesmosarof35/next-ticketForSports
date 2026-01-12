@@ -76,7 +76,7 @@ export default function SignUpPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-xl font-bold text-foreground mb-2">Create Account</h1>
-            <p className="text-muted-foreground">Join Hostinflu and start collaborating</p>
+            <p className="text-muted-foreground">Join ticketsForSale and start collaborating</p>
           </div>
           <form onSubmit={handleSignUp} className="space-y-5">
             {/* Full Name Field */}

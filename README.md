@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🏠✨ HostInflu
+# 🏠✨ ticketsForSale
 
-### *Where Hospitality Meets Influence*
+### _Where Hospitality Meets Influence_
 
 **Connect property hosts with social media influencers for authentic collaborations**
 
@@ -19,7 +19,7 @@
 
 ## 🌟 Overview
 
-**HostInflu** is a cutting-edge platform that bridges the gap between property hosts and social media influencers. We facilitate meaningful collaborations where hosts offer unique stays in exchange for authentic social media exposure, creating win-win partnerships that benefit both parties.
+**ticketsForSale** is a cutting-edge platform that bridges the gap between property hosts and social media influencers. We facilitate meaningful collaborations where hosts offer unique stays in exchange for authentic social media exposure, creating win-win partnerships that benefit both parties.
 
 ### 🎯 Mission
 
@@ -30,6 +30,7 @@ Revolutionize the hospitality and influencer marketing industries by creating a 
 ## ✨ Features
 
 ### 🏡 For Hosts
+
 - **Property Management** - List and manage multiple properties with detailed information
 - **Influencer Discovery** - Browse and connect with verified influencers
 - **Deal Tracking** - Monitor collaboration proposals and agreements
@@ -37,6 +38,7 @@ Revolutionize the hospitality and influencer marketing industries by creating a 
 - **Transaction Management** - Secure payment and star-based reward system
 
 ### 📱 For Influencers
+
 - **Property Discovery** - Explore unique properties and collaboration opportunities
 - **Collaboration Hub** - Manage active and past collaborations
 - **Earnings Tracker** - Monitor stars earned and redeem rewards
@@ -44,6 +46,7 @@ Revolutionize the hospitality and influencer marketing industries by creating a 
 - **Transaction History** - View detailed earning and redemption records
 
 ### 🎨 Platform Features
+
 - **Modern UI/UX** - Beautiful, responsive design with dark mode support
 - **Real-time Updates** - Live notifications and status updates
 - **Secure Authentication** - Protected user accounts and data
@@ -64,12 +67,14 @@ Revolutionize the hospitality and influencer marketing industries by creating a 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/yourusername/hostinflu.git
-   cd hostinflu
+   git clone https://github.com/yourusername/ticketsForSale.git
+   cd ticketsForSale
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -77,19 +82,21 @@ Revolutionize the hospitality and influencer marketing industries by creating a 
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
-   
+
    Configure your `.env.local` file with necessary credentials.
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
 
 5. **Open your browser**
-   
+
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### 🏗️ Build for Production
@@ -104,26 +111,31 @@ npm start
 ## 🛠️ Tech Stack
 
 ### Core Framework
+
 - **[Next.js 16](https://nextjs.org/)** - React framework with App Router
 - **[React 19](https://react.dev/)** - UI library
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 
 ### Styling & UI
+
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
 - **[Lucide React](https://lucide.dev/)** - Beautiful icon library
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Dark mode support
 
 ### Data Visualization
+
 - **[Chart.js](https://www.chartjs.org/)** - Interactive charts
 - **[Recharts](https://recharts.org/)** - Composable chart library
 - **[react-chartjs-2](https://react-chartjs-2.js.org/)** - React wrapper for Chart.js
 
 ### Forms & Validation
+
 - **[React Hook Form](https://react-hook-form.com/)** - Performant form handling
 - **[Zod](https://zod.dev/)** - TypeScript-first schema validation
 
 ### Additional Libraries
+
 - **[date-fns](https://date-fns.org/)** - Modern date utility library
 - **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
 - **[Embla Carousel](https://www.embla-carousel.com/)** - Carousel component
@@ -134,7 +146,7 @@ npm start
 ## 📁 Project Structure
 
 ```
-hostinflu/
+ticketsForSale/
 ├── app/                          # Next.js App Router
 │   ├── dashboard/               # Dashboard pages
 │   │   ├── admin/              # Admin-specific pages
@@ -163,7 +175,7 @@ hostinflu/
 
 ## 🎨 Design Philosophy
 
-HostInflu follows modern web design principles:
+ticketsForSale follows modern web design principles:
 
 - **🎯 User-Centric** - Intuitive navigation and clear user flows
 - **🌈 Visual Excellence** - Vibrant colors, smooth gradients, and micro-animations
@@ -190,15 +202,15 @@ NEXTAUTH_URL=
 
 ## 📊 Key Pages
 
-| Page | Route | Description |
-|------|-------|-------------|
-| **Landing** | `/` | Marketing homepage with features and pricing |
-| **Host Dashboard** | `/dashboard` | Property management and analytics |
-| **Influencer Dashboard** | `/dashboard/influencer` | Collaboration and earnings overview |
-| **Admin Panel** | `/dashboard/admin` | Platform administration |
-| **Collaborations** | `/dashboard/influencer-collaborations` | Active and past collaborations |
-| **Transactions** | `/dashboard/influencer-transactions` | Payment and reward history |
-| **Redeem Requests** | `/dashboard/influencer-redeem-requests` | Star withdrawal management |
+| Page                     | Route                                   | Description                                  |
+| ------------------------ | --------------------------------------- | -------------------------------------------- |
+| **Landing**              | `/`                                     | Marketing homepage with features and pricing |
+| **Host Dashboard**       | `/dashboard`                            | Property management and analytics            |
+| **Influencer Dashboard** | `/dashboard/influencer`                 | Collaboration and earnings overview          |
+| **Admin Panel**          | `/dashboard/admin`                      | Platform administration                      |
+| **Collaborations**       | `/dashboard/influencer-collaborations`  | Active and past collaborations               |
+| **Transactions**         | `/dashboard/influencer-transactions`    | Payment and reward history                   |
+| **Redeem Requests**      | `/dashboard/influencer-redeem-requests` | Star withdrawal management                   |
 
 ---
 
@@ -241,8 +253,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### 🌟 Star us on GitHub if you find this project useful!
 
-**Made with 💜 by the HostInflu Team**
+**Made with 💜 by the ticketsForSale Team**
 
-[Website](https://hostinflu.com) • [Documentation](https://docs.hostinflu.com) • [Support](mailto:support@hostinflu.com)
+[Website](https://ticketsForSale.com) • [Documentation](https://docs.ticketsForSale.com) • [Support](mailto:support@ticketsForSale.com)
 
 </div>

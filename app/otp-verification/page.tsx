@@ -74,7 +74,7 @@ export default function OTPVerificationPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-8">
-            <span className="font-bold text-2xl text-foreground">≠ Hostinflu</span>
+            <span className="font-bold text-2xl text-foreground">≠ ticketsForSale</span>
           </Link>
           <h1 className="text-4xl font-bold text-foreground mb-2">Verify OTP</h1>
           <p className="text-muted-foreground">Enter the 6-digit code sent to your email</p>

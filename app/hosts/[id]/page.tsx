@@ -18,7 +18,7 @@ import {
 const hostData = {
     id: 1,
     name: "Michael Adams",
-    handle: "@michael.hostinflu",
+    handle: "@michael.ticketsForSale",
     role: "Verified Host",
     location: "Lisbon, Portugal",
     rating: 4.9,

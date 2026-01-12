@@ -56,8 +56,8 @@ export default function ContactUsPage() {
                                         <div>
                                             <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
                                             <p className="text-sm text-gray-600 mb-2">Our team is here to help</p>
-                                            <a href="mailto:support@hostinflu.com" className="text-teal-600 hover:text-teal-700 font-medium text-sm">
-                                                support@hostinflu.com
+                                            <a href="mailto:support@ticketsForSale.com" className="text-teal-600 hover:text-teal-700 font-medium text-sm">
+                                                support@ticketsForSale.com
                                             </a>
                                         </div>
                                     </div>

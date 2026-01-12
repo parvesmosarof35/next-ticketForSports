@@ -35,7 +35,7 @@ export default function SignInPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-8">
-            <span className="font-bold text-2xl text-foreground">Hostinflu</span>
+            <span className="font-bold text-2xl text-foreground">ticketsForSale</span>
           </Link>
           <h1 className="text-4xl font-bold text-foreground mb-2">Welcome Back</h1>
           <p className="text-muted-foreground">Sign in to your account to continue</p>

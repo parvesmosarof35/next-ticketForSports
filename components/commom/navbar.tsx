@@ -49,7 +49,7 @@ function FootballDropdown() {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)} // Ensure the dropdown closes only when both the button and the dropdown content are no longer hovered
     >
-      <button className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white transition-colors">
+      <button className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
         Football
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -60,17 +60,17 @@ function FootballDropdown() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }} // Optional exit animation for smooth closing
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-0 mt-0 w-[800px] bg-[#0A2A43]/95 backdrop-blur-lg border border-white/10 rounded-lg shadow-2xl p-6"
+          className="absolute top-full left-0 mt-0 w-[800px] bg-white/95 backdrop-blur-lg border border-gray-200 rounded-lg shadow-2xl p-6"
         >
           {/* Leagues Section */}
           <div className="mb-6">
-            <h3 className="text-white font-semibold text-sm mb-3 uppercase tracking-wide">Leagues</h3>
+            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Leagues</h3>
             <div className="flex flex-wrap gap-2">
               {displayedLeagues.map((league, index) => (
                 <Link
                   key={index}
                   href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\s+/g, '-'))}`}
-                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white text-sm rounded-md transition-all border border-white/10 hover:border-white/20"
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
                 >
                   {league}
                 </Link>
@@ -91,13 +91,13 @@ function FootballDropdown() {
 
           {/* Tournaments Section */}
           <div className="mb-6">
-            <h3 className="text-white font-semibold text-sm mb-3 uppercase tracking-wide">Tournaments</h3>
+            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Tournaments</h3>
             <div className="flex flex-wrap gap-2">
               {tournaments.map((tournament, index) => (
                 <Link
                   key={index}
                   href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
-                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white text-sm rounded-md transition-all border border-white/10 hover:border-white/20"
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
                 >
                   {tournament}
                 </Link>
@@ -107,13 +107,13 @@ function FootballDropdown() {
 
           {/* Nations Section */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-3 uppercase tracking-wide">Nations</h3>
+            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Nations</h3>
             <div className="flex flex-wrap gap-2">
               {nations.map((nation, index) => (
                 <Link
                   key={index}
                   href={`/nation/${nation.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white text-sm rounded-md transition-all border border-white/10 hover:border-white/20"
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
                 >
                   {nation}
                 </Link>
@@ -150,11 +150,7 @@ export function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`w-full fixed top-0 z-50 px-4 sm:px-6 lg:px-8 py-3 transition-all duration-500 border-b border-[#0e3256] ${
-        isScrolled
-          ? "bg-linear-to-r from-[#000000]/95 via-[#0A2A43]/90 to-[#006cfd]/90"
-          : "bg-linear-to-r from-transparent via-transparent to-transparent "
-      }`}
+      className={`w-full fixed top-0 z-50 px-4 sm:px-6 lg:px-8 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
     >
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
@@ -163,7 +159,7 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-8">
           <FootballDropdown />
-          <Link href="/" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
+          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
             Other Sports
           </Link>
         </div>
@@ -186,7 +182,7 @@ export function Navbar() {
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-white">{user.fullName}</span>
+                    <span className="text-sm font-medium text-gray-900">{user.fullName}</span>
                     <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">
                       {user.role}
                     </span>
@@ -220,8 +216,8 @@ export function Navbar() {
           ) : (
             <Link href="/signin">
               <Button
-                variant="outline"
-                className="bg-transparent text-white border-white/40 hover:bg-white/10 hover:border-white/60 font-medium px-5"
+                variant="default"
+                className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-5"
               >
                 Sign In
               </Button>

@@ -46,7 +46,7 @@ export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
               height={32}
               className="h-8 w-8 text-teal-500"
             />
-            <span className="text-xl font-bold text-black">Hostinflu</span>
+            <span className="text-xl font-bold text-black">ticketsForSale</span>
           </Link>
           <Button
             variant="ghost"

@@ -21,10 +21,10 @@ export default function PrivacyPolicyPage() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Terms of Service</h2>
                                 <div className="space-y-3 text-gray-700">
                                     <p className="font-semibold">1.1 Acceptance of Terms</p>
-                                    <p>By accessing and using Hostinflu, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                                    <p>By accessing and using ticketsForSale, you accept and agree to be bound by the terms and provision of this agreement.</p>
 
                                     <p className="font-semibold mt-4">1.2 Use License</p>
-                                    <p>Permission is granted to temporarily access the materials on Hostinflu for personal, non-commercial transitory viewing only.</p>
+                                    <p>Permission is granted to temporarily access the materials on ticketsForSale for personal, non-commercial transitory viewing only.</p>
                                 </div>
                             </section>
 
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Transactions and Payments</h2>
                                 <div className="space-y-3 text-gray-700">
                                     <p className="font-semibold">5.1 Service Fees</p>
-                                    <p>Hostinflu charges service fees for facilitating collaborations. These fees are clearly disclosed before any transaction is completed.</p>
+                                    <p>ticketsForSale charges service fees for facilitating collaborations. These fees are clearly disclosed before any transaction is completed.</p>
 
                                     <p className="font-semibold mt-4">5.2 Payment Terms</p>
                                     <p>Payments are processed through secure third-party payment processors. Users agree to the terms of these payment processors.</p>
@@ -87,10 +87,10 @@ export default function PrivacyPolicyPage() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Content and Intellectual Property</h2>
                                 <div className="space-y-3 text-gray-700">
                                     <p className="font-semibold">6.1 User Content</p>
-                                    <p>Users retain ownership of content they create and upload to the platform. By uploading content, users grant Hostinflu a license to use, display, and distribute this content on the platform.</p>
+                                    <p>Users retain ownership of content they create and upload to the platform. By uploading content, users grant ticketsForSale a license to use, display, and distribute this content on the platform.</p>
 
                                     <p className="font-semibold mt-4">6.2 Platform Content</p>
-                                    <p>All platform features, functionality, and content are owned by Hostinflu and are protected by copyright, trademark, and other intellectual property laws.</p>
+                                    <p>All platform features, functionality, and content are owned by ticketsForSale and are protected by copyright, trademark, and other intellectual property laws.</p>
                                 </div>
                             </section>
 
@@ -114,7 +114,7 @@ export default function PrivacyPolicyPage() {
                             <section>
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Limitation of Liability</h2>
                                 <div className="space-y-3 text-gray-700">
-                                    <p>Hostinflu shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.</p>
+                                    <p>ticketsForSale shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.</p>
                                     <p>We do not guarantee the accuracy, completeness, or usefulness of any information on the platform and are not responsible for user-generated content.</p>
                                 </div>
                             </section>
@@ -143,7 +143,7 @@ export default function PrivacyPolicyPage() {
                                 <div className="space-y-2 text-gray-700">
                                     <p>If you have any questions about these Terms & Conditions, please contact us:</p>
                                     <ul className="space-y-1 ml-4">
-                                        <li><strong>Email:</strong> legal@hostinflu.com</li>
+                                        <li><strong>Email:</strong> legal@ticketsForSale.com</li>
                                         <li><strong>Phone:</strong> +1 (555) 123-4567</li>
                                         <li><strong>Address:</strong> 123 Business Street, Los Angeles, CA 90210</li>
                                     </ul>
