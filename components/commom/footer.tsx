@@ -96,7 +96,7 @@ export function Footer() {
 
         <div className="flex justify-center mb-8">
           <Image 
-            src="/navlogo.png" 
+            src="/navlogolight.png" 
             alt="Logo" 
             width={200} 
             height={40} 

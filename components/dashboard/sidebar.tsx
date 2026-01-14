@@ -26,7 +26,7 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
   const { user, logout } = useAuth();
-  console.log(user);
+
 
   return (
     <aside
