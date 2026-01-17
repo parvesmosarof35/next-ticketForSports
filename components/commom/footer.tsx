@@ -22,15 +22,14 @@ export function Footer() {
   ]
 
   const usefulLinks = [
-    { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Terms & Conditions", href: "/terms" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Sitemap", href: "/sitemap" }
+    { name: "About Us", href: "/about-us" },
+    { name: "Contact Us", href: "/contact-us" },
+    { name: "Terms & Conditions", href: "/terms-and-conditions" },
+    { name: "Privacy Policy", href: "/privacy-and-policy" }
   ]
 
   const browse = [
-    { name: "Football Tickets", href: "/football-tickets" },
+    { name: "Football Tickets", href: "/football" },
     { name: "Concert Tickets", href: "/concert-tickets" },
     { name: "Theater Tickets", href: "/theater-tickets" },
     { name: "Sports Tickets", href: "/sports-tickets" },

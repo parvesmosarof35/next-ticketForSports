@@ -184,7 +184,7 @@ export default function ContactUsPage() {
 
                                         <Button
                                             type="submit"
-                                            className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 flex items-center justify-center gap-2"
+                                            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 flex items-center justify-center gap-2"
                                             disabled={isSending}
                                         >
                                             {isSending ? (
