@@ -14,8 +14,11 @@ import {
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["800"] });
 
+import Link from "next/link"; // Add import
+
 const matches = [
   {
+    id: 1,
     date: "NOV 30",
     team1: { name: "Liverpool", logo: "/team (1).png" },
     team2: { name: "Chelsea", logo: "/team (2).png" },
@@ -23,6 +26,7 @@ const matches = [
     time: "21:00"
   },
   {
+    id: 2,
     date: "DEC 5",
     team1: { name: "Man United", logo: "/team (2).png" },
     team2: { name: "Arsenal", logo: "/team (1).png" },
@@ -30,6 +34,7 @@ const matches = [
     time: "20:00"
   },
   {
+    id: 3,
     date: "DEC 12",
     team1: { name: "Barcelona", logo: "/team (1).png" },
     team2: { name: "Real Madrid", logo: "/team (2).png" },
@@ -37,6 +42,7 @@ const matches = [
     time: "22:00"
   },
   {
+    id: 4,
     date: "NOV 30",
     team1: { name: "Liverpool", logo: "/team (1).png" },
     team2: { name: "Chelsea", logo: "/team (2).png" },
@@ -44,6 +50,7 @@ const matches = [
     time: "21:00"
   },
   {
+    id: 5,
     date: "DEC 12",
     team1: { name: "Barcelona", logo: "/team (1).png" },
     team2: { name: "Real Madrid", logo: "/team (2).png" },
@@ -51,6 +58,7 @@ const matches = [
     time: "22:00"
   },
   {
+    id: 6,
     date: "DEC 15",
     team1: { name: "Man United", logo: "/team (2).png" },
     team2: { name: "Arsenal", logo: "/team (1).png" },
@@ -128,9 +136,11 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       </div>
 
       {/* Button */}
-      <Button className={`w-full h-[40px] bg-[#0645A0] hover:bg-[#05305F] transition-colors rounded-2xl text-white text-[16px] leading-[100%] tracking-[0%] text-center uppercase ${montserrat.className}`}>
-        CHECK AVAILABILITY
-      </Button>
+      <Link href={`/football/booking/${match.id}`} className="w-full">
+        <Button className={`w-full h-[40px] bg-[#0645A0] hover:bg-[#05305F] transition-colors rounded-2xl text-white text-[16px] leading-[100%] tracking-[0%] text-center uppercase ${montserrat.className}`}>
+          CHECK AVAILABILITY
+        </Button>
+      </Link>
     </div>
   );
 }
