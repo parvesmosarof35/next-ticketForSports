@@ -44,6 +44,11 @@ function FootballDropdown() {
     "Brazil", "Argentina", "Portugal", "Netherlands"
   ];
 
+  const stadiums = [
+    "St. George's Park", "Camp Nou", "San Siro", "Allianz Arena", 
+    "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou"
+  ];
+
   return (
     <div 
       className="relative"
@@ -119,6 +124,23 @@ function FootballDropdown() {
                   className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
                 >
                   {nation}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+
+          {/* Stadiums Section */}
+          <div>
+            <h3 className="text-gray-900 font-semibold text-sm my-3 uppercase tracking-wide">Stadiums</h3>
+            <div className="flex flex-wrap gap-2">
+              {stadiums.map((stadium, index) => (
+                <Link
+                  key={index}
+                  href={`/stadium/${stadium.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                >
+                  {stadium}
                 </Link>
               ))}
             </div>

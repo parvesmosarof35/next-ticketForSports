@@ -192,11 +192,11 @@ export default function SignUpPage() {
               <input type="checkbox" className="w-4 h-4 rounded border-border mt-1" />
               <span className="text-sm text-muted-foreground">
                 I agree to the{" "}
-                <Link href="/terms-and-conditions" className="text-primary font-semibold hover:underline">
+                <Link href="/terms-and-conditions" className="text-blue-500 font-semibold hover:underline">
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link href="/privacy-and-policy" className="text-primary font-semibold hover:underline">
+                <Link href="/privacy-and-policy" className="text-blue-500 font-semibold hover:underline">
                   Privacy Policy
                 </Link>
               </span>
@@ -205,7 +205,7 @@ export default function SignUpPage() {
             {/* Sign Up Button */}
             <Button
               size="lg"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+              className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
             >
               Create Account
             </Button>
@@ -215,7 +215,7 @@ export default function SignUpPage() {
         {/* Sign In Link */}
         <p className="text-center mt-6 text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/signin" className="text-primary font-semibold hover:underline">
+          <Link href="/signin" className="text-blue-500 font-semibold hover:underline">
             Sign in
           </Link>
         </p>

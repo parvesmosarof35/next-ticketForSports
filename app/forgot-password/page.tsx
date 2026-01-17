@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
           <Link href="/" className="inline-block mb-8">
             <span className="font-bold text-2xl text-foreground">≠ ticketsForSale</span>
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-2">Reset Password</h1>
+          <h1 className="text-4xl font-bold text-blue-500 mb-2">Reset Password</h1>
           <p className="text-muted-foreground">Enter your email to receive a reset link</p>
         </div>
 
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+                className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
               >
                 Send OTP
               </Button>
@@ -81,7 +81,7 @@ export default function ForgotPasswordPage() {
                 <Button
                   type="button"
                   size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+                  className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
                 >
                   Enter OTP Code
                 </Button>
@@ -92,7 +92,7 @@ export default function ForgotPasswordPage() {
 
         {/* Back to Sign In */}
         <div className="mt-6">
-          <Link href="/signin" className="inline-flex items-center gap-2 text-primary hover:underline font-semibold">
+          <Link href="/signin" className="inline-flex items-center gap-2 text-blue-500 hover:underline font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Back to Sign In
           </Link>

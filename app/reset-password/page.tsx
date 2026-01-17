@@ -132,7 +132,7 @@ export default function ResetPasswordPage() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+                className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
               >
                 Reset Password
               </Button>
@@ -143,7 +143,7 @@ export default function ResetPasswordPage() {
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Password Reset Successful</h2>
+                <h2 className="text-2xl font-bold text-blue-500 mb-2">Password Reset Successful</h2>
                 <p className="text-muted-foreground">
                   Your password has been successfully reset. You can now sign in with your new password.
                 </p>
@@ -151,7 +151,7 @@ export default function ResetPasswordPage() {
               <Link href="/signin">
                 <Button
                   size="lg"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+                  className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
                 >
                   Back to Sign In
                 </Button>

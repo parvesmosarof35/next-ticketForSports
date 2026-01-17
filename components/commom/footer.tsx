@@ -45,7 +45,7 @@ export function Footer() {
             <ul className="space-y-2">
               {popularEvents.map((event) => (
                 <li key={event.name}>
-                  <Link href={event.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
+                  <Link href={`/events${event.href}`} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {event.name}
                   </Link>
                 </li>
@@ -58,7 +58,7 @@ export function Footer() {
             <ul className="space-y-2">
               {topClubs.map((club) => (
                 <li key={club.name}>
-                  <Link href={club.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">
+                  <Link href={`/clubs${club.href}`} className="text-gray-600 hover:text-[#0645A0] transition-colors">
                     {club.name}
                   </Link>
                 </li>
@@ -82,6 +82,11 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4 text-[#05305F]">Browse</h4>
             <ul className="space-y-2">
+              <li>
+                  <Link href="/locations" className="text-gray-600 hover:text-[#0645A0] transition-colors">
+                    Cities
+                  </Link>
+                </li>
               {browse.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-gray-600 hover:text-[#0645A0] transition-colors">

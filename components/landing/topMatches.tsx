@@ -151,9 +151,11 @@ export function TopMatches() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-3xl font-bold text-white">Top Football Matches</h2>
+           <Link href="/football">
            <Button className="bg-white text-[#05305F] hover:bg-gray-100 font-bold rounded-lg px-6 hidden md:block">
               More Football Matches
            </Button>
+           </Link>
         </div>
 
         <Carousel

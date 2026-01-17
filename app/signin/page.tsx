@@ -34,9 +34,9 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block mb-8">
+          {/* <Link href="/" className="inline-block mb-8">
             <span className="font-bold text-2xl text-foreground">ticketsForSale</span>
-          </Link>
+          </Link> */}
           <h1 className="text-4xl font-bold text-foreground mb-2">Welcome Back</h1>
           <p className="text-muted-foreground">Sign in to your account to continue</p>
         </div>
@@ -95,7 +95,7 @@ export default function SignInPage() {
                 <input type="checkbox" className="w-4 h-4 rounded border-border" />
                 <span className="text-sm text-muted-foreground">Remember me</span>
               </label>
-              <Link href="/forgot-password" className="text-sm text-primary hover:underline font-semibold">
+              <Link href="/forgot-password" className="text-sm text-blue-500 hover:underline font-semibold">
                 Forgot password?
               </Link>
             </div>
@@ -103,7 +103,7 @@ export default function SignInPage() {
             {/* Sign In Button */}
             <Button
               size="lg"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+              className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold"
             >
               Sign In
             </Button>
@@ -120,7 +120,7 @@ export default function SignInPage() {
         {/* Sign Up Link */}
         <p className="text-center mt-6 text-muted-foreground">
           Don't have an account?{" "}
-          <Link href="/signup" className="text-primary font-semibold hover:underline">
+          <Link href="/signup" className="text-blue-500 font-semibold hover:underline">
             Sign up
           </Link>
         </p>

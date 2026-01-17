@@ -76,7 +76,7 @@ export default function OTPVerificationPage() {
           <Link href="/" className="inline-block mb-8">
             <span className="font-bold text-2xl text-foreground">≠ ticketsForSale</span>
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-2">Verify OTP</h1>
+          <h1 className="text-4xl font-bold text-blue-500 mb-2">Verify OTP</h1>
           <p className="text-muted-foreground">Enter the 6-digit code sent to your email</p>
         </div>
 
@@ -115,7 +115,7 @@ export default function OTPVerificationPage() {
                   type="button"
                   onClick={handleResend}
                   disabled={resendTimer > 0}
-                  className="text-primary font-semibold hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-blue-500 font-semibold hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {resendTimer > 0 ? `Resend in ${resendTimer}s` : "Resend OTP"}
                 </button>
@@ -127,7 +127,7 @@ export default function OTPVerificationPage() {
               type="submit"
               size="lg"
               disabled={verifying}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold disabled:opacity-70"
+              className="w-full bg-blue-500 text-white hover:bg-blue-600 py-3 font-semibold disabled:opacity-70"
             >
               {verifying ? "Verifying..." : "Verify OTP"}
             </Button>
@@ -136,7 +136,7 @@ export default function OTPVerificationPage() {
 
         {/* Back Link */}
         <div className="mt-6">
-          <Link href="/signin" className="inline-flex items-center gap-2 text-primary hover:underline font-semibold">
+          <Link href="/signin" className="inline-flex items-center gap-2 text-blue-500 hover:underline font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Back to Sign In
           </Link>
