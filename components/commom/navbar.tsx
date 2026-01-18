@@ -120,7 +120,7 @@ function FootballDropdown() {
               {nations.map((nation, index) => (
                 <Link
                   key={index}
-                  href={`/nation/${nation.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/locations?search=${encodeURIComponent(nation)}`}
                   className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
                 >
                   {nation}
@@ -129,6 +129,20 @@ function FootballDropdown() {
             </div>
           </div>
 
+
+
+          {/* Teams Section */}
+          <div className="mb-6">
+            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Teams</h3>
+            <div className="flex flex-wrap gap-2">
+               <Link
+                  href="/teams"
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                >
+                  All Teams
+                </Link>
+            </div>
+          </div>
 
           {/* Stadiums Section */}
           <div>
@@ -174,7 +188,7 @@ function FootballDropdown() {
 
 export function Navbar() {
   const router = useRouter();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, isLoading } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -215,8 +229,10 @@ export function Navbar() {
             <LanguageToggle />
           </div>
 
-          {isAuthenticated && user ? (
-            <DropdownMenu>
+          {isLoading ? (
+             <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+          ) : isAuthenticated && user ? (
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
@@ -227,12 +243,12 @@ export function Navbar() {
                       {user.fullName.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <span className="text-sm font-medium text-gray-900">{user.fullName}</span>
                     <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">
                       {user.role}
                     </span>
-                  </div>
+                  </div> */}
                 </motion.button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
@@ -244,7 +260,7 @@ export function Navbar() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/dashboard" className="cursor-pointer">
+                  <Link href="/admin/dashboard" className="cursor-pointer">
                     <LayoutDashboard className="mr-2 h-4 w-4" /> Dashboard
                   </Link>
                 </DropdownMenuItem>

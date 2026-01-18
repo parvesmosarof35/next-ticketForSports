@@ -24,7 +24,20 @@ export default function SignInPage() {
     const success = login(email, password)
 
     if (success) {
-      // Redirect to home page
+      // Check user role for redirect
+      // Since login sets localStorage, we can peek at it or wait for context update (but context update might be async/batched)
+      // A reliable way here given the synchronous login function in context:
+       const usersData = localStorage.getItem("users");
+       if (usersData) {
+           const users = JSON.parse(usersData);
+           const foundUser = users.find((u: any) => u.email === email && u.password === password);
+           if (foundUser && foundUser.role === 'admin') {
+               router.push("/admin/dashboard");
+               return;
+           }
+       }
+
+      // Default redirect
       router.push("/")
     }
   }

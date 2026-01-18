@@ -19,7 +19,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     "/forgot-password/verify-otp",
     "/forgot-password/verify-otp/reset-password",
   ];
-  const hideLayout = noLayoutRoutes.includes(pathname);
+  const hideLayout = noLayoutRoutes.includes(pathname) || pathname.startsWith("/admin");
 
   return (
     <>
