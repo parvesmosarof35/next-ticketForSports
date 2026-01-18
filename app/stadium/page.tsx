@@ -81,6 +81,38 @@ const stadiumsData = [
     eventsCount: 800,
     image: "/heroPlayground.png",
     description: "Home of Aston Villa"
+  },
+  {
+    id: 10,
+    name: "St. George's Park",
+    slug: "st.-george's-park",
+    eventsCount: 450,
+    image: "/heroPlayground.png",
+    description: "The FA's national football centre"
+  },
+  {
+    id: 11,
+    name: "Camp Nou",
+    slug: "camp-nou",
+    eventsCount: 3200,
+    image: "/heroPlayground.png",
+    description: "Home of FC Barcelona"
+  },
+  {
+    id: 12,
+    name: "San Siro",
+    slug: "san-siro",
+    eventsCount: 2100,
+    image: "/heroPlayground.png",
+    description: "Home of AC Milan and Inter Milan"
+  },
+  {
+    id: 13,
+    name: "Allianz Arena",
+    slug: "allianz-arena",
+    eventsCount: 2800,
+    image: "/heroPlayground.png",
+    description: "Home of FC Bayern Munich"
   }
 ];
 
@@ -130,22 +162,22 @@ function StadiumsContent() {
       <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                {filteredStadiums.map((stadium) => (
-                   <div key={stadium.id} className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-[#D3AB66] hover:shadow-xl transition-all duration-300 group flex flex-col">
-                       <div className="relative h-56 w-full">
+                   <div key={stadium.id} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col">
+                       <div className="relative h-64 w-full">
                            <Image 
                                 src={stadium.image} 
                                 alt={stadium.name} 
                                 fill 
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="object-cover"
                            />
                        </div>
-                       <div className="p-6 flex-1 flex flex-col">
-                           <h3 className="text-xl font-bold text-gray-900 mb-2">{stadium.name}</h3>
-                           <p className="text-gray-500 text-xs mb-6">{stadium.eventsCount.toLocaleString()} upcoming events</p>
+                       <div className="p-8 flex-1 flex flex-col">
+                           <h3 className="text-2xl font-bold text-gray-900 mb-2">{stadium.name}</h3>
+                           <p className="text-gray-500 text-sm mb-6">{stadium.eventsCount.toLocaleString()} upcoming events</p>
                            
                            <div className="mt-auto">
                                <Link href={`/stadium/${stadium.slug}`} className="block w-full">
-                                    <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-base font-semibold">
+                                    <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
                                         See Events
                                     </Button>
                                </Link>

@@ -134,7 +134,16 @@ function FootballDropdown() {
           <div>
             <h3 className="text-gray-900 font-semibold text-sm my-3 uppercase tracking-wide">Stadiums</h3>
             <div className="flex flex-wrap gap-2">
+                       <Link
+              
+                  href={`/stadium/`}
+                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                >
+                  all
+                </Link>
               {stadiums.map((stadium, index) => (
+           
+
                 <Link
                   key={index}
                   href={`/stadium/${stadium.toLowerCase().replace(/\s+/g, '-')}`}
@@ -144,6 +153,18 @@ function FootballDropdown() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Matches Section */}
+          <div className="mt-6 pt-4 border-t border-gray-100 flex gap-4">
+               <Link href="/matches" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                  All Matches
+               </Link>
+               <Link href="/matches?filter=recent" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  Recent Matches
+               </Link>
           </div>
         </motion.div>
       )}
