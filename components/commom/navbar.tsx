@@ -26,7 +26,7 @@ function FootballDropdown() {
   const navigate = useRouter();
 
   const leagues = [
-    "Premier League", "La Liga", "Serie A", "Bundesliga", 
+    "Premier League", "La Liga", "Serie A", "Bundesliga",
     "Ligue 1", "Champions League", "Europa League", "MLS",
     "Eredivisie", "Portuguese Liga", "Scottish Premiership"
   ];
@@ -35,29 +35,29 @@ function FootballDropdown() {
   const hasMoreLeagues = leagues.length > 7;
 
   const tournaments = [
-    "World Cup", "Euro Championship", "Copa America", 
+    "World Cup", "Euro Championship", "Copa America",
     "African Cup", "Asian Cup", "Club World Cup"
   ];
 
   const nations = [
-    "England", "Spain", "Italy", "Germany", "France", 
+    "England", "Spain", "Italy", "Germany", "France",
     "Brazil", "Argentina", "Portugal", "Netherlands"
   ];
 
   const stadiums = [
-    "St. George's Park", "Camp Nou", "San Siro", "Allianz Arena", 
+    "St. George's Park", "Camp Nou", "San Siro", "Allianz Arena",
     "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou"
   ];
 
   return (
-    <div 
+    <div
       className="relative"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)} // Ensure the dropdown closes only when both the button and the dropdown content are no longer hovered
     >
       <button
-      onClick={() => navigate.push("/football")}
-      className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">
+        onClick={() => navigate.push("/football")}
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">
         Football
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -135,12 +135,12 @@ function FootballDropdown() {
           <div className="mb-6">
             <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Teams</h3>
             <div className="flex flex-wrap gap-2">
-               <Link
-                  href="/teams"
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  All Teams
-                </Link>
+              <Link
+                href="/teams"
+                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+              >
+                All Teams
+              </Link>
             </div>
           </div>
 
@@ -148,15 +148,15 @@ function FootballDropdown() {
           <div>
             <h3 className="text-gray-900 font-semibold text-sm my-3 uppercase tracking-wide">Stadiums</h3>
             <div className="flex flex-wrap gap-2">
-                       <Link
-              
-                  href={`/stadium/`}
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  all
-                </Link>
+              <Link
+
+                href={`/stadium/`}
+                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+              >
+                all
+              </Link>
               {stadiums.map((stadium, index) => (
-           
+
 
                 <Link
                   key={index}
@@ -171,14 +171,14 @@ function FootballDropdown() {
 
           {/* Matches Section */}
           <div className="mt-6 pt-4 border-t border-gray-100 flex gap-4">
-               <Link href="/matches" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  All Matches
-               </Link>
-               <Link href="/matches?filter=recent" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
-                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Recent Matches
-               </Link>
+            <Link href="/matches" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+              All Matches
+            </Link>
+            <Link href="/matches?filter=recent" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Recent Matches
+            </Link>
           </div>
         </motion.div>
       )}
@@ -210,15 +210,24 @@ export function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`w-full fixed top-0 z-50 px-4 sm:px-6 lg:px-8 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
+      className={`w-full fixed top-0 z-50 px-4 sm:px-6 lg:px-0 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
     >
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/navlogolight.png" alt="Logo" width={200} height={50} />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
           <FootballDropdown />
+          <Link href="/basketball" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            Basketball
+          </Link>
+          <Link href="/ticket-hotel" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            Hotel Tickets
+          </Link>
+          <Link href="/ticket-hotel-flight" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            Hotel & Flight Tickets
+          </Link>
           <Link href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
             Other Sports
           </Link>
@@ -230,7 +239,7 @@ export function Navbar() {
           </div>
 
           {isLoading ? (
-             <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+            <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
           ) : isAuthenticated && user ? (
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>

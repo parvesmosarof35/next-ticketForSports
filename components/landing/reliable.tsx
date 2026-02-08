@@ -6,7 +6,7 @@ export function Reliable() {
   const features = [
     {
       icon: <Search className="w-8 h-8 text-[#0645A0]" />,
-      title: "Compare Tickets in One Place",
+      title: "Compare in One Place",
       description: "Browse thousands of events and compare prices from top sellers instantly."
     },
     {
@@ -23,12 +23,12 @@ export function Reliable() {
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-[#05305F]">
-      <div className="container mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#05305F]">
-            TicketforSport — Reliable Tickets at the Right Price
+            TicketforSport — Reliable Tickets <br /> at the Right Price
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
+          <p className="max-w-2xl text-xl md:text-2xl text-gray-600 mx-auto">
             We prioritize your security and ensure all transactions are protected with the latest encryption technology.
           </p>
         </div>

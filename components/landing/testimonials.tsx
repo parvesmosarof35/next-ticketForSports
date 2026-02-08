@@ -8,7 +8,7 @@ export function Testimonials() {
   return (
    <div>
      <section className=" ">
-      <div className="container py-20 px-4 sm:px-6 lg:px-8 rounded-3xl my-10 mx-auto text-center bg-[#1E90FF]">
+      <div className="max-w-6xl py-20 px-4 sm:px-6 lg:px-8 rounded-3xl my-10 mx-auto text-center bg-[#1E90FF]">
         <div className="mb-10">
           <h2 className="text-4xl font-bold text-white mb-4">Stay in the Game</h2>
           <p className="text-xl text-blue-100 mb-8">

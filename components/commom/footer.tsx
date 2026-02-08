@@ -38,7 +38,7 @@ export function Footer() {
 
   return (
     <footer className="bg-white text-[#05305F] py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
-      <div className="container mx-auto max-w-7xl">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
             <h4 className="font-bold text-lg mb-4 text-[#05305F]">Popular Football Events</h4>

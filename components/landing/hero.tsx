@@ -62,8 +62,8 @@ export function Hero() {
     )
 
     return (
-        <section className="bg-white pb-16 pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-            <div className="container mx-auto space-y-12">
+        <section className="bg-white pb-10 pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div className="max-w-6xl mx-auto space-y-8">
                 
                 {/* 1. Search Section */}
                 <motion.div 
@@ -72,7 +72,7 @@ export function Hero() {
                     transition={{ duration: 0.5 }}
                     className="flex justify-center px-4"
                 >
-                    <div className="w-full max-w-4xl bg-gray-100/80 rounded-3xl md:rounded-full p-4 md:p-2 md:pl-6 flex flex-col md:flex-row items-center shadow-sm border border-gray-200 gap-3 md:gap-0">
+                    <div className="w-full max-w-4xl bg-gray-100/20 rounded-3xl md:rounded-full p-4 md:p-2 md:pl-6 flex flex-col md:flex-row items-center shadow-sm border border-gray-200 gap-3 md:gap-0">
                         <div className="flex items-center w-full md:w-auto flex-1 bg-white md:bg-transparent rounded-full px-4 md:px-0 h-10 md:h-auto">
                              <Search className="h-5 w-5 text-gray-500 mr-2 shrink-0" />
                              <Input
@@ -81,7 +81,7 @@ export function Hero() {
                                 className="border-none shadow-none bg-transparent focus-visible:ring-0 text-sm md:text-base placeholder:text-gray-500 h-10 w-full"
                              />
                         </div>
-                        <Button className="w-full md:w-auto rounded-full bg-blue-600 hover:bg-blue-700 text-white px-8 h-10 md:h-12 text-sm md:text-base font-semibold md:ml-2">
+                        <Button className="w-full md:w-auto rounded-full bg-blue-600 hover:bg-blue-700 text-white px-8 h-10 md:h-12 text-sm md:text-base font-semibold md:ml-2 cursor-pointer">
                             Find Your Event
                         </Button>
                     </div>
@@ -92,17 +92,17 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
-                     className="relative max-w-8xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
+                     className="relative max-w-6xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
                 >
                     <div className="overflow-hidden" ref={emblaRef}>
                         <div className="flex">
                             {slides.map((slide) => (
                                 <div className="flex-[0_0_100%] min-w-0" key={slide.id}>
-                                    <div className="grid grid-cols-1 md:grid-cols-12 md:h-[600px] w-full">
+                                    <div className="grid grid-cols-1 md:grid-cols-12 md:h-[500px] w-full">
                                         {/* Left Panel: Blue Content */}
-                                        <div className="md:col-span-5 bg-[#0066FF] text-white p-8 md:p-12 flex flex-col justify-center relative min-h-[300px] md:min-h-auto order-2 md:order-1">
+                                        <div className="md:col-span-5 bg-[#0066FF] text-white p-8 md:p-12 flex flex-col justify-center relative min-h-[250px] md:min-h-auto order-2 md:order-1">
                                             <div className="space-y-4 md:space-y-6 z-10">
-                                                <h2 className="text-3xl md:text-6xl font-bold leading-tight">
+                                                <h2 className="text-2xl md:text-6xl font-bold leading-tight">
                                                     {slide.title}
                                                 </h2>
                                                 <p className="text-blue-100 text-sm md:text-lg">
@@ -111,7 +111,7 @@ export function Hero() {
                                                <Link href="/football">
                                                <Button 
                                                     variant="outline" 
-                                                    className="border-white/30 text-white hover:bg-white hover:text-blue-600 bg-transparent h-10 md:h-12 px-6 md:px-8 rounded-lg text-sm md:text-base font-medium transition-all"
+                                                    className="border-white/30 text-white hover:bg-white hover:text-blue-600 bg-transparent h-10 md:h-12 px-6 md:px-8 rounded-lg text-sm md:text-base font-medium transition-all cursor-pointer"
                                                 >
                                                     See Tickets
                                                 </Button>

@@ -20,7 +20,12 @@ export default function Home() {
         <TopCompetitions />
       </div>
 
-         <div id="features">
+
+      <div id="fixtures">
+        <TopFixtures />
+      </div>
+
+      <div id="features">
         <Features />
       </div>
 
@@ -29,10 +34,8 @@ export default function Home() {
       </div>
       <TopFootballClubs />
       <TopVenues /> */}
-   
-      <div id="fixtures">
-        <TopFixtures />
-      </div>
+
+
       <Reliable />
       <WhyChoose />
       <Testimonials />
