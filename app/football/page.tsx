@@ -53,7 +53,7 @@ const tickets: Ticket[] = [
     time: "Thursday, 07:00",
     price: 352,
   },
-   {
+  {
     id: 3,
     date: { day: "16", month: "MAR 2025" },
     team1: { name: "Manchester United", logo: "/FixturesImg (2).png" },
@@ -63,7 +63,7 @@ const tickets: Ticket[] = [
     time: "Thursday, 17:00",
     price: 352,
   },
-   {
+  {
     id: 4,
     date: { day: "15", month: "MAR 2025" },
     team1: { name: "Barcelona", logo: "/FixturesImg (5).png" },
@@ -83,7 +83,7 @@ const tickets: Ticket[] = [
     time: "Thursday, 17:00",
     price: 352,
   },
-   {
+  {
     id: 6,
     date: { day: "15", month: "MAR 2025" },
     team1: { name: "Barcelona", logo: "/FixturesImg (5).png" },
@@ -93,7 +93,7 @@ const tickets: Ticket[] = [
     time: "Thursday, 07:00",
     price: 352,
   },
-    {
+  {
     id: 7,
     date: { day: "15", month: "MAR 2025" },
     team1: { name: "Barcelona", logo: "/FixturesImg (5).png" },
@@ -113,113 +113,127 @@ export default function FootballPage() {
       {/* Hero Header */}
       <div className="bg-[#111827] bg-linear-to-r from-blue-900 to-[#111827] py-16 px-4">
         <div className="container mx-auto">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-600 p-3 rounded-xl">
-                 <Settings className="text-white w-8 h-8 spin-slow" /> 
-                 {/* Placeholder icon, replace with specific football icon if needed */}
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white">Football Tickets</h1>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="bg-blue-600 p-3 rounded-xl">
+              <Settings className="text-white w-8 h-8 spin-slow" />
+              {/* Placeholder icon, replace with specific football icon if needed */}
             </div>
-            <p className="text-gray-300 max-w-3xl text-sm md:text-base leading-relaxed">
-             All football tickets listed on TicketforSport come from verified vendors with 100% guarantee. Compare prices across sellers and find the best match-day seats effortlessly. Experience the thrill of live football with complete peace of mind.
-            </p>
+            <h1 className="text-4xl md:text-5xl font-bold text-white">Football Tickets</h1>
+          </div>
+          <p className="text-gray-300 max-w-3xl text-sm md:text-base leading-relaxed">
+            All football tickets listed on TicketforSport come from verified vendors with 100% guarantee. Compare prices across sellers and find the best match-day seats effortlessly. Experience the thrill of live football with complete peace of mind.
+          </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 -mt-8">
-         <div className="bg-white rounded-xl shadow-xs p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Compare Football Ticket Prices</h2>
-            
-            {/* Filters */}
-            <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
-                <div className="flex items-center">
-                    <Select defaultValue="date">
-                        <SelectTrigger className="w-[180px] bg-gray-100 border-none rounded-full px-4 font-medium text-gray-600">
-                            <SelectValue placeholder="Sort by" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="date">Sort by: Date</SelectItem>
-                            <SelectItem value="price_asc">Price: Low to High</SelectItem>
-                            <SelectItem value="price_desc">Price: High to Low</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
+        <div className="bg-white rounded-xl shadow-xs p-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Compare Football Ticket Prices</h2>
 
-                <div className="relative w-full md:w-[300px]">
-                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                     <Input 
-                        placeholder="Search by team..." 
-                        className="pl-10 bg-gray-100 border-none rounded-full"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                     />
-                </div>
+          {/* Filters */}
+          <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
+            <div className="flex items-center">
+              <Select defaultValue="date">
+                <SelectTrigger className="w-[180px] bg-gray-100 border-none rounded-full px-4 font-medium text-gray-600">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="date">Sort by: Date</SelectItem>
+                  <SelectItem value="price_asc">Price: Low to High</SelectItem>
+                  <SelectItem value="price_desc">Price: High to Low</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
-            {/* Ticket List */}
-            <div className="space-y-4">
-                {tickets.map((ticket) => (
-                    <div key={ticket.id} className="bg-white border-2 border-[#D3AB66] rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md transition-shadow">
-                        
-                        {/* Date & Match Info */}
-                        <div className="flex items-center flex-1 gap-6">
-                            {/* Date Layout */}
-                            <div className="flex flex-col items-center justify-center border-r border-gray-200 pr-6 min-w-[80px]">
-                                <span className="text-3xl font-extrabold text-gray-900">{ticket.date.day}</span>
-                                <span className="text-[10px] font-bold text-gray-500 uppercase">{ticket.date.month}</span>
-                            </div>
+            <div className="relative w-full md:w-[300px]">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Input
+                placeholder="Search by team..."
+                className="pl-10 bg-gray-100 border-none rounded-full"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
 
-                            {/* Logos & Names */}
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 relative">
-                                    <Image src={ticket.team1.logo} alt={ticket.team1.name} fill className="object-contain" />
-                                </div>
-                                
-                                <div className="hidden md:block">
-                                    <h3 className="text-lg font-bold text-gray-900">{ticket.team1.name} vs {ticket.team2.name}</h3>
-                                    <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
-                                        <span className="flex items-center gap-1 font-semibold text-blue-600">🏆 {ticket.competition.name}</span>
-                                        <span className="text-gray-300">|</span>
-                                        <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {ticket.location}</span>
-                                    </div>
-                                    <div className="text-[10px] text-blue-500 font-medium mt-1 flex items-center gap-1">
-                                        <span className="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
-                                        {ticket.time}
-                                    </div>
-                                </div>
+          {/* Ticket List */}
+          <div className="space-y-6">
+            {tickets.map((ticket) => (
+              <div key={ticket.id} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col lg:flex-row items-center gap-6">
 
-                                <div className="w-12 h-12 relative">
-                                    <Image src={ticket.team2.logo} alt={ticket.team2.name} fill className="object-contain" />
-                                </div>
-                            </div>
-                            
-                            {/* Mobile Info only */}
-                            <div className="md:hidden">
-                                 <h3 className="text-sm font-bold text-gray-900 leading-tight mb-1">{ticket.team1.name} vs {ticket.team2.name}</h3>
-                                  <div className="text-[10px] text-gray-500">{ticket.time}</div>
-                            </div>
+                {/* Date Badge */}
+                <div className="flex flex-col items-center justify-center min-w-[80px] h-[80px] bg-blue-50 rounded-xl text-blue-900 border border-blue-100">
+                  <span className="text-2xl font-black">{ticket.date.day}</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">{ticket.date.month.split(' ')[0]}</span>
+                </div>
+
+                {/* Match Info */}
+                <div className="flex-1 w-full">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
+                    {/* Teams */}
+                    <div className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-start">
+                      <div className="flex items-center gap-4">
+                        <div className="w-16 h-16 relative hover:scale-110 transition-transform">
+                          <Image src={ticket.team1.logo} alt={ticket.team1.name} fill className="object-contain" />
                         </div>
+                        <span className="hidden md:block text-xl font-bold text-gray-900 w-32 text-right leading-tight">{ticket.team1.name}</span>
+                      </div>
 
-                        {/* Competition Logo (Big on right like mockup) */}
-                        <div className="hidden lg:block w-16 h-16 relative opacity-80 grayscale hover:grayscale-0 transition-all">
-                             <Image src={ticket.competition.logo} alt="Competition" fill className="object-contain" />
+                      <div className="flex flex-col items-center px-4">
+                        <span className="text-gray-400 text-xs font-bold mb-1">vs</span>
+                        <span className="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200">
+                          {ticket.time.split(', ')[1]}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-4">
+                        <span className="hidden md:block text-xl font-bold text-gray-900 w-32 text-left leading-tight">{ticket.team2.name}</span>
+                        <div className="w-16 h-16 relative hover:scale-110 transition-transform">
+                          <Image src={ticket.team2.logo} alt={ticket.team2.name} fill className="object-contain" />
                         </div>
-
-
-                        {/* Price & Action */}
-                         <div className="flex items-center justify-between md:justify-end gap-4 min-w-[200px] border-t md:border-t-0 p-4 md:p-0 mt-2 md:mt-0">
-                             <div className="text-right hidden md:block">
-                                 <p className="text-xs text-gray-400">From</p>
-                             </div>
-                             <Button className="bg-[#065EC2] hover:bg-blue-700 text-white rounded-full px-8 py-6 text-lg font-bold shadow-lg min-w-[140px]">
-                                € {ticket.price}
-                             </Button>
-                         </div>
+                      </div>
                     </div>
-                ))}
-            </div>
 
-         </div>
+                    {/* Mobile Teams Text */}
+                    <div className="md:hidden text-center -mt-4">
+                      <h3 className="text-lg font-bold text-gray-900">{ticket.team1.name} <span className="text-gray-400 font-normal">vs</span> {ticket.team2.name}</h3>
+                    </div>
+
+                    {/* Details */}
+                    <div className="flex flex-col items-center md:items-start gap-2 min-w-[180px] border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-6 w-full md:w-auto">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <span className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                          🏆
+                        </span>
+                        <span className="font-medium">{ticket.competition.name}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <span className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                          <MapPin className="w-4 h-4" />
+                        </span>
+                        <span className="font-medium truncate max-w-[150px]">{ticket.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action */}
+                <div className="flex flex-col items-end gap-2 min-w-[140px] border-t lg:border-t-0 p-4 lg:p-0 w-full lg:w-auto mt-2 lg:mt-0">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-xs text-gray-400 font-medium uppercase">Starting from</span>
+                  </div>
+                  <Button className="w-full bg-gradient-to-r from-[#065EC2] to-[#044288] hover:from-[#054a99] hover:to-[#03336b] text-white rounded-xl py-6 shadow-lg shadow-blue-200 transition-all hover:shadow-blue-300 group-hover:scale-105">
+                    <span className="text-lg font-bold">€ {ticket.price}</span>
+                    <span className="ml-2 text-blue-200 text-xs">View</span>
+                  </Button>
+                </div>
+
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
 
       <WhyChoose />

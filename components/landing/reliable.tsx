@@ -22,7 +22,7 @@ export function Reliable() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-[#05305F]">
+    <section className="py-6 px-4 sm:px-6 lg:px-8 bg-white text-[#05305F]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#05305F]">

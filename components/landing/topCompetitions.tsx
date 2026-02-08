@@ -91,7 +91,7 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
 
 export function TopCompetitions() {
   return (
-    <section className="py-12 bg-[#05305F]">
+    <section className="py-6 bg-[#05305F]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className="text-3xl font-bold text-white">Top Competitions</h2>
@@ -102,9 +102,9 @@ export function TopCompetitions() {
 
         <div className="relative w-full">
           {/* Left Fade Effect */}
-          <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 left-0 md:w-32 w-5 bg-gradient-to-r from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
           {/* Right Fade Effect */}
-          <div className="absolute top-0 bottom-0 right-0 w-28 bg-gradient-to-l from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 md:w-32 w-5 bg-gradient-to-l from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
 
           <Carousel
             opts={{

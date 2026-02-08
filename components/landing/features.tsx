@@ -57,7 +57,7 @@ const cities = [
 
 export function Features() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="w-full mx-auto">
         <div className="relative">
 
@@ -73,9 +73,9 @@ export function Features() {
 
           <div className="relative w-full">
             {/* Left Fade Effect */}
-            <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 left-0 md:w-32 w-5 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
             {/* Right Fade Effect */}
-            <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 md:w-32 w-5 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
             <Carousel
               opts={{

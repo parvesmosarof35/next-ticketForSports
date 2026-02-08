@@ -20,7 +20,7 @@ export function WhyChoose() {
   ]
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7]">
+    <section className="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#05305F] mb-3">Why Choose Us</h2>
