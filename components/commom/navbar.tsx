@@ -19,6 +19,41 @@ import { LanguageToggle } from "./language-toggle";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+// Top Banner Component
+function TopBanner() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="bg-gradient-to-r from-[#FF4B1F] to-[#FF9068] text-white py-2 px-4 relative flex items-center justify-center overflow-hidden z-50">
+      {/* Animated Background Shine */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite] pointer-events-none" />
+
+      <div className="container mx-auto flex items-center justify-center gap-2 text-xs md:text-sm font-bold tracking-wide relative z-10">
+        <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold animate-pulse">Limited Offer</span>
+        <span className="text-center">
+          Find the best price on tickets and sports travel – fast and easy.
+        </span>
+        <Link href="/football" className="underline decoration-white/50 hover:decoration-white transition-all ml-1">
+          Book Now &rarr;
+        </Link>
+      </div>
+
+      <button
+        onClick={() => setIsVisible(false)}
+        className="absolute right-2 md:right-4 p-1 hover:bg-white/20 rounded-full transition-colors cursor-pointer"
+        aria-label="Close banner"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  );
+}
+
 // Football Dropdown Component
 function FootballDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -206,96 +241,94 @@ export function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`w-full fixed top-0 z-50 px-4 sm:px-6 lg:px-0 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
-    >
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/navlogolight.png" alt="Logo" width={200} height={50} />
-        </Link>
+    <div className="fixed top-0 w-full z-100 flex flex-col font-sans">
+      <TopBanner />
 
-        <div className="hidden md:flex items-center gap-8">
-          <FootballDropdown />
-          <Link href="/basketball" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-            Basketball
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className={`w-full relative px-4 sm:px-6 lg:px-0 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
+      >
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/navlogolight.png" alt="Logo" width={200} height={50} />
           </Link>
-          <Link href="/ticket-hotel" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+
+          <div className="hidden md:flex items-center gap-8">
+            <FootballDropdown />
+            <Link href="/basketball" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Basketball
+            </Link>
+            <Link href="/ticket-hotel" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
             Hotel Tickets
-          </Link>
-          <Link href="/ticket-hotel-flight" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            </Link>
+            <Link href="/ticket-hotel-flight" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
             Hotel & Flight Tickets
-          </Link>
-          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-            Other Sports
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <div className="hidden md:block">
-            <LanguageToggle />
+            </Link>
+            <Link href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Other Sports
+            </Link>
           </div>
 
-          {isLoading ? (
-            <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
-          ) : isAuthenticated && user ? (
-            <DropdownMenu modal={false}>
-              <DropdownMenuTrigger asChild>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 hover:opacity-80 transition-opacity focus:outline-none"
+          <div className="flex items-center gap-4">
+            <div className="hidden md:block">
+              <LanguageToggle />
+            </div>
+
+            {isLoading ? (
+              <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+            ) : isAuthenticated && user ? (
+              <DropdownMenu modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 hover:opacity-80 transition-opacity focus:outline-none"
+                  >
+                    <Avatar className="w-8 h-8 border-2 border-gray-200">
+                      <AvatarFallback className="bg-blue-600 text-white text-sm font-semibold">
+                        {user.fullName.charAt(0).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                  </motion.button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">{user.fullName}</p>
+                      <p className="text-xs text-muted-foreground">{user.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin/dashboard" className="cursor-pointer">
+                      <LayoutDashboard className="mr-2 h-4 w-4" /> Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile" className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" /> Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
+                    <LogOut className="mr-2 h-4 w-4" /> Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link href="/signin">
+                <Button
+                  variant="default"
+                  className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-5"
                 >
-                  <Avatar className="w-8 h-8 border-2 border-gray-200">
-                    <AvatarFallback className="bg-blue-600 text-white text-sm font-semibold">
-                      {user.fullName.charAt(0).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                  {/* <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-gray-900">{user.fullName}</span>
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">
-                      {user.role}
-                    </span>
-                  </div> */}
-                </motion.button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium">{user.fullName}</p>
-                    <p className="text-xs text-muted-foreground">{user.email}</p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/admin/dashboard" className="cursor-pointer">
-                    <LayoutDashboard className="mr-2 h-4 w-4" /> Dashboard
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" /> Profile
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
-                  <LogOut className="mr-2 h-4 w-4" /> Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Link href="/signin">
-              <Button
-                variant="default"
-                className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-5"
-              >
-                Sign In
-              </Button>
-            </Link>
-          )}
+                  Sign In
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+    </div>
   );
 }

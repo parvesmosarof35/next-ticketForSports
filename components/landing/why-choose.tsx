@@ -1,20 +1,20 @@
-import { Search, Shield, Heart } from "lucide-react"
+import { Search, Plane, Heart } from "lucide-react"
 
 export function WhyChoose() {
   const features = [
     {
       icon: <Search className="w-6 h-6 text-[#0645A0]" />,
       title: "We find the best tickets",
-      description: "Our platform scans hundreds of sellers to bring you the most competitive prices for every event."
+      description: "Our platform scans multiple sellers to bring you the most competitive prices for every event"
     },
     {
-      icon: <Shield className="w-6 h-6 text-[#0645A0]" />,
-      title: "Safe & secure site",
-      description: "Your data is protected with industry-leading encryption and secure payment processing."
+      icon: <Plane className="w-6 h-6 text-[#0645A0]" />,
+      title: "Complete Travel Packages",
+      description: "We compare complete sports travel packages, including tickets, hotel accommodation, and flights, for a wide range of events."
     },
     {
       icon: <Heart className="w-6 h-6 text-[#0645A0]" />,
-      title: "Fans love us",
+      title: "Best seat guaranteed",
       description: "Join over 78,000 satisfied customers who trust us for their event tickets."
     }
   ]
@@ -29,7 +29,7 @@ export function WhyChoose() {
 
         <div className="grid md:grid-cols-3 gap-10 text-center">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-all border border-gray-100"
             >

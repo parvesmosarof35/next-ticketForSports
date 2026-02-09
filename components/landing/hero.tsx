@@ -95,7 +95,7 @@ export function Hero() {
     )
 
     return (
-        <section className="bg-white pb-10 pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="bg-white pb-10 pt-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-8">
 
                 {/* 1. Search Section */}
@@ -129,7 +129,7 @@ export function Hero() {
 
                         {/* Search Autocomplete Dropdown */}
                         {isActive && query.length > 0 && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-20">
                                 {Object.keys(groupedResults).length > 0 ? (
                                     <div className="max-h-[400px] overflow-y-auto p-2">
                                         {Object.entries(groupedResults).map(([category, items]) => (
