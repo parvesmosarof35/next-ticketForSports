@@ -5,8 +5,12 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
+import { motion } from "framer-motion";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 // Mock Data for Stadiums
 const stadiumsData = [
@@ -15,7 +19,7 @@ const stadiumsData = [
     name: "Wembley Stadium",
     slug: "wembley-stadium",
     eventsCount: 2847,
-    image: "/heroPlayground.png", // Using expansive hero image as placeholder
+    image: "/heroPlayground.png",
     description: "The Home of Football"
   },
   {
@@ -23,7 +27,7 @@ const stadiumsData = [
     name: "Etihad Stadium",
     slug: "etihad-stadium",
     eventsCount: 1923,
-    image: "/heroPlayground.png", 
+    image: "/heroPlayground.png",
     description: "Home of Manchester City"
   },
   {
@@ -66,7 +70,7 @@ const stadiumsData = [
     image: "/heroPlayground.png",
     description: "Home of Arsenal FC"
   },
-   {
+  {
     id: 8,
     name: "St. James' Park",
     slug: "st-james-park",
@@ -74,7 +78,7 @@ const stadiumsData = [
     image: "/heroPlayground.png",
     description: "Home of Newcastle United"
   },
-   {
+  {
     id: 9,
     name: "Villa Park",
     slug: "villa-park",
@@ -123,82 +127,121 @@ function StadiumsContent() {
 
   useEffect(() => {
     if (initialSearch) {
-        setSearchTerm(initialSearch);
+      setSearchTerm(initialSearch);
     }
   }, [initialSearch]);
 
-  const filteredStadiums = stadiumsData.filter(stadium => 
+  const filteredStadiums = stadiumsData.filter(stadium =>
     stadium.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen bg-[#F9FAFB] ${montserrat.className}`}>
       {/* Hero Section */}
-      <div className="bg-[#051d3b] pt-24 pb-20 px-4 text-center relative overflow-hidden">
+      <div className="bg-[#051D3B] pt-32 pb-24 px-4 text-center relative overflow-hidden">
         {/* Background glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Stadium</h1>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                Compare ticket prices for your favourite football teams on TicketforSport.com
-            </p>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="relative max-w-xl mx-auto mb-8">
-                 <div className="bg-[#1e3a5f] rounded-lg flex items-center p-1 border border-white/10 h-12">
-                     <Search className="w-5 h-5 text-blue-400 ml-4 mr-2" />
-                     <Input 
-                        placeholder="Search Stadium" 
-                        className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-base"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                     />
-                 </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight"
+          >
+            Stadium
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-400 text-xl font-medium mb-10 max-w-2xl mx-auto"
+          >
+            Discover the world's most iconic venues and compare ticket prices for every event on TicketforSport.com
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="relative max-w-xl mx-auto mb-12"
+          >
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
+              <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
+              <Input
+                placeholder="Search for a stadium..."
+                className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-lg font-medium"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Grid Content */}
-      <div className="container mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {filteredStadiums.map((stadium) => (
-                   <div key={stadium.id} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col">
-                       <div className="relative h-64 w-full">
-                           <Image 
-                                src={stadium.image} 
-                                alt={stadium.name} 
-                                fill 
-                                className="object-cover"
-                           />
-                       </div>
-                       <div className="p-8 flex-1 flex flex-col">
-                           <h3 className="text-2xl font-bold text-gray-900 mb-2">{stadium.name}</h3>
-                           <p className="text-gray-500 text-sm mb-6">{stadium.eventsCount.toLocaleString()} upcoming events</p>
-                           
-                           <div className="mt-auto">
-                               <Link href={`/stadium/${stadium.slug}`} className="block w-full">
-                                    <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
-                                        See Events
-                                    </Button>
-                               </Link>
-                           </div>
-                       </div>
-                   </div>
-               ))}
-          </div>
-          
-          {filteredStadiums.length === 0 && (
-              <div className="text-center py-20">
-                  <p className="text-gray-500 text-lg">No stadiums found matching "{searchTerm}"</p>
-                  <Button 
-                    variant="link" 
-                    onClick={() => setSearchTerm("")}
-                    className="text-blue-600 mt-2"
-                  >
-                      Clear Search
-                  </Button>
+      <div className="container mx-auto px-4 py-20 -mt-16 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {filteredStadiums.map((stadium, idx) => (
+            <motion.div
+              key={stadium.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div className="relative h-72 w-full overflow-hidden">
+                <Image
+                  src={stadium.image}
+                  alt={stadium.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                  <span className="text-white font-bold inline-flex items-center gap-2">
+                    <MapPin className="w-4 h-4" /> View Map
+                  </span>
+                </div>
               </div>
-          )}
+              <div className="p-10 flex-1 flex flex-col">
+                <h3 className="text-3xl font-black text-[#05305F] mb-3 tracking-tight group-hover:text-blue-700 transition-colors uppercase italic">{stadium.name}</h3>
+
+                <div className="flex items-center gap-2 mb-8">
+                  <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+                    {stadium.eventsCount.toLocaleString()} events
+                  </span>
+                  <span className="text-gray-400 font-bold text-xs uppercase tracking-widest">• Verified</span>
+                </div>
+
+                <p className="text-gray-500 font-medium mb-10 line-clamp-2 leading-relaxed">{stadium.description}</p>
+
+                <div className="mt-auto">
+                  <Link href={`/stadium/${stadium.slug}`} className="block w-full">
+                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white py-8 rounded-[1.5rem] text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-200/50 transition-all active:scale-95 border-b-4 border-blue-900">
+                      Explore Venue
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {filteredStadiums.length === 0 && (
+          <div className="text-center py-32 bg-white rounded-[3rem] shadow-sm border border-gray-100 mt-10">
+            <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Search className="w-8 h-8 text-gray-300" />
+            </div>
+            <p className="text-gray-500 text-2xl font-black italic uppercase tracking-tight">No stadiums found</p>
+            <p className="text-gray-400 mt-2 font-bold uppercase text-xs tracking-widest">Matching "{searchTerm}"</p>
+            <Button
+              variant="link"
+              onClick={() => setSearchTerm("")}
+              className="text-[#0047AB] mt-6 font-black uppercase tracking-widest hover:underline"
+            >
+              Clear Search
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
