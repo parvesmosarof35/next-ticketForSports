@@ -20,50 +20,56 @@ const matches = [
   {
     id: 1,
     date: "NOV 30",
-    team1: { name: "Liverpool", logo: "/team (1).png" },
-    team2: { name: "Chelsea", logo: "/team (2).png" },
-    location: "Anfield, Liverpool",
-    time: "21:00"
+    team1: { name: "Manchester City", logo: "/player1.png" },
+    team2: { name: "Arsenal", logo: "/player2.png" },
+    location: "Etihad Stadium, Manchester",
+    time: "19:00",
+    price: "352"
   },
   {
     id: 2,
     date: "DEC 5",
-    team1: { name: "Man United", logo: "/team (2).png" },
-    team2: { name: "Arsenal", logo: "/team (1).png" },
-    location: "Old Trafford, Manchester",
-    time: "20:00"
+    team1: { name: "Liverpool", logo: "/player1.png" },
+    team2: { name: "Chelsea", logo: "/player2.png" },
+    location: "Anfield, Liverpool",
+    time: "20:00",
+    price: "245"
   },
   {
     id: 3,
     date: "DEC 12",
-    team1: { name: "Barcelona", logo: "/team (1).png" },
-    team2: { name: "Real Madrid", logo: "/team (2).png" },
+    team1: { name: "Barcelona", logo: "/player1.png" },
+    team2: { name: "Real Madrid", logo: "/player2.png" },
     location: "Camp Nou, Barcelona",
-    time: "22:00"
+    time: "22:00",
+    price: "500"
   },
   {
     id: 4,
-    date: "NOV 30",
-    team1: { name: "Liverpool", logo: "/team (1).png" },
-    team2: { name: "Chelsea", logo: "/team (2).png" },
-    location: "Anfield, Liverpool",
-    time: "21:00"
+    date: "JAN 2",
+    team1: { name: "Bayern", logo: "/player1.png" },
+    team2: { name: "Dortmund", logo: "/player2.png" },
+    location: "Allianz Arena, Munich",
+    time: "18:30",
+    price: "180"
   },
   {
     id: 5,
-    date: "DEC 12",
-    team1: { name: "Barcelona", logo: "/team (1).png" },
-    team2: { name: "Real Madrid", logo: "/team (2).png" },
-    location: "Camp Nou, Barcelona",
-    time: "22:00"
+    date: "JAN 15",
+    team1: { name: "PSG", logo: "/player1.png" },
+    team2: { name: "Marseille", logo: "/player2.png" },
+    location: "Parc des Princes, Paris",
+    time: "21:00",
+    price: "210"
   },
   {
     id: 6,
-    date: "DEC 15",
-    team1: { name: "Man United", logo: "/team (2).png" },
-    team2: { name: "Arsenal", logo: "/team (1).png" },
-    location: "Old Trafford, Manchester",
-    time: "20:00"
+    date: "FEB 1",
+    team1: { name: "Inter Milan", logo: "/player1.png" },
+    team2: { name: "AC Milan", logo: "/player2.png" },
+    location: "San Siro, Milan",
+    time: "20:45",
+    price: "280"
   },
 ];
 
@@ -71,74 +77,69 @@ const matches = [
 function MatchCard({ match }: { match: typeof matches[0] }) {
   return (
     <div
-      className="bg-white rounded-[24px] md:rounded-[30px] p-4 sm:p-5 md:p-6 w-full h-[280px] md:h-[330px] overflow-hidden relative shadow-lg border-[4px] md:border-[6px] border-[#B2955C] flex flex-col justify-between mx-auto"
+      className="bg-white rounded-[32px] p-5 md:p-6 w-full aspect-square overflow-hidden relative shadow-xl border border-gray-100 flex flex-col items-center justify-between mx-auto"
     >
-      {/* Date Badge */}
-      <div className="absolute top-[20px] left-[20px] md:top-[24px] md:left-[24px] bg-[#0645A0] text-white text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full z-10">
-        {match.date}
+      {/* Top Row: Date & Location */}
+      <div className="w-full flex justify-between items-start">
+        <div className="bg-[#1E56B1] text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-10">
+          {match.date}
+        </div>
+        <div className="text-gray-400 text-[9px] md:text-[11px] text-right max-w-[120px] leading-tight">
+          {match.location}
+        </div>
       </div>
 
-      {/* Location Top Right */}
-      <div className="absolute top-[24px] right-[20px] md:top-[28px] md:right-[24px] text-gray-500 text-[10px] md:text-xs text-right max-w-[80px] md:max-w-[100px] truncate">
-        {match.location}
+      {/* Match Title */}
+      <h3 className="text-[#05305F] text-base md:text-lg font-semibold text-center mt-2 px-2">
+        {match.team1.name} vs. {match.team2.name}
+      </h3>
+
+      {/* Teams / Players Section */}
+      <div className="flex items-center justify-between w-full gap-2 my-2">
+        {/* Team 1 Player */}
+        <div className="relative">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#5FB0E8]/10 flex items-center justify-center overflow-hidden border border-[#5FB0E8]/20">
+            <Image
+              src={match.team1.logo}
+              alt={match.team1.name}
+              width={80}
+              height={80}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Time Info */}
+        <div className="flex flex-col items-center flex-shrink-0">
+          <span className="text-gray-400 text-[10px] md:text-xs font-medium border-b border-gray-200 pb-0.5 mb-1">THU</span>
+          <span className="text-[#0D1B2A] text-lg md:text-xl font-bold">{match.time}</span>
+        </div>
+
+        {/* Team 2 Player */}
+        <div className="relative">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#E5322E]/10 flex items-center justify-center overflow-hidden border border-[#E5322E]/20">
+            <Image
+              src={match.team2.logo}
+              alt={match.team2.name}
+              width={80}
+              height={80}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
 
-
-      {/* Teams */}
-      <div className="flex flex-col pt-6 md:pt-8 pb-1 md:pb-2 mt-2 md:mt-4 flex-grow justify-center">
-        <div className="flex items-center justify-between gap-1 mb-1 md:mb-2">
-          {/* Team 1 */}
-          <div className="text-center flex-1 min-w-0">
-            <div className="w-10 h-10 md:w-14 md:h-14 mx-auto rounded-full flex items-center justify-center mb-1">
-              <Image
-                src={match.team1.logo}
-                alt={match.team1.name}
-                width={56}
-                height={56}
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <span className="text-gray-400 text-[8px] md:text-[10px] font-bold">THU</span>
-            <span className="text-[#05305F] text-base md:text-lg font-extrabold">19:00</span>
-            <span className="text-[#B2955C] text-[10px] md:text-sm font-bold">VS.</span>
-          </div>
-
-          {/* Team 2 */}
-          <div className="text-center flex-1 min-w-0">
-            <div className="w-10 h-10 md:w-14 md:h-14 mx-auto rounded-full flex items-center justify-center mb-1">
-              <Image
-                src={match.team2.logo}
-                alt={match.team2.name}
-                width={56}
-                height={56}
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Team Names Row below logos */}
-        <div className="flex justify-between items-center w-full px-1 mb-1 md:mb-2">
-          <span className="text-[#05305F] text-[10px] md:text-sm font-bold text-center w-5/12 leading-tight truncate">{match.team1.name}</span>
-          <span className="text-[#05305F] text-[10px] md:text-sm font-bold text-center w-5/12 leading-tight truncate">{match.team2.name}</span>
-        </div>
-
-
-        {/* Price / Location placeholder if similar to image */}
-        <div className="flex justify-center items-baseline gap-1 my-1 md:my-2">
-          <span className="text-gray-400 text-[10px] md:text-sm">From:</span>
-          <span className="text-[#05305F] text-lg md:text-2xl font-bold">€ 250</span>
-        </div>
-
+      {/* Price Section */}
+      <div className="flex items-center gap-1.5 mb-2">
+        <span className="text-gray-400 text-xs md:text-sm">From:</span>
+        <span className="text-black text-2xl md:text-3xl font-bold">€ {match.price}</span>
       </div>
 
       {/* Button */}
-      <Link href={`/football/booking/${match.id}`} className="w-full">
-        <Button className={`w-full h-[32px] md:h-[40px] bg-[#0645A0] hover:bg-[#05305F] transition-colors rounded-xl md:rounded-2xl text-white text-[12px] md:text-[16px] leading-[100%] tracking-[0%] text-center uppercase cursor-pointer ${montserrat.className}`}>
-          CHECK AVAILABILITY
+      <Link href={`/football/booking/${match.id}`} className="w-full flex justify-center">
+        <Button className={`w-[70%] h-[40px] md:h-[48px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-sm md:text-base font-semibold tracking-wide uppercase shadow-md hover:shadow-lg relative overflow-hidden group ${montserrat.className}`}>
+          <span className="relative z-10">FIND TICKETS</span>
+          <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
         </Button>
       </Link>
     </div>
