@@ -5,9 +5,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Filter, Calendar, MapPin, Settings } from "lucide-react";
+import { Search, MapPin, Settings } from "lucide-react";
 import { WhyChoose } from "@/components/landing/why-choose";
 import { Testimonials } from "@/components/landing/testimonials";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 interface Ticket {
   id: number;
@@ -25,7 +28,7 @@ interface Ticket {
   };
   competition: {
     name: string;
-    logo: string; // Using logo for the competition icon
+    logo: string;
   };
   location: string;
   time: string;
@@ -36,9 +39,9 @@ const tickets: Ticket[] = [
   {
     id: 1,
     date: { day: "16", month: "MAR 2025" },
-    team1: { name: "Manchester United", logo: "/FixturesImg (2).png" }, // Using existing assets
+    team1: { name: "Manchester United", logo: "/FixturesImg (2).png" },
     team2: { name: "Liverpool", logo: "/FixturesImg (3).png" },
-    competition: { name: "Premier League", logo: "/cup.png" }, // Placeholder for PL logo
+    competition: { name: "Premier League", logo: "/cup.png" },
     location: "Old Trafford, Manchester",
     time: "Thursday, 17:00",
     price: 352,
@@ -46,8 +49,8 @@ const tickets: Ticket[] = [
   {
     id: 2,
     date: { day: "15", month: "MAR 2025" },
-    team1: { name: "Barcelona", logo: "/FixturesImg (5).png" }, // Placeholder
-    team2: { name: "Bayern Munich", logo: "/FixturesImg (1).png" }, // Placeholder
+    team1: { name: "Barcelona", logo: "/FixturesImg (5).png" },
+    team2: { name: "Bayern Munich", logo: "/FixturesImg (1).png" },
     competition: { name: "Premier League", logo: "/cup.png" },
     location: "Old Trafford, Manchester",
     time: "Thursday, 07:00",
@@ -108,48 +111,53 @@ const tickets: Ticket[] = [
 export default function FootballPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
+  const filteredTickets = tickets.filter(ticket =>
+    ticket.team1.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    ticket.team2.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen bg-[#F9FAFB] py-16">
+    <div className={`min-h-screen bg-[#F9FAFB] py-16 ${montserrat.className}`}>
       {/* Hero Header */}
-      <div className="bg-[#111827] bg-linear-to-r from-blue-900 to-[#111827] py-16 px-4">
-        <div className="container mx-auto">
+      <div className="bg-[#051D3B] py-20 px-4 pt-32 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="container mx-auto relative z-10">
           <div className="flex items-center gap-4 mb-4">
-            <div className="bg-blue-600 p-3 rounded-xl">
+            <div className="bg-blue-600 p-4 rounded-2xl shadow-lg shadow-blue-500/20">
               <Settings className="text-white w-8 h-8 spin-slow" />
-              {/* Placeholder icon, replace with specific football icon if needed */}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white">Football Tickets</h1>
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">Football Tickets</h1>
           </div>
-          <p className="text-gray-300 max-w-3xl text-sm md:text-base leading-relaxed">
-            All football tickets listed on TicketforSport come from verified vendors with 100% guarantee. Compare prices across sellers and find the best match-day seats effortlessly. Experience the thrill of live football with complete peace of mind.
+          <p className="text-gray-400 max-w-2xl text-lg leading-relaxed font-medium">
+            Find tickets to your favorite football leagues and tournaments. Secure your seat today with our verified sellers.
           </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 -mt-8">
-        <div className="bg-white rounded-xl shadow-xs p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Compare Football Ticket Prices</h2>
+      <div className="container mx-auto px-4 -mt-12 relative z-20">
+        <div className="bg-white rounded-[32px] shadow-2xl shadow-gray-200/50 p-8 mb-12 border border-gray-100/50 backdrop-blur-xl">
+          <h2 className="text-3xl font-black text-[#05305F] mb-8 tracking-tight">Compare Football Ticket Prices</h2>
 
           {/* Filters */}
-          <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
-            <div className="flex items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 pb-8 border-b border-gray-100">
+            <div className="flex items-center w-full md:w-auto">
               <Select defaultValue="date">
-                <SelectTrigger className="w-[180px] bg-gray-100 border-none rounded-full px-4 font-medium text-gray-600">
+                <SelectTrigger className="w-full md:w-[220px] bg-gray-50 border-gray-200 rounded-full px-6 h-14 font-bold text-[#05305F] hover:bg-white transition-all">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="date">Sort by: Date</SelectItem>
-                  <SelectItem value="price_asc">Price: Low to High</SelectItem>
-                  <SelectItem value="price_desc">Price: High to Low</SelectItem>
+                <SelectContent className="rounded-2xl border-gray-100">
+                  <SelectItem value="date" className="font-bold py-3">Sort by: Date</SelectItem>
+                  <SelectItem value="price_asc" className="font-bold py-3">Price: Low to High</SelectItem>
+                  <SelectItem value="price_desc" className="font-bold py-3">Price: High to Low</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            <div className="relative w-full md:w-[300px]">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <div className="relative w-full md:w-[400px]">
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input
-                placeholder="Search by team..."
-                className="pl-10 bg-gray-100 border-none rounded-full"
+                placeholder="Search by team or league..."
+                className="pl-14 bg-gray-50 border-gray-200 rounded-full h-14 font-medium text-[#05305F] focus-visible:ring-blue-500/20 focus:bg-white transition-all shadow-inner"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -158,81 +166,70 @@ export default function FootballPage() {
 
           {/* Ticket List */}
           <div className="space-y-6">
-            {tickets.map((ticket) => (
-              <div key={ticket.id} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col lg:flex-row items-center gap-6">
+            {filteredTickets.map((ticket) => (
+              <div
+                key={ticket.id}
+                className="group bg-white rounded-3xl border-2 border-transparent hover:border-[#B2955C] shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col md:flex-row items-center gap-4 min-h-[140px] relative overflow-hidden"
+              >
+                {/* Visual Accent */}
+                <div className="absolute top-0 left-0 w-1 h-full bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                {/* Date Badge */}
-                <div className="flex flex-col items-center justify-center min-w-[80px] h-[80px] bg-blue-50 rounded-xl text-blue-900 border border-blue-100">
-                  <span className="text-2xl font-black">{ticket.date.day}</span>
-                  <span className="text-xs font-bold uppercase tracking-wider">{ticket.date.month.split(' ')[0]}</span>
+                {/* Left: Date Section */}
+                <div className="flex items-center gap-8 min-w-[140px]">
+                  <div className="flex flex-col items-center">
+                    <span className="text-5xl font-black text-[#05305F] leading-none tracking-tighter">{ticket.date.day}</span>
+                    <span className="text-sm font-black text-gray-400 tracking-widest mt-1 uppercase">
+                      {ticket.date.month.split(' ')[0]}
+                    </span>
+                  </div>
+                  <div className="hidden md:block h-16 w-[2px] bg-gray-100" />
                 </div>
 
-                {/* Match Info */}
-                <div className="flex-1 w-full">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-
-                    {/* Teams */}
-                    <div className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-start">
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 relative hover:scale-110 transition-transform">
-                          <Image src={ticket.team1.logo} alt={ticket.team1.name} fill className="object-contain" />
-                        </div>
-                        <span className="hidden md:block text-xl font-bold text-gray-900 w-32 text-right leading-tight">{ticket.team1.name}</span>
-                      </div>
-
-                      <div className="flex flex-col items-center px-4">
-                        <span className="text-gray-400 text-xs font-bold mb-1">vs</span>
-                        <span className="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-600 border border-gray-200">
-                          {ticket.time.split(', ')[1]}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-4">
-                        <span className="hidden md:block text-xl font-bold text-gray-900 w-32 text-left leading-tight">{ticket.team2.name}</span>
-                        <div className="w-16 h-16 relative hover:scale-110 transition-transform">
-                          <Image src={ticket.team2.logo} alt={ticket.team2.name} fill className="object-contain" />
-                        </div>
-                      </div>
+                {/* Middle: Match Details */}
+                <div className="flex-1 w-full px-2 md:px-4">
+                  <div className="flex flex-col gap-4">
+                    {/* Teams Title */}
+                    <div className="flex items-center flex-wrap gap-x-4 gap-y-2 text-2xl md:text-3xl font-black text-[#05305F] tracking-tight">
+                      <span>{ticket.team1.name}</span>
+                      <span className="text-gray-300 font-medium text-xl">vs</span>
+                      <span>{ticket.team2.name}</span>
                     </div>
 
-                    {/* Mobile Teams Text */}
-                    <div className="md:hidden text-center -mt-4">
-                      <h3 className="text-lg font-bold text-gray-900">{ticket.team1.name} <span className="text-gray-400 font-normal">vs</span> {ticket.team2.name}</h3>
-                    </div>
-
-                    {/* Details */}
-                    <div className="flex flex-col items-center md:items-start gap-2 min-w-[180px] border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-6 w-full md:w-auto">
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <span className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                          🏆
-                        </span>
-                        <span className="font-medium">{ticket.competition.name}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
-                        <span className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">
-                          <MapPin className="w-4 h-4" />
-                        </span>
-                        <span className="font-medium truncate max-w-[150px]">{ticket.location}</span>
+                    {/* Sub-details row */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-bold uppercase tracking-wide">
+                      <span className="text-blue-600 font-black">
+                        {ticket.time.includes(', ') ? ticket.time.split(', ')[1] : ticket.time}
+                      </span>
+                      <div className="h-4 w-[1px] bg-gray-300 hidden sm:block" />
+                      <span className="text-gray-500">{ticket.location}</span>
+                      <div className="h-4 w-[1px] bg-gray-300 hidden sm:block" />
+                      <div className="bg-[#6B21A8] text-white px-3 py-1.5 rounded-md text-[10px] font-black tracking-widest uppercase shadow-sm shadow-purple-200">
+                        {ticket.competition.name}
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Action */}
-                <div className="flex flex-col items-end gap-2 min-w-[140px] border-t lg:border-t-0 p-4 lg:p-0 w-full lg:w-auto mt-2 lg:mt-0">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-xs text-gray-400 font-medium uppercase">Starting from</span>
+                {/* Right: Info & CTA */}
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-14 w-full md:w-auto mt-6 md:mt-0 pt-6 md:pt-0 border-t md:border-t-0 border-gray-100">
+                  {/* Tickets Left */}
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <span className="text-red-500 font-black text-2xl tracking-tighter">203</span>
+                    <span className="text-gray-400 font-black text-lg tracking-tight">tickets left</span>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-[#065EC2] to-[#044288] hover:from-[#054a99] hover:to-[#03336b] text-white rounded-xl py-6 shadow-lg shadow-blue-200 transition-all hover:shadow-blue-300 group-hover:scale-105">
-                    <span className="text-lg font-bold">€ {ticket.price}</span>
-                    <span className="ml-2 text-blue-200 text-xs">View</span>
-                  </Button>
-                </div>
 
+                  {/* Price Button */}
+                  <div className="flex flex-col items-end gap-2 w-full md:w-auto">
+                    <span className="text-[10px] text-gray-400 font-black tracking-widest uppercase mr-3">Starting from</span>
+                    <Button className={`w-full md:w-auto bg-[#0047AB] hover:bg-[#003685] text-white rounded-2xl px-10 py-8 shadow-2xl shadow-blue-300/40 flex items-center gap-4 group/btn transition-all duration-300 hover:scale-105 border-b-4 border-blue-900 ${montserrat.className}`}>
+                      <span className="text-3xl font-black italic">€ {ticket.price}</span>
+                      <span className="text-blue-200 text-xs font-black uppercase tracking-widest border-l border-blue-400/30 pl-4 transition-transform group-hover/btn:translate-x-1">View</span>
+                    </Button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
 

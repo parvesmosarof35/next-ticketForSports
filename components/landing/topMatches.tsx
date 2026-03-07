@@ -77,11 +77,11 @@ const matches = [
 function MatchCard({ match }: { match: typeof matches[0] }) {
   return (
     <div
-      className="bg-white rounded-[32px] p-5 md:p-6 w-full aspect-square overflow-hidden relative shadow-xl border border-gray-100 flex flex-col items-center justify-between mx-auto"
+      className="mt-10 bg-white rounded-[32px] p-5 md:p-6 w-full aspect-square overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer"
     >
       {/* Top Row: Date & Location */}
       <div className="w-full flex justify-between items-start">
-        <div className="bg-[#1E56B1] text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-10">
+        <div className="bg-[#1E56B1] text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full z-10 transition-transform group-hover:scale-110">
           {match.date}
         </div>
         <div className="text-gray-400 text-[9px] md:text-[11px] text-right max-w-[120px] leading-tight">
@@ -90,7 +90,7 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       </div>
 
       {/* Match Title */}
-      <h3 className="text-[#05305F] text-base md:text-lg font-semibold text-center mt-2 px-2">
+      <h3 className="text-[#05305F] text-base md:text-lg font-semibold text-center mt-2 px-2 transition-colors group-hover:text-[#0A4DA1]">
         {match.team1.name} vs. {match.team2.name}
       </h3>
 
@@ -98,12 +98,12 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       <div className="flex items-center justify-between w-full gap-2 my-2">
         {/* Team 1 Player */}
         <div className="relative">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#5FB0E8]/10 flex items-center justify-center overflow-hidden border border-[#5FB0E8]/20">
+          <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
             <Image
               src={match.team1.logo}
               alt={match.team1.name}
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               className="w-full h-full object-cover"
             />
           </div>
@@ -111,18 +111,18 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
 
         {/* Time Info */}
         <div className="flex flex-col items-center flex-shrink-0">
-          <span className="text-gray-400 text-[10px] md:text-xs font-medium border-b border-gray-200 pb-0.5 mb-1">THU</span>
-          <span className="text-[#0D1B2A] text-lg md:text-xl font-bold">{match.time}</span>
+          <span className="text-gray-400 text-[10px] md:text-xs font-medium border-gray-200 pb-0.5 mb-1 transition-colors group-hover:text-[#B2955C]">THU</span>
+          <span className="text-[#0D1B2A] text-lg md:text-xl font-bold transition-transform group-hover:scale-110">{match.time}</span>
         </div>
 
         {/* Team 2 Player */}
         <div className="relative">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#E5322E]/10 flex items-center justify-center overflow-hidden border border-[#E5322E]/20">
+          <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
             <Image
               src={match.team2.logo}
               alt={match.team2.name}
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               className="w-full h-full object-cover"
             />
           </div>
@@ -130,16 +130,16 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       </div>
 
       {/* Price Section */}
-      <div className="flex items-center gap-1.5 mb-2">
+      <div className="flex items-center gap-1.5 mb-2 transition-transform group-hover:scale-105">
         <span className="text-gray-400 text-xs md:text-sm">From:</span>
         <span className="text-black text-2xl md:text-3xl font-bold">€ {match.price}</span>
       </div>
 
       {/* Button */}
       <Link href={`/football/booking/${match.id}`} className="w-full flex justify-center">
-        <Button className={`w-[70%] h-[40px] md:h-[48px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-sm md:text-base font-semibold tracking-wide uppercase shadow-md hover:shadow-lg relative overflow-hidden group ${montserrat.className}`}>
+        <Button className={`w-[70%] h-[40px] md:h-[48px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-sm md:text-base font-semibold tracking-wide uppercase shadow-md hover:shadow-lg relative overflow-hidden group/btn ${montserrat.className} cursor-pointer`}>
           <span className="relative z-10">FIND TICKETS</span>
-          <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
         </Button>
       </Link>
     </div>
@@ -161,9 +161,9 @@ export function TopMatches() {
 
         <div className="relative w-full">
           {/* Left Fade Effect */}
-          <div className="absolute top-0 bottom-0 left-0 md:w-32 w-5 bg-gradient-to-r from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 left-0 w-24 md:w-60 bg-gradient-to-r from-[#05305F] via-[#05305F]/20 to-transparent z-10 pointer-events-none" />
           {/* Right Fade Effect */}
-          <div className="absolute top-0 bottom-0 right-0 md:w-32 w-5 bg-gradient-to-l from-[#05305F] via-[#05305F]/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-24 md:w-60 bg-gradient-to-l from-[#05305F] via-[#05305F]/20 to-transparent z-10 pointer-events-none" />
 
           <Carousel
             opts={{
@@ -178,8 +178,8 @@ export function TopMatches() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none left-4 z-20 h-12 w-12" />
-            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none right-4 z-20 h-12 w-12" />
+            <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:left-4 -left-5 z-20 h-12 w-12" />
+            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:right-4 -right-5 z-20 h-12 w-12" />
           </Carousel>
         </div>
 

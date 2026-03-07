@@ -221,6 +221,156 @@ function FootballDropdown() {
   );
 }
 
+// Basketball Dropdown Component
+function BasketballDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useRouter();
+
+  const sections = [
+    { title: "Leagues", items: ["NBA", "EuroLeague", "Liga ACB", "Serie A", "Bundesliga", "LNB Pro A"] },
+    { title: "Tournaments", items: ["FIBA World Cup", "EuroBasket", "Olympic Games", "Asian Cup"] },
+    { title: "Nations", items: ["USA", "Spain", "France", "Germany", "Serbia", "Slovenia", "Italy", "Greece"] },
+    { title: "Teams", items: ["LA Lakers", "Golden State Warriors", "Boston Celtics", "Real Madrid", "Barcelona", "Anadolu Efes"] },
+    { title: "Stadiums", items: ["Madison Square Garden", "Crypto.com Arena", "O2 Arena", "Stark Arena"] }
+  ];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        onClick={() => navigate.push("/basketball")}
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+      >
+        Basketball
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full left-[-200px] mt-0 w-[800px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            {sections.map((section, idx) => (
+              <div key={idx} className="mb-4">
+                <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">{section.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {section.items.map((item, iIdx) => (
+                    <Link
+                      key={iIdx}
+                      href={`/search?q=${encodeURIComponent(item)}`}
+                      className="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// Travel Dropdown Component (for Ticket + Hotel and Ticket + Hotel + Flight)
+function TravelDropdown({ label, href }: { label: string, href: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useRouter();
+
+  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA", "UAE", "Qatar"];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        onClick={() => navigate.push(href)}
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+      >
+        {label}
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full left-[-100px] mt-0 w-[450px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+        >
+          <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">Nations</h3>
+          <div className="flex flex-wrap gap-2">
+            {nations.map((nation, index) => (
+              <Link
+                key={index}
+                href={`/locations?search=${encodeURIComponent(nation)}`}
+                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+              >
+                {nation}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// Other Sports Dropdown Component
+function OtherSportsDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useRouter();
+
+  const sports = ["Football", "Basketball", "Tennis", "Golf", "F1", "Cricket", "Boxing", "Rugby", "MMA"];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        onClick={() => navigate.push("/")}
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+      >
+        Other Sports
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full right-0 mt-0 w-[450px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+        >
+          <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">All Sports</h3>
+          <div className="grid grid-cols-2 gap-2">
+            {sports.map((sport, index) => (
+              <Link
+                key={index}
+                href={`/search?q=${sport.toLowerCase()}`}
+                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-100 hover:border-blue-200"
+              >
+                {sport}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
 export function Navbar() {
   const router = useRouter();
   const { user, isAuthenticated, logout, isLoading } = useAuth();
@@ -257,18 +407,10 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-8">
             <FootballDropdown />
-            <Link href="/basketball" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-              Basketball
-            </Link>
-            <Link href="/ticket-hotel" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-            Hotel Tickets
-            </Link>
-            <Link href="/ticket-hotel-flight" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-            Hotel & Flight Tickets
-            </Link>
-            <Link href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
-              Other Sports
-            </Link>
+            <BasketballDropdown />
+            <TravelDropdown label="Tickets + Hotel" href="/ticket-hotel" />
+            <TravelDropdown label="Tickets + Hotel + Flight" href="/ticket-hotel-flight" />
+            <OtherSportsDropdown />
           </div>
 
           <div className="flex items-center gap-4">
