@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Montserrat } from "next/font/google";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -73,7 +73,7 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
 
       {/* Location Info */}
       <div className="flex items-center gap-2 mb-4 transition-transform group-hover:scale-105">
-        <MapPin className="w-5 h-5 text-black"  />
+        <MapPin className="w-5 h-5 text-black" />
         <span className="text-black text-sm md:text-lg ">{competition.location}</span>
       </div>
 
@@ -92,8 +92,8 @@ export function TopCompetitions() {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className="text-3xl font-bold text-white">Top Competitions</h2>
-          <Button className="bg-white text-[#05305F] hover:bg-gray-100 font-bold rounded-lg px-6 hidden md:block cursor-pointer">
-            More Competitions
+          <Button className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white font-bold rounded-xl px-6 py-2.5 hidden md:flex items-center gap-2 cursor-pointer transition-all shadow-md active:scale-95">
+            View All <ArrowRight className="w-5 h-5" />
           </Button>
         </div>
 

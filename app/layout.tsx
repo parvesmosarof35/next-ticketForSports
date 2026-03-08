@@ -9,9 +9,9 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ticketforsport",
+  title: "Ticket for Sport",
   description:
-    "A trusted collaboration platform connecting professional hosts and verified influencers for authentic partnerships.",
+    "Compare sport tickets and travel packages in seconds. Find the best prices on football, basketball, boxing and more – All from 100% guaranteed ticket sellers.",
   generator: "md shah aman patwary",
   icons: {
     icon: [

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
+import { ArrowRight } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -153,8 +154,8 @@ export function TopMatches() {
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className="text-3xl font-bold text-white">Top Football Matches</h2>
           <Link href="/football">
-            <Button className="bg-white text-[#05305F] hover:bg-gray-100 font-bold rounded-lg px-6 hidden md:block cursor-pointer">
-              More Football Matches
+            <Button className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white font-bold rounded-xl px-6 py-2.5 hidden md:flex items-center gap-2 cursor-pointer transition-all shadow-md active:scale-95">
+              View All <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>
         </div>

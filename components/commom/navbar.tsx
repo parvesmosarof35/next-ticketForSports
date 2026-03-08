@@ -17,40 +17,46 @@ import {
 import { LogOut, User, LayoutDashboard, ChevronDown } from "lucide-react";
 import { LanguageToggle } from "./language-toggle";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Top Banner Component
-function TopBanner() {
-  const [isVisible, setIsVisible] = useState(true);
-
-  if (!isVisible) return null;
-
+function TopBanner({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
   return (
-    <div className="bg-gradient-to-r from-[#FF4B1F] to-[#FF9068] text-white py-2 px-4 relative flex items-center justify-center overflow-hidden z-50">
-      {/* Animated Background Shine */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite] pointer-events-none" />
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="w-full bg-gradient-to-r from-[#FF4B1F] to-[#FF9068] text-white relative flex items-center justify-center overflow-hidden z-[110]"
+        >
+          {/* Animated Background Shine */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite] pointer-events-none" />
 
-      <div className="container mx-auto flex items-center justify-center gap-2 text-xs md:text-sm font-bold tracking-wide relative z-10">
-        <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold animate-pulse">Limited Offer</span>
-        <span className="text-center">
-          Find the best price on tickets and sports travel – fast and easy.
-        </span>
-        <Link href="/football" className="underline decoration-white/50 hover:decoration-white transition-all ml-1">
-          Book Now &rarr;
-        </Link>
-      </div>
+          <div className="py-2 px-4 w-full flex items-center justify-center gap-3 text-[10px] md:text-xs font-black tracking-widest relative z-10 h-full uppercase">
+        
+            <span className="text-center truncate font-bold">
+              Best price on tickets & travel – fast & easy.
+            </span>
+            <Link href="/football" className="underline decoration-white/50 hover:decoration-white transition-all whitespace-nowrap shrink-0">
+              Book Now &rarr;
+            </Link>
+          </div>
 
-      <button
-        onClick={() => setIsVisible(false)}
-        className="absolute right-2 md:right-4 p-1 hover:bg-white/20 rounded-full transition-colors cursor-pointer"
-        aria-label="Close banner"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
+          <button
+            onClick={onClose}
+            className="absolute right-2 md:right-4 p-1 hover:bg-white/20 rounded-full transition-colors cursor-pointer z-20 shrink-0"
+            aria-label="Close banner"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -80,15 +86,14 @@ function FootballDropdown() {
   ];
 
   const stadiums = [
-    "St. George's Park", "Camp Nou", "San Siro", "Allianz Arena",
-    "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou", "Camp Nou"
+    "St. George's Park", "Camp Nou", "San Siro", "Allianz Arena"
   ];
 
   return (
     <div
       className="relative"
       onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)} // Ensure the dropdown closes only when both the button and the dropdown content are no longer hovered
+      onMouseLeave={() => setIsOpen(false)}
     >
       <button
         onClick={() => navigate.push("/football")}
@@ -101,119 +106,71 @@ function FootballDropdown() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }} // Optional exit animation for smooth closing
+          exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-0 mt-0 w-[800px] bg-white/95 backdrop-blur-lg border border-gray-200 rounded-lg shadow-2xl p-6"
+          className="absolute top-full left-0 mt-0 w-[800px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
         >
-          {/* Leagues Section */}
-          <div className="mb-6">
-            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Leagues</h3>
-            <div className="flex flex-wrap gap-2">
-              {displayedLeagues.map((league, index) => (
-                <Link
-                  key={index}
-                  href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\s+/g, '-'))}`}
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  {league}
-                </Link>
-              ))}
-              {hasMoreLeagues && !showMoreLeagues && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowMoreLeagues(true);
-                  }}
-                  className="px-4 py-2 bg-blue-600/80 hover:bg-blue-600 text-white text-sm rounded-md transition-all font-medium"
-                >
-                  Other Leagues
-                </button>
-              )}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Leagues</h3>
+              <div className="flex flex-col gap-1">
+                {displayedLeagues.map((league, index) => (
+                  <Link
+                    key={index}
+                    href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\s+/g, '-'))}`}
+                    className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
+                  >
+                    {league}
+                  </Link>
+                ))}
+                {hasMoreLeagues && !showMoreLeagues && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowMoreLeagues(true);
+                    }}
+                    className="text-sm text-blue-600 font-bold hover:underline py-1 text-left"
+                  >
+                    View All
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-
-          {/* Tournaments Section */}
-          <div className="mb-6">
-            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Tournaments</h3>
-            <div className="flex flex-wrap gap-2">
-              {tournaments.map((tournament, index) => (
-                <Link
-                  key={index}
-                  href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  {tournament}
-                </Link>
-              ))}
+            <div>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Tournaments</h3>
+              <div className="flex flex-col gap-1">
+                {tournaments.map((tournament, index) => (
+                  <Link
+                    key={index}
+                    href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
+                    className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
+                  >
+                    {tournament}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Nations Section */}
-          <div>
-            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Nations</h3>
-            <div className="flex flex-wrap gap-2">
-              {nations.map((nation, index) => (
-                <Link
-                  key={index}
-                  href={`/locations?search=${encodeURIComponent(nation)}`}
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  {nation}
-                </Link>
-              ))}
+            <div>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Nations</h3>
+              <div className="flex flex-col gap-1">
+                {nations.map((nation, index) => (
+                  <Link
+                    key={index}
+                    href={`/locations?search=${encodeURIComponent(nation)}`}
+                    className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
+                  >
+                    {nation}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-
-
-
-          {/* Teams Section */}
-          <div className="mb-6">
-            <h3 className="text-gray-900 font-semibold text-sm mb-3 uppercase tracking-wide">Teams</h3>
-            <div className="flex flex-wrap gap-2">
-              <Link
-                href="/teams"
-                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-              >
-                All Teams
-              </Link>
+            <div>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Others</h3>
+              <div className="flex flex-col gap-1">
+                <Link href="/teams" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors font-bold">Teams</Link>
+                <Link href="/stadium" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors font-bold">Stadiums</Link>
+              </div>
             </div>
-          </div>
-
-          {/* Stadiums Section */}
-          <div>
-            <h3 className="text-gray-900 font-semibold text-sm my-3 uppercase tracking-wide">Stadiums</h3>
-            <div className="flex flex-wrap gap-2">
-              <Link
-
-                href={`/stadium/`}
-                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-              >
-                all
-              </Link>
-              {stadiums.map((stadium, index) => (
-
-
-                <Link
-                  key={index}
-                  href={`/stadium/${stadium.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
-                >
-                  {stadium}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Matches Section */}
-          <div className="mt-6 pt-4 border-t border-gray-100 flex gap-4">
-            <Link href="/matches" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
-              <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-              All Matches
-            </Link>
-            <Link href="/matches?filter=recent" className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-blue-600 transition-colors">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Recent Matches
-            </Link>
           </div>
         </motion.div>
       )}
@@ -227,11 +184,9 @@ function BasketballDropdown() {
   const navigate = useRouter();
 
   const sections = [
-    { title: "Leagues", items: ["NBA", "EuroLeague", "Liga ACB", "Serie A", "Bundesliga", "LNB Pro A"] },
-    { title: "Tournaments", items: ["FIBA World Cup", "EuroBasket", "Olympic Games", "Asian Cup"] },
-    { title: "Nations", items: ["USA", "Spain", "France", "Germany", "Serbia", "Slovenia", "Italy", "Greece"] },
-    { title: "Teams", items: ["LA Lakers", "Golden State Warriors", "Boston Celtics", "Real Madrid", "Barcelona", "Anadolu Efes"] },
-    { title: "Stadiums", items: ["Madison Square Garden", "Crypto.com Arena", "O2 Arena", "Stark Arena"] }
+    { title: "Leagues", items: ["NBA", "EuroLeague", "Liga ACB", "Serie A"] },
+    { title: "Tournaments", items: ["FIBA World Cup", "EuroBasket", "Olympic Games"] },
+    { title: "Nations", items: ["USA", "Spain", "France", "Germany"] }
   ];
 
   return (
@@ -253,18 +208,18 @@ function BasketballDropdown() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-[-200px] mt-0 w-[800px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+          className="absolute top-full left-0 mt-0 w-[600px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-6">
             {sections.map((section, idx) => (
-              <div key={idx} className="mb-4">
-                <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">{section.title}</h3>
-                <div className="flex flex-wrap gap-2">
+              <div key={idx}>
+                <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">{section.title}</h3>
+                <div className="flex flex-col gap-1">
                   {section.items.map((item, iIdx) => (
                     <Link
                       key={iIdx}
                       href={`/search?q=${encodeURIComponent(item)}`}
-                      className="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                      className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                     >
                       {item}
                     </Link>
@@ -279,12 +234,12 @@ function BasketballDropdown() {
   );
 }
 
-// Travel Dropdown Component (for Ticket + Hotel and Ticket + Hotel + Flight)
+// Travel Dropdown Component
 function TravelDropdown({ label, href }: { label: string, href: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useRouter();
 
-  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA", "UAE", "Qatar"];
+  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA"];
 
   return (
     <div
@@ -305,15 +260,15 @@ function TravelDropdown({ label, href }: { label: string, href: string }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-[-100px] mt-0 w-[450px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+          className="absolute top-full left-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
         >
-          <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">Nations</h3>
-          <div className="flex flex-wrap gap-2">
+          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Nations</h3>
+          <div className="flex flex-col gap-1">
             {nations.map((nation, index) => (
               <Link
                 key={index}
                 href={`/locations?search=${encodeURIComponent(nation)}`}
-                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-200 hover:border-blue-200"
+                className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
               >
                 {nation}
               </Link>
@@ -330,7 +285,7 @@ function OtherSportsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useRouter();
 
-  const sports = ["Football", "Basketball", "Tennis", "Golf", "F1", "Cricket", "Boxing", "Rugby", "MMA"];
+  const sports = ["Tennis", "Golf", "F1", "Cricket", "Boxing", "Rugby", "MMA"];
 
   return (
     <div
@@ -351,15 +306,15 @@ function OtherSportsDropdown() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full right-0 mt-0 w-[450px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
+          className="absolute top-full right-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
         >
-          <h3 className="text-gray-900 font-semibold text-xs mb-3 uppercase tracking-wide opacity-50">All Sports</h3>
-          <div className="grid grid-cols-2 gap-2">
+          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">All Sports</h3>
+          <div className="flex flex-col gap-1">
             {sports.map((sport, index) => (
               <Link
                 key={index}
                 href={`/search?q=${sport.toLowerCase()}`}
-                className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-blue-600 text-sm rounded-md transition-all border border-gray-100 hover:border-blue-200"
+                className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
               >
                 {sport}
               </Link>
@@ -375,6 +330,7 @@ export function Navbar() {
   const router = useRouter();
   const { user, isAuthenticated, logout, isLoading } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -392,20 +348,27 @@ export function Navbar() {
 
   return (
     <div className="fixed top-0 w-full z-100 flex flex-col font-sans">
-      <TopBanner />
+      <TopBanner isVisible={isBannerVisible} onClose={() => setIsBannerVisible(false)} />
 
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`w-full relative px-4 sm:px-6 lg:px-0 py-3 transition-all duration-500 border-b border-gray-100 bg-white shadow-sm`}
+        className={`w-full relative px-4 sm:px-6 lg:px-0 transition-all duration-300 border-b border-gray-100 bg-white/95 backdrop-blur-md shadow-sm ${isBannerVisible ? 'py-2 md:py-2.5' : 'py-3 md:py-4'
+          }`}
       >
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/navlogolight.png" alt="Logo" width={200} height={50} />
+        <div className="container mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image
+              src="/navlogolight.png"
+              alt="Logo"
+              width={160}
+              height={40}
+              className="w-[140px] md:w-[180px] h-auto object-contain"
+            />
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden min-[1130px]:flex items-center gap-6 lg:gap-8">
             <FootballDropdown />
             <BasketballDropdown />
             <TravelDropdown label="Tickets + Hotel" href="/ticket-hotel" />
@@ -413,7 +376,7 @@ export function Navbar() {
             <OtherSportsDropdown />
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <div className="hidden md:block">
               <LanguageToggle />
             </div>
@@ -462,7 +425,7 @@ export function Navbar() {
               <Link href="/signin">
                 <Button
                   variant="default"
-                  className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-5"
+                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-4 md:px-6 h-10 md:h-11 rounded-xl text-xs md:text-sm uppercase tracking-wider"
                 >
                   Sign In
                 </Button>

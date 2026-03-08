@@ -15,7 +15,7 @@ export function Reliable() {
       description: "All sellers are vetted and verified to ensure safe and secure transactions."
     },
     {
-      icon: <Award className="w-8 h-8 text-[#0645A0]" />,
+      icon: <Award className="w-8 h-8" />,
       title: "Best Seat Guaranteed",
       description: "Find the perfect seat at the best price with our advanced search filters."
     }
@@ -35,7 +35,7 @@ export function Reliable() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-xl transition-all duration-300"
             >
