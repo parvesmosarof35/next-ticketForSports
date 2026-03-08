@@ -69,9 +69,7 @@ export default function FootballSlugPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="container mx-auto relative z-10">
           <div className="flex items-center gap-4 mb-4">
-            <div className="bg-blue-600 p-4 rounded-2xl shadow-lg shadow-blue-500/20">
-              <Settings className="text-white w-8 h-8 spin-slow" />
-            </div>
+      
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">Football Tickets</h1>
           </div>
           <p className="text-gray-400 max-w-2xl text-lg leading-relaxed font-medium">

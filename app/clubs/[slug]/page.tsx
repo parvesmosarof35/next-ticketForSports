@@ -133,9 +133,7 @@ export default function ClubPage() {
 
         <div className="container mx-auto relative z-10 px-4">
           <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="w-40 h-40 relative bg-white rounded-[2.5rem] p-6 shadow-2xl shrink-0 group hover:rotate-2 transition-transform duration-500">
-              <Image src={club.logo} alt={club.name} fill className="object-contain p-6" />
-            </div>
+
             <div className="text-center md:text-left">
               <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-lg">{club.name}</h1>
               <div className="flex flex-wrap justify-center md:justify-start gap-8 text-white/70 font-bold uppercase tracking-widest text-xs">
