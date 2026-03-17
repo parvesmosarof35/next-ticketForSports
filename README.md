@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏠✨ ticketsForSale
+#  ticketsForSale
 
 ### _Where Hospitality Meets Influence_
 
