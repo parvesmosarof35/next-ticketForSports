@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Montserrat } from "next/font/google";
 import { MapPin, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -49,19 +50,19 @@ const competitions = [
 
 function CompetitionCard({ competition }: { competition: typeof competitions[0] }) {
   return (
-    <div className="h-full bg-white rounded-[32px] p-5 md:p-6 w-full aspect-square overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer">
+    <div className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[340px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0">
 
       {/* Header */}
       <div className="flex flex-col items-center pt-2 transition-transform group-hover:scale-105">
-        <h3 className="text-[#05305F] text-xl md:text-xl font-bold leading-tight">{competition.name}</h3>
-        <p className="text-gray-400 text-sm md:text-base mt-1">
+        <h3 className="text-[#05305F] text-xl font-bold leading-tight">{competition.name}</h3>
+        <p className="text-gray-400 text-sm mt-1">
           {competition.tickets.split(' ')[0]} <span className="text-[#05305F]/60">tickets</span>
         </p>
       </div>
 
       {/* Image */}
       <div className="flex justify-center items-center flex-grow transition-transform duration-500 group-hover:scale-110">
-        <div className="w-[100px] h-[140px] md:w-[120px] md:h-[160px] relative">
+        <div className="w-[120px] h-[160px] relative">
           <Image
             src={competition.image}
             alt={competition.name}
@@ -74,12 +75,12 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
       {/* Location Info */}
       <div className="flex items-center gap-2 mb-4 transition-transform group-hover:scale-105">
         <MapPin className="w-5 h-5 text-black" />
-        <span className="text-black text-sm md:text-lg ">{competition.location}</span>
+        <span className="text-black text-sm">{competition.location}</span>
       </div>
 
       {/* Button */}
-      <Button className={`w-[70%]  h-[44px] md:h-[52px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-sm md:text-base font-semibold tracking-wide uppercase shadow-md hover:shadow-lg relative overflow-hidden group/btn ${montserrat.className} cursor-pointer`}>
-        <span className="relative z-10">FIND TICKETS</span>
+      <Button className="w-[85%] h-[44px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-[15px] font-semibold tracking-wide shadow-md hover:shadow-lg relative overflow-hidden group/btn cursor-pointer">
+        <span className="relative z-10 flex justify-center gap-1">Find tickets</span>
         <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
       </Button>
     </div>
@@ -91,10 +92,12 @@ export function TopCompetitions() {
     <section className="pt-20 py-6 bg-[#05305F]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
-          <h2 className="text-3xl font-bold text-white">Top Competitions</h2>
-          <Button className="bg-[#1E90FF] hover:bg-[#1E90FF]/90 text-white font-bold rounded-xl px-6 py-2.5 hidden md:flex items-center gap-2 cursor-pointer transition-all shadow-md active:scale-95">
-            View All <ArrowRight className="w-5 h-5" />
-          </Button>
+          <h2 className={`text-3xl font-bold text-white ${montserrat.className}`}>Top Competitions</h2>
+          <Link href="/football">
+            <Button variant="outline" className="border-white/30 text-white hover:bg-white hover:text-[#05305F] font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all bg-transparent">
+              View All <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
 
         <div className="relative w-full">
@@ -111,13 +114,13 @@ export function TopCompetitions() {
           >
             <CarouselContent className="-ml-4 pb-12">
               {competitions.map((competition, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6">
+                <CarouselItem key={index} className="pl-4 basis-auto">
                   <CompetitionCard competition={competition} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:left-4 -left-3 z-20 h-12 w-12" />
-            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:right-4 -right-3 z-20 h-12 w-12" />
+            <CarouselPrevious className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-left-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
+            <CarouselNext className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-right-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
           </Carousel>
         </div>
 

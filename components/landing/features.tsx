@@ -12,6 +12,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["800"] });
 
 
 interface City {
@@ -61,12 +64,11 @@ export function Features() {
       <div className="w-full mx-auto">
         <div className="relative">
 
-          <div className="max-w-6xl mx-auto flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-800">Cities</h2>
+          <div className="max-w-6xl mx-auto flex items-center justify-between mb-12">
+            <h2 className={`text-3xl font-bold text-gray-800 ${montserrat.className}`}>Cities</h2>
             <Link href="/locations">
-              <Button variant="ghost" className="text-white bg-blue-500 hover:text-white hover:bg-blue-600 font-semibold group">
-                View All
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50 bg-transparent">
+                View All <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
           </div>
@@ -111,8 +113,8 @@ export function Features() {
                 ))}
               </CarouselContent>
 
-              <CarouselPrevious className="flex bg-white hover:bg-gray-100 text-[#05305F] border-none left-4 z-20 h-12 w-12 shadow-sm" />
-              <CarouselNext className="flex bg-white hover:bg-gray-100 text-[#05305F] border-none right-4 z-20 h-12 w-12 shadow-sm" />
+              <CarouselPrevious className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-left-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
+              <CarouselNext className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-right-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
             </Carousel>
           </div>
         </div>

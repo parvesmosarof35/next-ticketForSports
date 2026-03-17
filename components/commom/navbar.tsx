@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User, LayoutDashboard, ChevronDown } from "lucide-react";
+import { LogOut, User, LayoutDashboard, ChevronDown, Menu, X } from "lucide-react";
 import { LanguageToggle } from "./language-toggle";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -97,7 +97,7 @@ function FootballDropdown() {
     >
       <button
         onClick={() => navigate.push("/football")}
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">
+        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer">
         Football
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -117,7 +117,7 @@ function FootballDropdown() {
                 {displayedLeagues.map((league, index) => (
                   <Link
                     key={index}
-                    href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\s+/g, '-'))}`}
+                    href={`/football/league/${encodeURIComponent(league.toLowerCase().replace(/\\s+/g, '-'))}`}
                     className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                   >
                     {league}
@@ -142,7 +142,7 @@ function FootballDropdown() {
                 {tournaments.map((tournament, index) => (
                   <Link
                     key={index}
-                    href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
+                    href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\\s+/g, '-'))}`}
                     className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                   >
                     {tournament}
@@ -197,7 +197,7 @@ function BasketballDropdown() {
     >
       <button
         onClick={() => navigate.push("/basketball")}
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
       >
         Basketball
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -234,12 +234,9 @@ function BasketballDropdown() {
   );
 }
 
-// Travel Dropdown Component
-function TravelDropdown({ label, href }: { label: string, href: string }) {
+// More Dropdown Component
+function MoreDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useRouter();
-
-  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA"];
 
   return (
     <div
@@ -248,10 +245,9 @@ function TravelDropdown({ label, href }: { label: string, href: string }) {
       onMouseLeave={() => setIsOpen(false)}
     >
       <button
-        onClick={() => navigate.push(href)}
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
       >
-        {label}
+        More
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -260,65 +256,28 @@ function TravelDropdown({ label, href }: { label: string, href: string }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
+          className="absolute top-full right-0 mt-0 w-[240px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
         >
-          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Nations</h3>
-          <div className="flex flex-col gap-1">
-            {nations.map((nation, index) => (
-              <Link
-                key={index}
-                href={`/locations?search=${encodeURIComponent(nation)}`}
-                className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
-              >
-                {nation}
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
-// Other Sports Dropdown Component
-function OtherSportsDropdown() {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useRouter();
-
-  const sports = ["Tennis", "Golf", "F1", "Cricket", "Boxing", "Rugby", "MMA"];
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <button
-        onClick={() => navigate.push("/")}
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
-      >
-        Other Sports
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="absolute top-full right-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
-        >
-          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">All Sports</h3>
-          <div className="flex flex-col gap-1">
-            {sports.map((sport, index) => (
-              <Link
-                key={index}
-                href={`/search?q=${sport.toLowerCase()}`}
-                className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
-              >
-                {sport}
-              </Link>
-            ))}
+          <div className="flex flex-col gap-2">
+            <Link
+              href="/ticket-hotel"
+              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
+            >
+              Tickets + Hotel
+            </Link>
+            <Link
+              href="/ticket-hotel-flight"
+              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
+            >
+              Tickets + Hotel + Flight
+            </Link>
+            <div className="h-px bg-gray-100 my-1 w-full" />
+            <Link
+              href="/"
+              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
+            >
+              Other Sports
+            </Link>
           </div>
         </motion.div>
       )}
@@ -331,6 +290,7 @@ export function Navbar() {
   const { user, isAuthenticated, logout, isLoading } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -354,29 +314,27 @@ export function Navbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`w-full relative px-4 sm:px-6 lg:px-0 transition-all duration-300 border-b border-gray-100 bg-white/95 backdrop-blur-md shadow-sm ${isBannerVisible ? 'py-2 md:py-2.5' : 'py-3 md:py-4'
+        className={`w-full relative px-4 sm:px-6 lg:px-0 transition-all duration-300 border-b border-gray-100 bg-white shadow-sm ${isBannerVisible ? 'py-2 md:py-2.5' : 'py-3 md:py-4'
           }`}
       >
-        <div className="container mx-auto flex items-center justify-between">
+        <div className="container mx-auto px-1 sm:px-4 lg:px-8 xl:px-4 flex items-center justify-between max-w-6xl">
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
               src="/navlogolight.png"
               alt="Logo"
               width={160}
               height={40}
-              className="w-[140px] md:w-[180px] h-auto object-contain"
+              className="w-[120px] md:w-[140px] lg:w-[160px] xl:w-[220px] h-auto object-contain"
             />
           </Link>
 
-          <div className="hidden min-[1130px]:flex items-center gap-6 lg:gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
             <FootballDropdown />
             <BasketballDropdown />
-            <TravelDropdown label="Tickets + Hotel" href="/ticket-hotel" />
-            <TravelDropdown label="Tickets + Hotel + Flight" href="/ticket-hotel-flight" />
-            <OtherSportsDropdown />
+            <MoreDropdown />
           </div>
 
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-1 md:gap-4 shrink-0">
             <div className="hidden md:block">
               <LanguageToggle />
             </div>
@@ -423,16 +381,51 @@ export function Navbar() {
               </DropdownMenu>
             ) : (
               <Link href="/signin">
-                <Button
+                  <Button
                   variant="default"
-                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-4 md:px-6 h-10 md:h-11 rounded-xl text-xs md:text-sm uppercase tracking-wider"
+                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-3 md:px-6 h-9 md:h-11 rounded-xl text-xs md:text-sm uppercase tracking-wider"
                 >
                   Sign In
                 </Button>
               </Link>
             )}
+
+            {/* Hamburger Button for Mobile/Tablet */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-1.5 md:p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors ml-1"
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Menu className="w-5 h-5 md:w-6 md:h-6" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl overflow-hidden z-[100]"
+            >
+              <div className="flex flex-col p-4 md:p-6 pb-6 gap-3">
+                <Link href="/football" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-gray-800 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">Football</Link>
+                <Link href="/basketball" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-gray-800 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">Basketball</Link>
+                <Link href="/ticket-hotel" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-gray-800 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">Tickets + Hotel</Link>
+                <Link href="/ticket-hotel-flight" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-gray-800 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">Tickets + Hotel + Flight</Link>
+                <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-gray-800 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">Other Sports</Link>
+                
+                <div className="h-px bg-gray-200 my-2 w-full" />
+                <div className="md:hidden flex items-center justify-between p-2">
+                   <span className="text-sm font-semibold text-gray-600">Language</span>
+                   <LanguageToggle />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
     </div>
   );
