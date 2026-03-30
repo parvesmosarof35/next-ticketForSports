@@ -97,9 +97,9 @@ function FootballDropdown() {
     >
       <button
         onClick={() => navigate.push("/football")}
-        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer">
+        className="flex items-center gap-1 text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer">
         Football
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
@@ -197,10 +197,10 @@ function BasketballDropdown() {
     >
       <button
         onClick={() => navigate.push("/basketball")}
-        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
+        className="flex items-center gap-1 text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
       >
         Basketball
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
@@ -234,56 +234,7 @@ function BasketballDropdown() {
   );
 }
 
-// More Dropdown Component
-function MoreDropdown() {
-  const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <button
-        className="flex items-center gap-1 text-[15px] xl:text-[16px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
-      >
-        More
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="absolute top-full right-0 mt-0 w-[240px] bg-white border border-gray-200 rounded-lg shadow-2xl p-4 z-[120]"
-        >
-          <div className="flex flex-col gap-2">
-            <Link
-              href="/ticket-hotel"
-              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
-            >
-              Tickets + Hotel
-            </Link>
-            <Link
-              href="/ticket-hotel-flight"
-              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
-            >
-              Tickets + Hotel + Flight
-            </Link>
-            <div className="h-px bg-gray-100 my-1 w-full" />
-            <Link
-              href="/"
-              className="px-3 py-2 text-sm text-gray-700 font-bold hover:text-[#0062E6] hover:bg-gray-50 rounded-md transition-colors"
-            >
-              Other Sports
-            </Link>
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
-}
 
 export function Navbar() {
   const router = useRouter();
@@ -328,10 +279,30 @@ export function Navbar() {
             />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
             <FootballDropdown />
             <BasketballDropdown />
-            <MoreDropdown />
+            
+            <div className="flex items-center gap-3 xl:gap-4 border-l border-gray-100 pl-4 xl:pl-5">
+              <Link
+                href="/ticket-hotel"
+                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
+              >
+                Tickets + Hotel
+              </Link>
+              <Link
+                href="/ticket-hotel-flight"
+                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
+              >
+                Hotel + Flight
+              </Link>
+              <Link
+                href="/"
+                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
+              >
+                Other Sports
+              </Link>
+            </div>
           </div>
 
           <div className="flex items-center gap-1 md:gap-4 shrink-0">

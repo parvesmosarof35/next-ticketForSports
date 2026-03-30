@@ -56,60 +56,78 @@ const currencies = [
 export function LanguageToggle() {
   const [currency, setCurrency] = useState(currencies[0]);
   const [language, setLanguage] = useState(languages[0]);
+  const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
 
   return (
     <div className={`flex items-center gap-2 ${montserrat.className}`}>
 
       {/* Currency Selector */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <div className="flex items-center justify-between gap-3 px-4 py-2 min-w-[100px] h-[40px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
-            <span className="text-xl font-bold text-black">{currency.symbol}</span>
-            <ChevronDown className="w-5 h-5 text-[#1E90FF] stroke-[3px]" />
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[100px]">
-          {currencies.map((curr) => (
-            <DropdownMenuItem
-              key={curr.code}
-              onClick={() => setCurrency(curr)}
-              className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-blue-50 font-bold text-[#05305F]"
-            >
-              <span>{curr.symbol}</span>
-              <span className="text-xs opacity-50">{curr.code}</span>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div 
+        onMouseEnter={() => setIsCurrencyOpen(true)}
+        onMouseLeave={() => setIsCurrencyOpen(false)}
+      >
+        <DropdownMenu open={isCurrencyOpen} onOpenChange={setIsCurrencyOpen}>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center justify-between gap-2 px-3 py-1.5 min-w-[80px] h-[36px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
+              <span className="text-lg font-bold text-black">{currency.symbol}</span>
+              <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[100px]">
+            {currencies.map((curr) => (
+              <DropdownMenuItem
+                key={curr.code}
+                onClick={() => {
+                  setCurrency(curr);
+                  setIsCurrencyOpen(false);
+                }}
+                className="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-blue-50 font-bold text-[#05305F]"
+              >
+                <span>{curr.symbol}</span>
+                <span className="text-xs opacity-50">{curr.code}</span>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
 
       {/* Language Selector */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <div className="flex items-center justify-between gap-3 px-3 py-2 min-w-[130px] h-[40px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full overflow-hidden shadow-sm border border-gray-100 flex-shrink-0">
-                {language.flag}
+      <div 
+        onMouseEnter={() => setIsLanguageOpen(true)}
+        onMouseLeave={() => setIsLanguageOpen(false)}
+      >
+        <DropdownMenu open={isLanguageOpen} onOpenChange={setIsLanguageOpen}>
+          <DropdownMenuTrigger asChild>
+            <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 min-w-[100px] h-[36px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full overflow-hidden shadow-sm border border-gray-100 flex-shrink-0">
+                  {language.flag}
+                </div>
+                <span className="text-lg font-bold text-[#05305F] tracking-tight leading-none uppercase">{language.code}</span>
               </div>
-              <span className="text-xl font-bold text-[#05305F] tracking-tight leading-none uppercase">{language.code}</span>
+              <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} />
             </div>
-            <ChevronDown className="w-5 h-5 text-[#1E90FF] stroke-[3px]" />
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[140px]">
-          {languages.map((lang) => (
-            <DropdownMenuItem
-              key={lang.code}
-              onClick={() => setLanguage(lang)}
-              className="flex items-center gap-3 px-3 py-3 cursor-pointer hover:bg-blue-50 font-bold text-[#05305F]"
-            >
-              <div className="w-6 h-6 rounded-full overflow-hidden border border-gray-100">
-                {lang.flag}
-              </div>
-              <span>{lang.name}</span>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[140px]">
+            {languages.map((lang) => (
+              <DropdownMenuItem
+                key={lang.code}
+                onClick={() => {
+                  setLanguage(lang);
+                  setIsLanguageOpen(false);
+                }}
+                className="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-blue-50 font-bold text-[#05305F]"
+              >
+                <div className="w-5 h-5 rounded-full overflow-hidden border border-gray-100">
+                  {lang.flag}
+                </div>
+                <span>{lang.name}</span>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
 
     </div>
   );
