@@ -89,7 +89,7 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
 
 export function TopCompetitions() {
   return (
-    <section className="pt-20 py-6 bg-[#05305F]">
+    <section className="py-20 bg-[#05305F]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className={`text-3xl font-bold text-white ${montserrat.className}`}>Top Competitions</h2>
