@@ -66,8 +66,14 @@ export function Features() {
 
           <div className="max-w-6xl mx-auto flex items-center justify-between mb-12">
             <h2 className={`text-3xl font-bold text-gray-800 ${montserrat.className}`}>Cities</h2>
-            <Link href="/locations">
+            {/* <Link href="/locations">
               <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50 bg-transparent">
+                View All <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link> */}
+
+            <Link href="/locations">
+              <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50">
                 View All <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

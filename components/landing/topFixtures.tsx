@@ -131,14 +131,15 @@ function FixtureCard({ fixture }: { fixture: typeof fixtures[0] }) {
       </div>
 
       {/* Price Section */}
-      <div className="flex flex-col items-center mt-auto mb-1 transition-transform group-hover:scale-105">
-        <span className="text-gray-500 text-[11px] font-semibold tracking-wide uppercase mb-1">Starting from</span>
+      <div className="flex items-center gap-2 mt-auto mb-1 transition-transform group-hover:scale-105">
+        <span className="text-gray-500 text-[10px] font-semibold tracking-wide uppercase">From</span> 
+        <span className="font-bold text-lg">€{fixture.price}</span>
       </div>
 
       {/* Button */}
       <Link href={`/football/booking/${fixture.id}`} className="w-full flex justify-center mb-1">
         <Button className="w-[85%] h-[44px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-[15px] font-semibold shadow-md hover:shadow-lg relative overflow-hidden group/btn cursor-pointer">
-          <span className="relative z-10 flex gap-1">Find tickets <span className="font-bold">€{fixture.price}</span></span>
+          <span className="relative z-10 flex gap-1">Find tickets</span>
           <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
         </Button>
       </Link>
