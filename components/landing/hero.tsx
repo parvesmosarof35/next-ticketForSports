@@ -82,10 +82,10 @@ export function Hero() {
                     animate={{ opacity: 1, x: 0 }}
                     className="w-full xl:w-[280px] shrink-0"
                 >
-                    <div className="bg-[#F8F9FA] rounded-3xl p-5 xl:p-6 shadow-[0_8px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col lg:flex-row xl:flex-col h-full gap-3">
+                    <div className="bg-[#F8F9FA] rounded-[32px] p-5 xl:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full gap-5">
                         <div className="flex-1">
-                            <h3 className="text-base xl:text-lg font-black text-[#4A4A4A] mb-4 px-2">Popular Categories</h3>
-                            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-col gap-1">
+                            <h3 className="text-base xl:text-lg font-black text-[#4A4A4A] mb-5 px-2 tracking-tight">Popular Categories</h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-1 gap-2 md:gap-3">
                             {categories.map((cat, idx) => (
                                 <Link
                                     key={idx}
