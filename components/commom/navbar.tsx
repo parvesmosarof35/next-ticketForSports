@@ -97,7 +97,7 @@ function FootballDropdown() {
     >
       <button
         onClick={() => navigate.push("/football")}
-        className="flex items-center gap-1 text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer">
+        className="flex items-center gap-1 text-[13px] font-semibold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer">
         Football
         <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -108,9 +108,9 @@ function FootballDropdown() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-0 mt-0 w-[800px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
+          className="absolute top-full left-0 mt-0 w-[900px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
             <div>
               <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Leagues</h3>
               <div className="flex flex-col gap-1">
@@ -165,10 +165,27 @@ function FootballDropdown() {
               </div>
             </div>
             <div>
-              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Others</h3>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Teams</h3>
               <div className="flex flex-col gap-1">
-                <Link href="/teams" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors font-bold">Teams</Link>
-                <Link href="/stadium" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors font-bold">Stadiums</Link>
+                <Link href="/teams" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">Real Madrid</Link>
+                <Link href="/teams" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">Barcelona</Link>
+                <Link href="/teams" className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">Man City</Link>
+                <Link href="/teams" className="text-sm text-blue-600 font-bold py-1">View All</Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Stadiums</h3>
+              <div className="flex flex-col gap-1">
+                {stadiums.map((stadium, index) => (
+                  <Link
+                    key={index}
+                    href="/stadium"
+                    className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
+                  >
+                    {stadium}
+                  </Link>
+                ))}
+                <Link href="/stadium" className="text-sm text-blue-600 font-bold py-1">View All</Link>
               </div>
             </div>
           </div>
@@ -186,7 +203,9 @@ function BasketballDropdown() {
   const sections = [
     { title: "Leagues", items: ["NBA", "EuroLeague", "Liga ACB", "Serie A"] },
     { title: "Tournaments", items: ["FIBA World Cup", "EuroBasket", "Olympic Games"] },
-    { title: "Nations", items: ["USA", "Spain", "France", "Germany"] }
+    { title: "Nations", items: ["USA", "Spain", "France", "Germany"] },
+    { title: "Teams", items: ["Lakers", "Warriors", "Celtics", "Nets"] },
+    { title: "Stadiums", items: ["Madison Square", "Staples Center", "O2 Arena"] }
   ];
 
   return (
@@ -197,7 +216,7 @@ function BasketballDropdown() {
     >
       <button
         onClick={() => navigate.push("/basketball")}
-        className="flex items-center gap-1 text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
+        className="flex items-center gap-1 text-[13px] font-semibold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer"
       >
         Basketball
         <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -208,9 +227,9 @@ function BasketballDropdown() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full left-0 mt-0 w-[600px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
+          className="absolute top-full left-0 mt-0 w-[850px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
         >
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-5 gap-6">
             {sections.map((section, idx) => (
               <div key={idx}>
                 <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">{section.title}</h3>
@@ -218,7 +237,7 @@ function BasketballDropdown() {
                   {section.items.map((item, iIdx) => (
                     <Link
                       key={iIdx}
-                      href={`/search?q=${encodeURIComponent(item)}`}
+                      href={item === "Teams" ? "/teams" : item === "Stadiums" ? "/stadium" : `/search?q=${encodeURIComponent(item)}`}
                       className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                     >
                       {item}
@@ -226,6 +245,129 @@ function BasketballDropdown() {
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// Ticket + Hotel Dropdown Component
+function TicketHotelDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA"];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Link
+        href="/ticket-hotel"
+        className="flex items-center gap-1 text-[13px] font-semibold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer whitespace-nowrap"
+      >
+        Ticket + Hotel
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </Link>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full left-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
+        >
+          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Nations</h3>
+          <div className="flex flex-col gap-1">
+            {nations.map((nation, idx) => (
+              <Link key={idx} href={`/locations?search=${nation}`} className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">
+                {nation}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// Ticket + Hotel + Flight Dropdown Component
+function TicketHotelFlightDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const nations = ["England", "Spain", "Italy", "Germany", "France", "USA"];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Link
+        href="/ticket-hotel-flight"
+        className="flex items-center gap-1 text-[13px] font-semibold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer whitespace-nowrap"
+      >
+        Ticket + Hotel + Flight
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </Link>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full left-0 mt-0 w-[200px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
+        >
+          <h3 className="text-gray-900 font-bold text-xs mb-3 uppercase tracking-wider opacity-50">Nations</h3>
+          <div className="flex flex-col gap-1">
+            {nations.map((nation, idx) => (
+              <Link key={idx} href={`/locations?search=${nation}`} className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">
+                {nation}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// Other Sports Dropdown Component
+function OtherSportsDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const sports = [
+    "Football", "Basketball", "Tennis", "Golf", 
+    "F1", "Cricket", "Boxing", "Rugby", 
+    "MMA"
+  ];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <Link
+        href="/"
+        className="flex items-center gap-1 text-[13px] font-semibold text-gray-800 hover:text-[#0062E6] transition-colors cursor-pointer whitespace-nowrap"
+      >
+        Other Sports
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </Link>
+
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute top-full left-0 mt-0 w-[240px] bg-white border border-gray-200 rounded-lg shadow-2xl p-6 z-[120]"
+        >
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+            {sports.map((sport, idx) => (
+              <Link key={idx} href={`/search?q=${sport}`} className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors font-medium">
+                {sport}
+              </Link>
             ))}
           </div>
         </motion.div>
@@ -258,7 +400,7 @@ export function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 w-full z-100 flex flex-col font-sans">
+    <div className="fixed top-0 w-full z-[1000] flex flex-col font-sans">
       <TopBanner isVisible={isBannerVisible} onClose={() => setIsBannerVisible(false)} />
 
       <motion.nav
@@ -279,29 +421,14 @@ export function Navbar() {
             />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             <FootballDropdown />
             <BasketballDropdown />
             
-            <div className="flex items-center gap-3 xl:gap-4 border-l border-gray-100 pl-4 xl:pl-5">
-              <Link
-                href="/ticket-hotel"
-                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
-              >
-                Tickets + Hotel
-              </Link>
-              <Link
-                href="/ticket-hotel-flight"
-                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
-              >
-                Hotel + Flight
-              </Link>
-              <Link
-                href="/"
-                className="text-[14px] font-bold text-gray-800 hover:text-[#0062E6] transition-colors whitespace-nowrap"
-              >
-                Other Sports
-              </Link>
+            <div className="flex items-center gap-1 xl:gap-2 border-l border-gray-100 pl-2 xl:pl-3">
+              <TicketHotelDropdown />
+              <TicketHotelFlightDropdown />
+              <OtherSportsDropdown />
             </div>
           </div>
 

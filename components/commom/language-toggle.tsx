@@ -74,7 +74,7 @@ export function LanguageToggle() {
               <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[100px]">
+          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[100px] z-[1100]">
             {currencies.map((curr) => (
               <DropdownMenuItem
                 key={curr.code}
@@ -109,7 +109,7 @@ export function LanguageToggle() {
               <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} />
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[140px]">
+          <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[140px] z-[1100]">
             {languages.map((lang) => (
               <DropdownMenuItem
                 key={lang.code}
