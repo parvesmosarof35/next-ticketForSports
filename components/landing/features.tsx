@@ -79,11 +79,11 @@ export function Features() {
             </Link>
           </div>
 
-          <div className="relative w-full">
-            {/* Left Fade Effect */}
-            <div className="absolute top-0 bottom-0 left-0 md:w-32 w-5 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-            {/* Right Fade Effect */}
-            <div className="absolute top-0 bottom-0 right-0 md:w-32 w-5 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="relative w-full">
+          {/* Left Fade Effect */}
+          <div className="absolute top-0 bottom-0 left-0 w-24 md:w-60 bg-gradient-to-r from-[#F5F5F7] via-[#F5F5F7]/20 to-transparent z-10 pointer-events-none" />
+          {/* Right Fade Effect */}
+          <div className="absolute top-0 bottom-0 right-0 w-24 md:w-60 bg-gradient-to-l from-[#F5F5F7] via-[#F5F5F7]/20 to-transparent z-10 pointer-events-none" />
 
             <Carousel
               opts={{

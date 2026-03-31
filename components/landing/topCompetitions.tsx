@@ -46,23 +46,35 @@ const competitions = [
     image: "/cup.png",
     location: "USA, Mexico, Canada",
   },
+  {
+    name: "World cup 2026",
+    tickets: "123827 tickets",
+    image: "/cup.png",
+    location: "USA, Mexico, Canada",
+  },
+  {
+    name: "World cup 2026",
+    tickets: "123827 tickets",
+    image: "/cup.png",
+    location: "USA, Mexico, Canada",
+  },
 ];
 
 function CompetitionCard({ competition }: { competition: typeof competitions[0] }) {
   return (
-    <div className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[340px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0">
+    <div className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[285px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0">
 
       {/* Header */}
-      <div className="flex flex-col items-center pt-2 transition-transform group-hover:scale-105">
+      <div className="flex flex-col items-center pt-0 transition-transform group-hover:scale-105">
         <h3 className="text-[#05305F] text-xl font-bold leading-tight">{competition.name}</h3>
-        <p className="text-gray-400 text-sm mt-1">
+        <p className="text-gray-400 text-xs mt-1">
           {competition.tickets.split(' ')[0]} <span className="text-[#05305F]/60">tickets</span>
         </p>
       </div>
 
       {/* Image */}
       <div className="flex justify-center items-center flex-grow transition-transform duration-500 group-hover:scale-110">
-        <div className="w-[120px] h-[160px] relative">
+        <div className="w-[100px] h-[120px] relative">
           <Image
             src={competition.image}
             alt={competition.name}
@@ -74,7 +86,7 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
 
       {/* Location Info */}
       <div className="flex items-center gap-2 mb-4 transition-transform group-hover:scale-105">
-        <MapPin className="w-5 h-5 text-black" />
+        <MapPin className="w-5 h-5 text-black" fill="#cae2ffff" />
         <span className="text-black text-sm">{competition.location}</span>
       </div>
 

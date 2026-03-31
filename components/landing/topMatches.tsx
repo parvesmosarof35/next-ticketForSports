@@ -17,7 +17,7 @@ const montserrat = Montserrat({ subsets: ["latin"], weight: ["800"] });
 
 import Link from "next/link"; // Add import
 
-const matches = [
+export const matches = [
   {
     id: 1,
     date: "NOV 30",
@@ -75,10 +75,10 @@ const matches = [
 ];
 
 
-function MatchCard({ match }: { match: typeof matches[0] }) {
+export function MatchCard({ match }: { match: typeof matches[0] }) {
   return (
     <div
-      className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[340px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0"
+      className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[300px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0"
     >
       {/* Top Row: Date & Location */}
       <div className="w-full flex justify-between items-start">
@@ -98,7 +98,7 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       </h3>
 
       {/* Teams / Players Section */}
-      <div className="flex items-center justify-between w-full gap-2 my-2 px-1">
+      <div className="flex items-center justify-between w-full gap-2 my-2 mt-5 px-1">
         {/* Team 1 Player */}
         <div className="relative">
           <div className="w-[84px] h-[84px] flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
@@ -133,9 +133,9 @@ function MatchCard({ match }: { match: typeof matches[0] }) {
       </div>
 
       {/* Price Section */}
-      <div className="flex items-center gap-2 mt-auto mb-1 transition-transform group-hover:scale-105">
-        <span className="text-gray-500 text-[10px] font-semibold tracking-wide uppercase">From</span> 
-        <span className="font-bold text-lg">€{match.price}</span>
+      <div className="flex items-center gap-2 my-3 transition-transform group-hover:scale-105">
+        <span className="text-gray-800 text-[9px] font-semibold tracking-wide uppercase">From</span> 
+        <span className="font-bold text-2xl">€{match.price}</span>
       </div>
 
       {/* Button */}
