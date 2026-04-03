@@ -78,7 +78,7 @@ export const matches = [
 export function MatchCard({ match }: { match: typeof matches[0] }) {
   return (
     <div
-      className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[300px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0"
+      className="mt-10 bg-white rounded-[32px] p-5 w-[280px] min-w-[280px] h-[310px] overflow-hidden relative shadow-lg border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center justify-between mx-auto group cursor-pointer shrink-0"
     >
       {/* Top Row: Date & Location */}
       <div className="w-full flex justify-between items-start">
@@ -134,14 +134,14 @@ export function MatchCard({ match }: { match: typeof matches[0] }) {
 
       {/* Price Section */}
       <div className="flex items-center gap-2 my-3 transition-transform group-hover:scale-105">
-        <span className="text-gray-800 text-[9px] font-semibold tracking-wide uppercase">From</span> 
+        <span className="text-gray-400 text-[9px] font-semibold tracking-wide">From</span> 
         <span className="font-bold text-2xl">€{match.price}</span>
       </div>
 
       {/* Button */}
       <Link href={`/football/booking/${match.id}`} className="w-full flex justify-center mb-1">
         <Button className="w-[85%] h-[44px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-[15px] font-semibold shadow-md hover:shadow-lg relative overflow-hidden group/btn cursor-pointer">
-          <span className="relative z-10 flex gap-1">Find tickets </span>
+          <span className="relative z-10 flex gap-1">FIND TICKETS </span>
           <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
         </Button>
       </Link>
