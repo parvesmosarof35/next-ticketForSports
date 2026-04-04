@@ -43,7 +43,7 @@ const sportsEvents = [
 
 export function TopSportsEvents() {
   return (
-    <section className={`py-20 bg-[#05305F] ${montserrat.className}`}>
+    <section className={`py-10 bg-[#05305F] ${montserrat.className}`}>
       <div className="container mx-auto px-4">
         {/* Header with title */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">

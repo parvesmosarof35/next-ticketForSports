@@ -78,7 +78,7 @@ const fixtures = [
 
 export function TopFixtures() {
   return (
-    <section className="py-20 bg-[#F5F5F7]">
+    <section className="py-10 bg-[#F5F5F7]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className={`text-3xl font-bold text-[#05305F] ${montserrat.className}`}>Top Fixtures</h2>

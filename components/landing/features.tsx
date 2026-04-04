@@ -60,7 +60,7 @@ const cities = [
 
 export function Features() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="w-full mx-auto">
         <div className="relative">
 
