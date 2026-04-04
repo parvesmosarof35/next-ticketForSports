@@ -165,7 +165,7 @@ export default function FootballPage() {
                 {/* Info & Price */}
                 <div className="flex flex-col items-end gap-1 shrink-0">
                   <div className="text-[9px] md:text-[10px] text-[#9B9B9B] font-black uppercase tracking-widest leading-none mr-2">Starting from</div>
-                  <Link href={`/matches/${ticket.id}`}>
+                  <Link href={`/football/booking/${ticket.id}`}>
                     <Button
                       className="h-[50px] md:h-[64px] rounded-2xl flex items-center gap-0 p-0 overflow-hidden shadow-xl hover:shadow-2xl transition-all border-none group/btn"
                       style={{ backgroundColor: '#E23B2B' }}

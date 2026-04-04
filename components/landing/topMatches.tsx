@@ -134,7 +134,7 @@ export function MatchCard({ match }: { match: typeof matches[0] }) {
 
       {/* Price Section */}
       <div className="flex items-center gap-2 my-3 transition-transform group-hover:scale-105">
-        <span className="text-gray-400 text-[9px] font-semibold tracking-wide">From</span> 
+        <span className="text-gray-400 text-[9px] font-semibold tracking-wide">From</span>
         <span className="font-bold text-2xl">€{match.price}</span>
       </div>
 
@@ -177,7 +177,7 @@ export function TopMatches() {
           >
             <CarouselContent className="-ml-2">
               {matches.map((match, index) => (
-                <CarouselItem key={index} className="pl-2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6">
+                <CarouselItem key={index} className="pl-2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1650px]:basis-1/6 min-[1920px]:basis-1/7 min-[2200px]:basis-1/1">
                   <MatchCard match={match} />
                 </CarouselItem>
               ))}

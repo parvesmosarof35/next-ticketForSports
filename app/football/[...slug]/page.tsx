@@ -6,6 +6,7 @@ import { Footer } from '@/components/commom/footer';
 import { Testimonials } from '@/components/landing/testimonials';
 import { WhyChoose } from '@/components/landing/why-choose';
 import { Search, Settings, MapPin } from 'lucide-react';
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -157,10 +158,12 @@ export default function FootballSlugPage() {
                   {/* Price Button */}
                   <div className="flex flex-col items-end gap-2 w-full md:w-auto">
                     <span className="text-[10px] text-gray-400 font-black tracking-widest uppercase mr-3">Starting from</span>
-                    <Button className={`w-full md:w-auto bg-[#0047AB] hover:bg-[#003685] text-white rounded-2xl px-10 py-8 shadow-2xl shadow-blue-300/40 flex items-center gap-4 group/btn transition-all duration-300 hover:scale-105 border-b-4 border-blue-900 ${montserrat.className}`}>
-                      <span className="text-3xl font-black">€ {ticket.price}</span>
-                      <span className="text-blue-200 text-xs font-black uppercase tracking-widest border-l border-blue-400/30 pl-4 transition-transform group-hover/btn:translate-x-1">View</span>
-                    </Button>
+                    <Link href={`/football/booking/${ticket.id}`} className="w-full md:w-auto">
+                      <Button className={`w-full md:w-auto bg-[#0047AB] hover:bg-[#003685] text-white rounded-2xl px-10 py-8 shadow-2xl shadow-blue-300/40 flex items-center gap-4 group/btn transition-all duration-300 hover:scale-105 border-b-4 border-blue-900 ${montserrat.className}`}>
+                        <span className="text-3xl font-black">€ {ticket.price}</span>
+                        <span className="text-blue-200 text-xs font-black uppercase tracking-widest border-l border-blue-400/30 pl-4 transition-transform group-hover/btn:translate-x-1">View</span>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
