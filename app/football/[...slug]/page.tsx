@@ -65,7 +65,7 @@ export default function FootballSlugPage() {
     <div className={`min-h-screen bg-[#F9FAFB] pb-20 ${montserrat.className}`}>
 
       {/* Hero Header */}
-      <div className="bg-[#051D3B] py-20 px-4 pt-32 relative overflow-hidden">
+      <div className="bg-[#051D3B] pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="container mx-auto relative z-10">
           <div className="flex items-center gap-4 mb-4">
@@ -80,7 +80,7 @@ export default function FootballSlugPage() {
 
       <div className="container mx-auto px-4 -mt-12 relative z-20">
         <div className="bg-white rounded-[32px] shadow-2xl shadow-gray-200/50 p-8 mb-12 border border-gray-100/50 backdrop-blur-xl">
-          <h2 className="text-3xl font-black text-[#05305F] mb-8 tracking-tight">Compare Football Ticket Prices</h2>
+          <h2 className="text-3xl font-black text-black mb-8 tracking-tight">Compare Football Ticket Prices</h2>
 
           {/* Filters */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 pb-8 border-b border-gray-100">

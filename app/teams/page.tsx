@@ -33,7 +33,7 @@ export default function TeamsPage() {
   return (
     <div className={`min-h-screen bg-[#F9FAFB] ${montserrat.className}`}>
       {/* Header Section */}
-      <div className="bg-[#051D3B] pt-32 pb-24 px-4 text-center relative overflow-hidden">
+      <div className="bg-[#051D3B] pt-32 pb-20 px-4 text-center relative overflow-hidden">
         {/* Background glow shadow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -41,7 +41,7 @@ export default function TeamsPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight"
+            className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
           >
             Teams
           </motion.h1>
@@ -74,7 +74,7 @@ export default function TeamsPage() {
       </div>
 
       {/* Teams Grid */}
-      <div className="container mx-auto px-4 py-20 -mt-16 relative z-20">
+      <div className="container mx-auto px-4 max-w-7xl py-20 -mt-16 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredTeams.map((team, idx) => (
             <motion.div

@@ -175,9 +175,9 @@ export function TopMatches() {
             }}
             className="w-full max-w-full"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-2">
               {matches.map((match, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6">
+                <CarouselItem key={index} className="pl-2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6">
                   <MatchCard match={match} />
                 </CarouselItem>
               ))}

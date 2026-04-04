@@ -82,11 +82,11 @@ export default function FootballPage() {
       <Navbar />
 
       {/* Hero Header */}
-      <div className="bg-[#051D3B] pt-40 pb-24 relative overflow-hidden">
+      <div className="bg-[#051D3B] pt-32 pb-20 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="container mx-auto relative z-10 px-4">
           <div className="flex items-center gap-6 mb-6">
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none uppercase">Football Tickets</h1>
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">Football Tickets</h1>
           </div>
           <p className="text-gray-400 max-w-2xl text-xl font-medium leading-relaxed">
             Find and compare official ticket prices for all major football leagues and tournaments globally.
@@ -94,7 +94,7 @@ export default function FootballPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 -mt-16 relative z-20 pb-32">
+      <div className="container mx-auto px-4 max-w-7xl -mt-16 relative z-20 pb-32">
         <div className="bg-white rounded-[40px] shadow-[0_32px_80px_rgba(0,0,0,0.06)] p-10 md:p-16 border border-gray-100">
 
           {/* Header & Filters */}

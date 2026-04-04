@@ -124,9 +124,9 @@ export function TopCompetitions() {
             }}
             className="w-full max-w-full"
           >
-            <CarouselContent className="-ml-4 pb-12">
+            <CarouselContent className="-ml-2 pb-12">
               {competitions.map((competition, index) => (
-                <CarouselItem key={index} className="pl-4 basis-auto">
+                <CarouselItem key={index} className="pl-2 basis-auto">
                   <CompetitionCard competition={competition} />
                 </CarouselItem>
               ))}

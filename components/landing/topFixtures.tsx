@@ -101,11 +101,11 @@ export function TopFixtures() {
             }}
             className="w-full max-w-full"
           >
-            <CarouselContent className="-ml-4 pb-12">
+            <CarouselContent className="-ml-2 pb-12">
               {fixtures.map((fixture, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-4 basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6"
+                  className="pl-2 basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1600px]:basis-1/6"
                 >
                   <MatchCard match={fixture as any} />
                 </CarouselItem>

@@ -125,7 +125,7 @@ export default function ClubPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className={`relative bg-[#051D3B] pt-40 pb-24 overflow-hidden border-b border-white/10`}>
+      <div className={`relative bg-[#051D3B] pt-32 pb-20 overflow-hidden border-b border-white/10`}>
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <Image src={club.banner} alt="Stadium" fill className="object-cover" />
         </div>
@@ -135,11 +135,11 @@ export default function ClubPage() {
           <div className="flex flex-col md:flex-row items-center gap-10">
 
             <div className="text-center md:text-left">
-              <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-lg">{club.name}</h1>
+              <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight drop-shadow-lg">{club.name}</h1>
               <div className="flex flex-wrap justify-center md:justify-start gap-8 text-white/70 font-bold uppercase tracking-widest text-xs">
-                <span className="flex items-center gap-3"><MapPin className="w-5 h-5 text-blue-400" /> {club.stadium}</span>
-                <span className="flex items-center gap-3"><Users className="w-5 h-5 text-blue-400" /> {club.capacity} Fans</span>
-                <span className="flex items-center gap-3"><Calendar className="w-5 h-5 text-blue-400" /> Est. {club.founded}</span>
+                <span>{club.stadium}</span>
+                <span>{club.capacity} Fans</span>
+                <span>Est. {club.founded}</span>
               </div>
             </div>
           </div>
@@ -178,33 +178,35 @@ export default function ClubPage() {
               {clubTickets.map((ticket) => (
                 <div
                   key={ticket.id}
-                  className="bg-white rounded-[32px] p-8 flex flex-col md:flex-row items-center justify-between gap-8 border-2 border-transparent hover:border-[#0062E6]/30 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative group overflow-hidden"
-                  style={{ '--hover-color': club.themeColor } as any}
+                  className="group bg-white rounded-[32px] p-6 md:p-8 flex flex-row items-center justify-between gap-4 md:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden"
                 >
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,var(--hover-color),transparent_70%)] opacity-0 group-hover:opacity-[0.03] transition-opacity" />
+                  {/* Dynamic Team Color Border Line */}
+                  <div
+                    className="absolute bottom-0 left-0 h-1 transition-all duration-500 group-hover:w-full w-0"
+                    style={{ backgroundColor: club.themeColor }}
+                  />
 
-                  <div className="flex items-center gap-10 flex-1 w-full md:w-auto">
+                  <div className="flex items-center gap-4 md:gap-8 flex-1">
                     {/* Date */}
-                    <div className="flex flex-col items-center justify-center pr-10 border-r border-gray-100 min-w-[100px]">
-                      <span className="text-4xl font-black text-black leading-none">{ticket.date.split(' ')[0]}</span>
-                      <span className="text-sm font-black text-[#9B9B9B] uppercase tracking-widest mt-1">{ticket.date.split(' ')[1]}</span>
+                    <div className="flex flex-col items-center justify-center pr-4 md:pr-8 border-r border-gray-100 min-w-[70px] md:min-w-[90px]">
+                      <span className="text-3xl md:text-4xl font-black text-black leading-none tracking-tighter">{ticket.date.split(' ')[0]}</span>
+                      <span className="text-[10px] md:text-xs font-black text-[#9B9B9B] uppercase tracking-widest mt-1">{ticket.date.split(' ')[1]}</span>
                     </div>
 
                     {/* Match Identity */}
-                    <div className="flex-1">
-                      <div className="flex items-center gap-4 flex-wrap text-2xl md:text-3xl font-black text-black tracking-tight mb-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 md:gap-4 text-xl md:text-3xl font-black text-black tracking-tight mb-2 truncate">
                         <span>{ticket.team1}</span>
-                        <span className="text-gray-300 font-medium text-lg">vs</span>
+                        <span className="text-gray-400 font-medium text-sm md:text-xl">vs</span>
                         <span>{ticket.team2}</span>
                       </div>
-                      <div className="flex items-center flex-wrap gap-4">
-                        <span className="text-[#0062E6] font-black uppercase text-xs tracking-widest leading-none">{ticket.time}</span>
-                        <div className="h-4 w-[1.5px] bg-gray-200" />
-                        <span className="text-[#4A4A4A] font-bold text-[13px] uppercase tracking-tight">{club.stadium}, {club.stadium.includes("London") ? "London" : "Manchester"}</span>
-                        <div className="h-4 w-[1.5px] bg-gray-200" />
+                      <div className="flex items-center gap-2 md:gap-3 text-[10px] md:text-xs font-bold text-[#4A4A4A] whitespace-nowrap overflow-hidden">
+                        <span className="text-blue-600 font-black">{ticket.time}</span>
+                        <span className="text-gray-200">|</span>
+                        <span className="truncate">{club.stadium}, {club.stadium.includes("London") ? "London" : "Manchester"}</span>
+                        <span className="text-gray-200">|</span>
                         <div
-                          className="px-3 py-1 rounded-md text-[9px] font-black text-white tracking-[0.1em] uppercase shadow-sm"
+                          className="px-2 py-0.5 rounded-md text-[9px] font-black text-white uppercase tracking-tighter shrink-0"
                           style={{ backgroundColor: leagueColors[ticket.league] || '#3D195B' }}
                         >
                           {ticket.league}
@@ -214,31 +216,22 @@ export default function ClubPage() {
                   </div>
 
                   {/* Price & Action */}
-                  <div className="flex items-center gap-8 shrink-0 w-full md:w-auto">
-                    <div className="text-right hidden xl:block">
-                      <div className="text-[10px] text-[#9B9B9B] font-black uppercase tracking-[0.15em] mb-1">Starting from</div>
-                      <div className="text-2xl font-black text-black leading-none">€ {ticket.price}</div>
-                    </div>
-                    <Link href="/football" className="w-full md:w-auto">
+                  <div className="flex flex-col items-end gap-1 shrink-0">
+                    <div className="text-[9px] md:text-[10px] text-[#9B9B9B] font-black uppercase tracking-widest leading-none mr-2">Starting from</div>
+                    <Link href={`/matches/${ticket.id}`} className="w-full md:w-auto">
                       <Button
-                        className="h-[64px] rounded-2xl flex items-center gap-0 overflow-hidden group/btn shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-95 transition-all w-full p-0"
+                        className="h-[50px] md:h-[64px] rounded-2xl flex items-center gap-0 p-0 overflow-hidden shadow-xl hover:shadow-2xl transition-all border-none group/btn"
                         style={{ backgroundColor: club.themeColor }}
                       >
-                        <div className="flex flex-col items-center justify-center px-6 h-full border-r border-white/10 shrink-0">
-                          <span className="text-2xl md:text-3xl font-black italic text-white flex gap-1">€ {ticket.price}</span>
+                        <div className="flex items-center justify-center px-5 md:px-8 h-full border-r border-white/10 shrink-0">
+                          <span className="text-xl md:text-2xl font-black text-white leading-none">€ {ticket.price}</span>
                         </div>
-                        <div className="flex items-center justify-center px-6 h-full bg-black/5 hover:bg-black/10 transition-colors uppercase font-black text-xs md:text-sm tracking-widest text-white/90">
+                        <div className="flex items-center justify-center px-4 md:px-6 h-full bg-black/5 hover:bg-black/10 transition-colors uppercase font-bold text-[10px] md:text-xs tracking-widest text-white">
                           View
                         </div>
                       </Button>
                     </Link>
                   </div>
-
-                  {/* Card Border Line matching Team Color */}
-                  <div
-                    className="absolute bottom-0 left-0 h-1 transition-all duration-500 group-hover:w-full w-0"
-                    style={{ backgroundColor: club.themeColor }}
-                  />
                 </div>
               ))}
             </div>

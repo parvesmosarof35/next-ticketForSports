@@ -69,9 +69,9 @@ export function LanguageToggle() {
       >
         <DropdownMenu open={isCurrencyOpen} onOpenChange={setIsCurrencyOpen}>
           <DropdownMenuTrigger asChild>
-            <div className="flex items-center justify-between gap-2 px-3 py-1.5 min-w-[80px] h-[36px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
-              <span className="text-lg font-bold text-black">{currency.symbol}</span>
-              <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
+            <div className="flex items-center justify-between gap-1.5 px-2.5 py-1 min-w-[70px] h-[32px] bg-white border border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
+              <span className="text-base font-bold text-black">{currency.symbol}</span>
+              <ChevronDown className={`w-3.5 h-3.5 text-[#1E90FF] stroke-[3px] transition-transform ${isCurrencyOpen ? 'rotate-180' : ''}`} />
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[100px] z-[1100]">
@@ -99,14 +99,14 @@ export function LanguageToggle() {
       >
         <DropdownMenu open={isLanguageOpen} onOpenChange={setIsLanguageOpen}>
           <DropdownMenuTrigger asChild>
-            <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 min-w-[100px] h-[36px] bg-white border-2 border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full overflow-hidden shadow-sm border border-gray-100 flex-shrink-0">
+            <div className="flex items-center justify-between gap-2 px-2 py-1 min-w-[90px] h-[32px] bg-white border border-[#1E90FF] rounded-full cursor-pointer hover:bg-blue-50 transition-all shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <div className="w-5 h-5 rounded-full overflow-hidden shadow-sm border border-gray-100 flex-shrink-0">
                   {language.flag}
                 </div>
-                <span className="text-lg font-bold text-[#05305F] tracking-tight leading-none uppercase">{language.code}</span>
+                <span className="text-base font-bold text-[#05305F] tracking-tight leading-none uppercase">{language.code}</span>
               </div>
-              <ChevronDown className={`w-4 h-4 text-[#1E90FF] stroke-[3px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-3.5 h-3.5 text-[#1E90FF] stroke-[3px] transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} />
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="rounded-2xl border-2 border-[#1E90FF]/20 overflow-hidden min-w-[140px] z-[1100]">

@@ -410,7 +410,7 @@ export function Navbar() {
         className={`w-full relative px-4 sm:px-6 lg:px-0 transition-all duration-300 border-b border-gray-100 bg-white shadow-sm ${isBannerVisible ? 'py-2 md:py-2.5' : 'py-3 md:py-4'
           }`}
       >
-        <div className="container mx-auto px-1 sm:px-4 lg:px-8 xl:px-4 flex items-center justify-between max-w-6xl">
+        <div className="container mx-auto px-1 sm:px-4 lg:px-8 xl:px-4 flex items-center justify-between max-w-7xl">
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Image
               src="/navlogolight.png"
@@ -481,7 +481,7 @@ export function Navbar() {
               <Link href="/signin">
                   <Button
                   variant="default"
-                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-3 md:px-6 h-9 md:h-11 rounded-xl text-xs md:text-sm uppercase tracking-wider"
+                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold px-3 md:px-5 h-8 md:h-10 rounded-lg text-[10px] md:text-xs uppercase tracking-wider"
                 >
                   Sign In
                 </Button>
