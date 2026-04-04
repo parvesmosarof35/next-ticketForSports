@@ -156,9 +156,10 @@ export function TopMatches() {
         <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
           <h2 className={`text-3xl font-bold text-white ${montserrat.className}`}>Top Football Matches</h2>
           <Link href="/football">
-            <Button variant="outline" className="border-white/30 text-white hover:bg-white hover:text-[#05305F] font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all bg-transparent">
+            <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50">
               View All <ArrowRight className="w-4 h-4" />
             </Button>
+
           </Link>
         </div>
 
