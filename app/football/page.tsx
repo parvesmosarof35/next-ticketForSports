@@ -12,6 +12,7 @@ import { Montserrat } from "next/font/google";
 import { Navbar } from "@/components/commom/navbar";
 import { Footer } from "@/components/commom/footer";
 import Link from "next/link";
+import { HeroSection } from "@/components/commom/hero-section";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
 
@@ -81,18 +82,10 @@ export default function FootballPage() {
     <div className={`min-h-screen bg-[#F9FAFB] ${montserrat.className}`}>
       <Navbar />
 
-      {/* Hero Header */}
-      <div className="bg-[#051D3B] pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="container mx-auto relative z-10 px-4">
-          <div className="flex items-center gap-6 mb-6">
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">Football Tickets</h1>
-          </div>
-          <p className="text-gray-400 max-w-2xl text-xl font-medium leading-relaxed">
-            Find and compare official ticket prices for all major football leagues and tournaments globally.
-          </p>
-        </div>
-      </div>
+      <HeroSection
+        title="Football Tickets"
+        description="Find and compare official ticket prices for all major football leagues and tournaments globally."
+      />
 
       <div className="container mx-auto px-4 max-w-7xl -mt-16 relative z-20 pb-32">
         <div className="bg-white rounded-[40px] shadow-[0_32px_80px_rgba(0,0,0,0.06)] p-10 md:p-16 border border-gray-100">
@@ -100,7 +93,7 @@ export default function FootballPage() {
           {/* Header & Filters */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-16">
             <div>
-              <h2 className="text-4xl font-black text-black tracking-tight mb-2">Match Fixtures</h2>
+              <h2 className="text-4xl font-black text-[#05305F] tracking-tight mb-2">Match fixtures</h2>
               <p className="text-[#9B9B9B] font-bold uppercase tracking-widest text-xs">Verified Tickets & Safe Checkout</p>
             </div>
 

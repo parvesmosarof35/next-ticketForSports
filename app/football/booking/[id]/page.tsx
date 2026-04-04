@@ -105,7 +105,7 @@ export default function BookingPage() {
   const totalPrice = selectedTicket ? selectedTicket.price * seatCount : 0;
 
   return (
-    <div className={`min-h-screen bg-[#F5F7FA] ${montserrat.className} text-[#05305F]`}>
+    <div className={`min-h-screen mt-20 md:mt-28 bg-[#F5F7FA] ${montserrat.className} text-[#05305F]`}>
       
       {/* Header */}
       <div className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">

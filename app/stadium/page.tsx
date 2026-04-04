@@ -9,6 +9,7 @@ import { Search, MapPin } from "lucide-react";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import { motion } from "framer-motion";
+import { HeroSection } from "@/components/commom/hero-section";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
@@ -138,45 +139,27 @@ function StadiumsContent() {
   return (
     <div className={`min-h-screen bg-[#F9FAFB] ${montserrat.className}`}>
       {/* Hero Section */}
-      <div className="bg-[#051D3B] pt-32 pb-20 px-4 text-center relative overflow-hidden">
-        {/* Background glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-          >
-            Stadiums
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-400 text-xl font-medium mb-10 max-w-2xl mx-auto"
-          >
-            Discover the world's most iconic venues and compare ticket prices for every event on TicketforSport.com
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative max-w-xl mx-auto mb-12"
-          >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
-              <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
-              <Input
-                placeholder="Search for a stadium..."
-                className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-lg font-medium"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <HeroSection
+        title="Stadiums"
+        description="Discover the world's most iconic venues and compare ticket prices for every event on TicketforSport.com"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="relative max-w-xl"
+        >
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
+            <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
+            <Input
+              placeholder="Search for a stadium..."
+              className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-lg font-medium"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </motion.div>
+      </HeroSection>
 
       {/* Grid Content */}
       <div className="container mx-auto px-4 max-w-7xl py-20 -mt-16 relative z-20">
@@ -198,7 +181,7 @@ function StadiumsContent() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <span className="text-white font-bold inline-flex items-center gap-2">
-                    <MapPin className="w-4 h-4" /> View Map
+                    <MapPin className="w-4 h-4" /> View map
                   </span>
                 </div>
               </div>

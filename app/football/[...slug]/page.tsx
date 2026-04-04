@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
+import { HeroSection } from "@/components/commom/hero-section";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
@@ -64,23 +65,14 @@ export default function FootballSlugPage() {
   return (
     <div className={`min-h-screen bg-[#F9FAFB] pb-20 ${montserrat.className}`}>
 
-      {/* Hero Header */}
-      <div className="bg-[#051D3B] pt-32 pb-20 px-4 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="container mx-auto relative z-10">
-          <div className="flex items-center gap-4 mb-4">
-      
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">Football Tickets</h1>
-          </div>
-          <p className="text-gray-400 max-w-2xl text-lg leading-relaxed font-medium">
-            Find tickets to your favorite football leagues and tournaments. Secure your seat today with our verified sellers.
-          </p>
-        </div>
-      </div>
+      <HeroSection
+        title="Football Tickets"
+        description="Find and compare official ticket prices for all major football leagues and tournaments globally."
+      />
 
       <div className="container mx-auto px-4 -mt-12 relative z-20">
         <div className="bg-white rounded-[32px] shadow-2xl shadow-gray-200/50 p-8 mb-12 border border-gray-100/50 backdrop-blur-xl">
-          <h2 className="text-3xl font-black text-black mb-8 tracking-tight">Compare Football Ticket Prices</h2>
+          <h2 className="text-3xl font-black text-[#05305F] mb-8 tracking-tight">Compare football ticket prices</h2>
 
           {/* Filters */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 pb-8 border-b border-gray-100">
@@ -166,7 +158,7 @@ export default function FootballSlugPage() {
                   <div className="flex flex-col items-end gap-2 w-full md:w-auto">
                     <span className="text-[10px] text-gray-400 font-black tracking-widest uppercase mr-3">Starting from</span>
                     <Button className={`w-full md:w-auto bg-[#0047AB] hover:bg-[#003685] text-white rounded-2xl px-10 py-8 shadow-2xl shadow-blue-300/40 flex items-center gap-4 group/btn transition-all duration-300 hover:scale-105 border-b-4 border-blue-900 ${montserrat.className}`}>
-                      <span className="text-3xl font-black italic">€ {ticket.price}</span>
+                      <span className="text-3xl font-black">€ {ticket.price}</span>
                       <span className="text-blue-200 text-xs font-black uppercase tracking-widest border-l border-blue-400/30 pl-4 transition-transform group-hover/btn:translate-x-1">View</span>
                     </Button>
                   </div>

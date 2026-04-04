@@ -3,20 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Trophy } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Montserrat } from "next/font/google";
 import { motion } from "framer-motion";
+import { HeroSection } from "@/components/commom/hero-section";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "800"] });
 
 // Mock Data for Teams
 const teams = [
-  { id: 1, name: "Liverpool", logo: "/Top Football Clubs (2).png", slug: "liverpool" },
+  { id: 1, name: "Liverpool", logo: "/Top Football Clubs (4).png", slug: "liverpool" },
   { id: 2, name: "FC Barcelona", logo: "/Top Football Clubs (1).png", slug: "fc-barcelona" },
   { id: 3, name: "Arsenal", logo: "/Top Football Clubs (3).png", slug: "arsenal" },
-  { id: 4, name: "Manchester United", logo: "/Top Football Clubs (4).png", slug: "manchester-united" },
+  { id: 4, name: "Manchester United", logo: "/Top Football Clubs (2).png", slug: "manchester-united" },
   { id: 5, name: "Chelsea", logo: "/team (4).png", slug: "chelsea" },
   { id: 6, name: "Manchester City", logo: "/team (1).png", slug: "manchester-city" },
   { id: 7, name: "Atletico Madrid", logo: "/team (2).png", slug: "atletico-madrid" },
@@ -33,45 +34,27 @@ export default function TeamsPage() {
   return (
     <div className={`min-h-screen bg-[#F9FAFB] ${montserrat.className}`}>
       {/* Header Section */}
-      <div className="bg-[#051D3B] pt-32 pb-20 px-4 text-center relative overflow-hidden">
-        {/* Background glow shadow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-          >
-            Teams
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-400 text-xl font-medium mb-10 max-w-2xl mx-auto"
-          >
-            Find and compare official ticket prices for the world's greatest football teams.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative max-w-xl mx-auto"
-          >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
-              <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
-              <Input
-                placeholder="Search for a team..."
-                className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-lg font-medium"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <HeroSection
+        title="Teams"
+        description="Find and compare official ticket prices for the world's greatest football teams."
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="relative max-w-xl"
+        >
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
+            <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
+            <Input
+              placeholder="Search for a team..."
+              className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-full flex-1 focus-visible:ring-0 text-lg font-medium"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </motion.div>
+      </HeroSection>
 
       {/* Teams Grid */}
       <div className="container mx-auto px-4 max-w-7xl py-20 -mt-16 relative z-20">
@@ -82,29 +65,37 @@ export default function TeamsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-[2.5rem] p-10 shadow-xl border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 flex flex-col items-center text-center group cursor-pointer relative overflow-hidden"
+              className="group relative aspect-square bg-white rounded-[32px] p-8 shadow-xl border border-gray-100/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
-              {/* Decorative background element */}
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Trophy className="w-20 h-20 text-[#05305F]" />
+              {/* Bottom Accent Bar */}
+              <div className="absolute bottom-0 left-0 w-full h-2 bg-[#05305F] group-hover:bg-[#B2955C] transition-colors duration-500" />
+              
+              <div className="flex flex-col items-center justify-between h-full w-full">
+                {/* Team Logo */}
+                <div className="flex-1 flex items-center justify-center w-full min-h-0">
+                  <div className="relative w-32 h-32 md:w-36 md:h-36 transition-all duration-700 group-hover:scale-110">
+                    <Image
+                      src={team.logo}
+                      alt={team.name}
+                      fill
+                      className="object-contain drop-shadow-xl"
+                    />
+                  </div>
+                </div>
+
+                {/* Team Info */}
+                <div className="w-full text-center mt-6">
+                  <h3 className="text-2xl font-bold text-[#05305F] tracking-tight group-hover:text-blue-700 transition-colors line-clamp-1 mb-6">
+                    {team.name}
+                  </h3>
+                  
+                  <Link href={`/clubs/${team.slug}`} className="block">
+                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white h-[56px] rounded-2xl text-[14px] font-bold shadow-lg shadow-blue-200/50 transition-all active:scale-95 border-b-4 border-blue-900">
+                      Find tickets
+                    </Button>
+                  </Link>
+                </div>
               </div>
-
-              <h3 className="text-2xl font-black text-[#05305F] mb-8 uppercase italic tracking-tight group-hover:text-blue-700 transition-colors">{team.name}</h3>
-
-              <div className="relative w-40 h-40 mb-10 transition-transform duration-700 group-hover:scale-110">
-                <Image
-                  src={team.logo}
-                  alt={team.name}
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                />
-              </div>
-
-              <Link href={`/clubs/${team.slug}`} className="w-full mt-auto">
-                <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white py-8 rounded-[1.5rem] text-sm font-black uppercase tracking-widest shadow-xl shadow-blue-200/50 transition-all active:scale-95 border-b-4 border-blue-900">
-                  Find Tickets
-                </Button>
-              </Link>
             </motion.div>
           ))}
         </div>

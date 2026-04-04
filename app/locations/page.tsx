@@ -6,6 +6,8 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { HeroSection } from "@/components/commom/hero-section";
+import { motion } from "framer-motion";
 
 // Mock Data for Cities
 const citiesData = [
@@ -101,47 +103,48 @@ function LocationsContent() {
   });
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="bg-[#051d3b] pt-24 pb-20 px-4 text-center relative overflow-hidden">
-        {/* Background glow effect similar to image */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Discover Locations</h1>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                Explore premium venues and iconic destinations hosting unforgettable events worldwide
-            </p>
+    <div className="min-h-screen bg-white mt-10">
+      <HeroSection
+        title="Discover locations"
+        description="Explore premium venues and iconic destinations hosting unforgettable events worldwide"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="relative max-w-xl mb-8"
+        >
+          <div className="bg-[#1e3a5f] rounded-full flex items-center p-1 border border-white/10">
+            <Search className="w-5 h-5 text-blue-400 ml-4 mr-2" />
+            <Input
+              placeholder="Search Locations..."
+              className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-10 flex-1 focus-visible:ring-0"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </motion.div>
 
-            <div className="relative max-w-xl mx-auto mb-8">
-                 <div className="bg-[#1e3a5f] rounded-full flex items-center p-1 border border-white/10">
-                     <Search className="w-5 h-5 text-blue-400 ml-4 mr-2" />
-                     <Input 
-                        placeholder="Search Locations..." 
-                        className="border-none bg-transparent shadow-none text-white placeholder:text-gray-400 h-10 flex-1 focus-visible:ring-0"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                     />
-                 </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-                {["All Cities", "Popular", "Trending"].map((filter) => (
-                    <button
-                        key={filter}
-                        onClick={() => setActiveFilter(filter)}
-                        className={`px-6 py-1.5 rounded-full text-sm font-medium transition-all ${
-                            activeFilter === filter 
-                            ? "bg-[#1e3a5f] text-blue-400 border border-blue-400/30" 
-                            : "bg-[#0b2545] text-gray-400 border border-transparent hover:bg-[#1e3a5f]"
-                        }`}
-                    >
-                        {filter}
-                    </button>
-                ))}
-            </div>
-        </div>
-      </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-wrap justify-start gap-3"
+        >
+          {["All Cities", "Popular", "Trending"].map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-6 py-1.5 rounded-full text-sm font-medium transition-all ${activeFilter === filter
+                  ? "bg-[#1e3a5f] text-blue-400 border border-blue-400/30"
+                  : "bg-[#0b2545] text-gray-400 border border-transparent hover:bg-[#1e3a5f]"
+                }`}
+            >
+              {filter}
+            </button>
+          ))}
+        </motion.div>
+      </HeroSection>
 
       {/* Grid Content */}
       <div className="container mx-auto px-4 py-16">
