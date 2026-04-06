@@ -72,6 +72,24 @@ export const matches = [
     time: "20:45",
     price: "280"
   },
+  {
+    id: 7,
+    date: "FEB 1",
+    team1: { name: "Inter Milan", logo: "/player1.png" },
+    team2: { name: "AC Milan", logo: "/player2.png" },
+    location: "San Siro, Milan",
+    time: "20:45",
+    price: "280"
+  },
+  {
+    id: 8,
+    date: "FEB 1",
+    team1: { name: "Inter Milan", logo: "/player1.png" },
+    team2: { name: "AC Milan", logo: "/player2.png" },
+    location: "San Siro, Milan",
+    time: "20:45",
+    price: "280"
+  },
 ];
 
 
@@ -153,7 +171,7 @@ export function TopMatches() {
   return (
     <section className="py-10 bg-[#05305F]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
+        <div className="max-w-6xl mx-auto flex justify-between items-center mb-0">
           <h2 className={`text-3xl font-bold text-white ${montserrat.className}`}>Top Football Matches</h2>
           <Link href="/football">
             <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50">
@@ -177,13 +195,16 @@ export function TopMatches() {
           >
             <CarouselContent className="-ml-2">
               {matches.map((match, index) => (
-                <CarouselItem key={index} className="pl-2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 2xl:basis-1/5 min-[1650px]:basis-1/6 min-[1920px]:basis-1/7 min-[2200px]:basis-1/1">
+                <CarouselItem key={index} className="pl-2 basis-auto">
                   <MatchCard match={match} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-left-2 z-20 h-10 w-10 md:h-12 md:w-12" />
-            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-right-2 z-20 h-10 w-10 md:h-12 md:w-12" />
+
+            <CarouselPrevious className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-left-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
+            <CarouselNext className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-right-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
+            {/* <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-left-2 z-20 h-10 w-10 md:h-12 md:w-12" />
+            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-right-2 z-20 h-10 w-10 md:h-12 md:w-12" /> */}
           </Carousel>
         </div>
 

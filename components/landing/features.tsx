@@ -55,6 +55,30 @@ const cities = [
     description: "Harbor city with iconic landmarks",
     image: "/cities (1).png",
   },
+  {
+    id: 6,
+    name: "Sydney",
+    description: "Harbor city with iconic landmarks",
+    image: "/cities (1).png",
+  },
+  {
+    id: 7,
+    name: "Sydney",
+    description: "Harbor city with iconic landmarks",
+    image: "/cities (1).png",
+  },
+  {
+    id: 8,
+    name: "Sydney",
+    description: "Harbor city with iconic landmarks",
+    image: "/cities (1).png",
+  },
+  {
+    id: 9,
+    name: "Sydney",
+    description: "Harbor city with iconic landmarks",
+    image: "/cities (1).png",
+  },
 ];
 
 
@@ -93,25 +117,26 @@ export function Features() {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {cities.map((city) => (
-                  <CarouselItem key={city.id} className="pl-2 md:pl-4 basis-full md:basis-1/3 lg:basis-1/3">
+                  <CarouselItem key={city.id} className="pl-2 basis-auto">
                     <div className="p-2">
-                      <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
+                      <div className="relative w-[280px] h-[285px] rounded-[32px] overflow-hidden group shadow-lg mx-auto">
                         <Image
                           src={city.image}
                           alt={city.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, 50vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 text-white">
-                          <h3 className="text-2xl font-bold mb-2">{city.name}</h3>
-                          <p className="text-gray-200 mb-4">{city.description}</p>
-                          <a
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col items-center justify-end text-center">
+                          <h3 className="text-xl font-bold text-white mb-1 group-hover:scale-105 transition-transform">{city.name}</h3>
+                          <p className="text-gray-200 text-xs mb-4 line-clamp-1 group-hover:scale-105 transition-transform">{city.description}</p>
+                          <Link
                             href={`/locations?search=${encodeURIComponent(city.name)}`}
-                            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors"
+                            className="w-[85%] h-[40px] bg-[#0A4DA1] text-white flex items-center justify-center rounded-full text-sm font-semibold hover:bg-[#083D81] transition-all shadow-md hover:shadow-lg relative overflow-hidden group/btn"
                           >
-                            View Events
-                          </a>
+                             <span className="relative z-10">VIEW EVENTS</span>
+                             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -119,8 +144,8 @@ export function Features() {
                 ))}
               </CarouselContent>
 
-              <CarouselPrevious className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-left-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
-              <CarouselNext className="flex bg-white hover:bg-gray-50 text-[#05305F] border-none md:-right-2 shadow-xl z-20 h-10 w-10 md:h-12 md:w-12" />
+             <CarouselPrevious className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-left-2 z-20 h-10 w-10 md:h-12 md:w-12" />
+            <CarouselNext className="flex bg-[#05305F] hover:bg-[#0645A0] text-white border-none md:-right-2 z-20 h-10 w-10 md:h-12 md:w-12" />
             </Carousel>
           </div>
         </div>

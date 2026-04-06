@@ -92,7 +92,7 @@ function CompetitionCard({ competition }: { competition: typeof competitions[0] 
 
       {/* Button */}
       <Button className="w-[85%] h-[44px] bg-[#0A4DA1] hover:bg-[#083D81] transition-all rounded-full text-white text-[15px] font-semibold tracking-wide shadow-md hover:shadow-lg relative overflow-hidden group/btn cursor-pointer">
-        <span className="relative z-10 flex justify-center gap-1">Find tickets</span>
+        <span className="relative z-10 flex justify-center gap-1">FIND TICKETS</span>
         <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
       </Button>
     </div>
@@ -103,7 +103,7 @@ export function TopCompetitions() {
   return (
     <section className="py-10 bg-[#05305F]">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto flex justify-between items-center mb-12">
+        <div className="max-w-6xl mx-auto flex justify-between items-center mb-0">
           <h2 className={`text-3xl font-bold text-white ${montserrat.className}`}>Top Competitions</h2>
           <Link href="/football">
             <Button variant="outline" className="border-gray-300 text-gray-700 font-bold rounded-xl px-4 sm:px-6 py-2.5 flex items-center gap-2 cursor-pointer transition-all hover:bg-gray-50">
