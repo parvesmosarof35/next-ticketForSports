@@ -37,10 +37,10 @@ function TopBanner({ isVisible, onClose }: { isVisible: boolean; onClose: () => 
           <div className="py-2 px-4 w-full flex items-center justify-center gap-3 text-[10px] md:text-xs font-black tracking-widest relative z-10 h-full uppercase">
         
             <span className="text-center truncate font-bold">
-              Best price on tickets & travel – fast & easy.
+              Find the best price on tickets and sports travel - fast and easy.
             </span>
             <Link href="/football" className="underline decoration-white/50 hover:decoration-white transition-all whitespace-nowrap shrink-0">
-              Book Now &rarr;
+              Book now &rarr;
             </Link>
           </div>
 
