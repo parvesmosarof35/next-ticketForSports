@@ -142,12 +142,13 @@ function FootballDropdown() {
                 {tournaments.map((tournament, index) => (
                   <Link
                     key={index}
-                    href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\\s+/g, '-'))}`}
+                    href={`/football/tournament/${encodeURIComponent(tournament.toLowerCase().replace(/\s+/g, '-'))}`}
                     className="text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors"
                   >
                     {tournament}
                   </Link>
                 ))}
+                <Link href="/football" className="text-sm text-blue-600 font-bold py-1">View All</Link>
               </div>
             </div>
             <div>
@@ -162,6 +163,7 @@ function FootballDropdown() {
                     {nation}
                   </Link>
                 ))}
+                <Link href="/locations" className="text-sm text-blue-600 font-bold py-1">View All</Link>
               </div>
             </div>
             <div>
@@ -421,11 +423,11 @@ export function Navbar() {
             />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <div className="hidden lg:flex items-center gap-1 xl:gap-4">
             <FootballDropdown />
             <BasketballDropdown />
             
-            <div className="flex items-center gap-1 xl:gap-2 border-l border-gray-100 pl-2 xl:pl-3">
+            <div className="flex items-center gap-1 xl:gap-4 border-l border-gray-100 pl-2 xl:pl-3">
               <TicketHotelDropdown />
               <TicketHotelFlightDropdown />
               <OtherSportsDropdown />
