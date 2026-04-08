@@ -37,12 +37,13 @@ export default function TeamsPage() {
       <HeroSection
         title="Teams"
         description="Find and compare official ticket prices for the world's greatest football teams."
+        isCentered={true}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="relative max-w-xl"
+          className="relative"
         >
           <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
             <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
@@ -85,7 +86,7 @@ export default function TeamsPage() {
 
                 {/* Team Info */}
                 <div className="w-full text-center mt-6">
-                  <h3 className="text-2xl font-bold text-[#05305F] tracking-tight group-hover:text-blue-700 transition-colors line-clamp-1 mb-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#05305F] tracking-tight group-hover:text-blue-700 transition-colors mb-6 whitespace-nowrap">
                     {team.name}
                   </h3>
                   

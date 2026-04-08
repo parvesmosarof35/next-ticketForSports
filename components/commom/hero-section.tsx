@@ -11,21 +11,23 @@ interface HeroSectionProps {
   description?: string;
   children?: ReactNode;
   className?: string;
+  isCentered?: boolean;
 }
 
 export function HeroSection({ 
   title, 
   description, 
   children, 
-  className = ""
+  className = "",
+  isCentered = false
 }: HeroSectionProps) {
   return (
-    <div className={`bg-[#051D3B] pt-32 pb-24 px-16 relative overflow-hidden ${montserrat.className} ${className}`}>
+    <div className={`bg-[#051D3B] pt-36 pb-16 px-16 relative overflow-hidden ${montserrat.className} ${className}`}>
       {/* Background glow shadow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto relative z-10 px-4 md:px-0">
-        <div className="max-w-4xl">
+      <div className={`container mx-auto relative z-10 px-4 md:px-0 ${isCentered ? 'text-center flex flex-col items-center justify-center' : ''}`}>
+        <div className={`max-w-4xl `}>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

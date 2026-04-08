@@ -103,16 +103,17 @@ function LocationsContent() {
   });
 
   return (
-    <div className="min-h-screen bg-white mt-10">
+    <div className="min-h-screen bg-white mt-5">
       <HeroSection
         title="Discover locations"
         description="Explore premium venues and iconic destinations hosting unforgettable events worldwide"
+        isCentered={true}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="relative max-w-xl mb-8"
+          className="relative max-w-xl w-full mx-auto mb-8"
         >
           <div className="bg-[#1e3a5f] rounded-full flex items-center p-1 border border-white/10">
             <Search className="w-5 h-5 text-blue-400 ml-4 mr-2" />
@@ -129,7 +130,7 @@ function LocationsContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-start gap-3"
+          className="flex flex-wrap justify-center gap-3"
         >
           {["All Cities", "Popular", "Trending"].map((filter) => (
             <button
@@ -149,26 +150,28 @@ function LocationsContent() {
       {/* Grid Content */}
       <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {sortedCities.map((city) => (
-                   <div key={city.id} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#D3AB66]/30 hover:border-[#D3AB66] transition-all duration-300 group">
-                       <div className="relative h-48 w-full">
-                           <Image 
-                                src={city.image} 
-                                alt={city.name} 
-                                fill 
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                           />
-                           {/* Overlay gradient only at bottom if needed, or clear image */}
-                       </div>
-                       <div className="p-6">
-                           <h3 className="text-2xl font-bold text-gray-900 mb-2">{city.name}</h3>
-                           <p className="text-gray-500 text-sm mb-6">{city.eventsCount.toLocaleString()} upcoming events</p>
-                           <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-base font-semibold">
-                               See Events
-                           </Button>
-                       </div>
-                   </div>
-               ))}
+                {sortedCities.map((city) => (
+                    <div key={city.id} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col">
+                        <div className="relative h-64 w-full">
+                            <Image 
+                                 src={city.image} 
+                                 alt={city.name} 
+                                 fill 
+                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </div>
+                        <div className="p-8 flex-1 flex flex-col">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{city.name}</h3>
+                            <p className="text-gray-500 text-sm mb-6">{city.eventsCount.toLocaleString()} upcoming events</p>
+                            
+                            <div className="mt-auto">
+                                <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
+                                    See Events
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
           </div>
           
           {sortedCities.length === 0 && (

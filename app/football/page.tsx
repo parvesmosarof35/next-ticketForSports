@@ -112,8 +112,8 @@ export default function FootballPage() {
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent className="rounded-2xl border-gray-100">
-                  <SelectItem value="date" className="font-black py-4">By Date</SelectItem>
-                  <SelectItem value="price_asc" className="font-black py-4">Price: Low to High</SelectItem>
+                  <SelectItem value="date" className="font-black py-10">By Date</SelectItem>
+                  <SelectItem value="price_asc" className="font-black py-10">Price: Low to High</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -124,7 +124,7 @@ export default function FootballPage() {
             {filteredTickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="group bg-white rounded-[32px] p-6 md:p-8 flex flex-row items-center justify-between gap-4 md:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden"
+                className="group bg-white rounded-[24px] md:rounded-[32px] p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden"
               >
                 {/* Horizontal Border matching League color */}
                 <div
@@ -132,30 +132,27 @@ export default function FootballPage() {
                   style={{ backgroundColor: leagueColors[ticket.league] || '#3D195B' }}
                 />
 
-                <div className="flex items-center gap-4 md:gap-8 flex-1">
+                <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-1 w-full lg:w-auto min-w-0">
                   {/* Date Column */}
-                  <div className="flex flex-col items-center justify-center pr-4 md:pr-8 border-r border-gray-100 min-w-[70px] md:min-w-[90px]">
-                    <span className="text-3xl md:text-4xl font-black text-black leading-none tracking-tighter">{ticket.date.day}</span>
-                    <span className="text-[10px] md:text-xs font-black text-[#9B9B9B] uppercase tracking-widest mt-1">{ticket.date.month.split(' ')[0]}</span>
+                  <div className="flex flex-col items-center justify-center pr-3 sm:pr-4 md:pr-8 border-r border-gray-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px]">
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-black text-black leading-none tracking-tighter">{ticket.date.day}</span>
+                    <span className="text-[9px] sm:text-[10px] md:text-xs font-black text-[#9B9B9B] uppercase tracking-widest mt-1">{ticket.date.month.split(' ')[0]}</span>
                   </div>
 
                   {/* Match Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 md:gap-4 text-xl md:text-3xl font-black text-black tracking-tight mb-2 truncate">
-                      <span>{ticket.team1.name}</span>
-                      <span className="text-gray-400 font-medium text-sm md:text-xl">vs</span>
-                      <span>{ticket.team2.name}</span>
+                  <div className="flex-1 min-w-0 overflow-hidden">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg sm:text-xl md:text-3xl font-black text-black tracking-tight mb-2">
+                      <span className="truncate">{ticket.team1.name}</span>
+                      <span className="text-gray-400 font-medium text-xs sm:text-sm md:text-xl shrink-0">vs</span>
+                      <span className="truncate">{ticket.team2.name}</span>
                     </div>
 
-                    <div className="flex items-center gap-2 md:gap-3 text-[10px] md:text-xs font-bold text-[#4A4A4A] whitespace-nowrap overflow-hidden">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[9px] sm:text-[10px] md:text-xs font-bold text-[#4A4A4A]">
                       <span className="text-blue-600 font-black">{ticket.time}</span>
                       <span className="text-gray-200">|</span>
                       <span className="truncate">{ticket.location}</span>
                       <span className="text-gray-200">|</span>
-                      <div
-                        className="px-2 py-0.5 rounded-md text-[9px] font-black text-white uppercase tracking-tighter shrink-0"
-                        style={{ backgroundColor: leagueColors[ticket.league] || '#3D195B' }}
-                      >
+                      <div className="px-2 py-0.5 rounded-sm text-[9px] sm:text-[10px] tracking-wide text-white uppercase shrink-0 bg-[#6e27aa] font-semibold">
                         {ticket.league}
                       </div>
                     </div>
@@ -163,21 +160,23 @@ export default function FootballPage() {
                 </div>
 
                 {/* Info & Price */}
-                <div className="flex flex-col items-end gap-1 shrink-0">
-                  <div className="text-[9px] md:text-[10px] text-[#9B9B9B] font-black uppercase tracking-widest leading-none mr-2">Starting from</div>
-                  <Link href={`/football/booking/${ticket.id}`}>
-                    <Button
-                      className="h-[50px] md:h-[64px] rounded-2xl flex items-center gap-0 p-0 overflow-hidden shadow-xl hover:shadow-2xl transition-all border-none group/btn"
-                      style={{ backgroundColor: '#E23B2B' }}
-                    >
-                      <div className="px-5 md:px-8 h-full flex items-center justify-center border-r border-white/10">
-                        <span className="text-xl md:text-2xl font-black text-white leading-none">€ {ticket.price}</span>
-                      </div>
-                      <div className="px-4 md:px-6 h-full flex items-center justify-center bg-black/5 hover:bg-black/10 font-bold text-[10px] md:text-xs uppercase tracking-widest text-white">
-                        View
-                      </div>
-                    </Button>
-                  </Link>
+                <div className="flex items-center justify-between lg:justify-end gap-4 sm:gap-6 md:gap-10 w-full lg:w-auto shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-100">
+                  <div className="text-red-500 font-black text-xs sm:text-sm md:text-base whitespace-nowrap">203 tickets left</div>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="text-[8px] sm:text-[9px] md:text-[10px] text-[#9B9B9B] font-black uppercase tracking-widest leading-none mr-2">Starting from</div>
+                    <Link href={`/football/booking/${ticket.id}`}>
+                      <Button
+                        className="h-[44px] sm:h-[50px] md:h-[64px] rounded-xl md:rounded-2xl flex items-center gap-0 p-0 overflow-hidden shadow-xl hover:shadow-2xl transition-all border-none group/btn bg-[#0047AB]"
+                      >
+                        <div className="px-3 sm:px-5 md:px-8 h-full flex items-center justify-center border-r border-white/10">
+                          <span className="text-lg sm:text-xl md:text-2xl font-black text-white leading-none">€ {ticket.price}</span>
+                        </div>
+                        <div className="px-3 sm:px-4 md:px-6 h-full flex items-center justify-center bg-black/5 hover:bg-black/10 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-white">
+                          View
+                        </div>
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

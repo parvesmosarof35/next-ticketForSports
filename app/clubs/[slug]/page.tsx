@@ -125,11 +125,11 @@ export default function ClubPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className={`relative bg-[#051D3B] pt-32 pb-20 overflow-hidden border-b border-white/10`}>
+      <div className="relative pt-40 pb-20 overflow-hidden border-b border-white/10" style={{ backgroundColor: club.themeColor }}>
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <Image src={club.banner} alt="Stadium" fill className="object-cover" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#051D3B] via-transparent to-transparent" />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${club.themeColor}, transparent, transparent)` }} />
 
         <div className="container mx-auto relative z-10 px-4">
           <div className="flex flex-col md:flex-row items-center gap-10">
@@ -205,10 +205,7 @@ export default function ClubPage() {
                         <span className="text-gray-200">|</span>
                         <span className="truncate">{club.stadium}, {club.stadium.includes("London") ? "London" : "Manchester"}</span>
                         <span className="text-gray-200">|</span>
-                        <div
-                          className="px-2 py-0.5 rounded-md text-[9px] font-black text-white uppercase tracking-tighter shrink-0"
-                          style={{ backgroundColor: leagueColors[ticket.league] || '#3D195B' }}
-                        >
+                        <div className="px-2 py-0.5 rounded-sm text-[10px] tracking-wide text-white uppercase shrink-0 bg-[#6e27aa] font-semibold">
                           {ticket.league}
                         </div>
                       </div>

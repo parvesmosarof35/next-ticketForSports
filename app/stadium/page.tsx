@@ -142,12 +142,13 @@ function StadiumsContent() {
       <HeroSection
         title="Stadiums"
         description="Discover the world's most iconic venues and compare ticket prices for every event on TicketforSport.com"
+        isCentered={true}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="relative max-w-xl"
+          className="relative max-w-xl w-full mx-auto"
         >
           <div className="bg-white/10 backdrop-blur-md rounded-2xl flex items-center p-2 border border-white/20 shadow-2xl h-16 group focus-within:bg-white/20 transition-all">
             <Search className="w-6 h-6 text-blue-400 ml-5 mr-3" />
@@ -170,37 +171,24 @@ function StadiumsContent() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-2 border-transparent hover:border-[#B2955C] hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group flex flex-col cursor-pointer"
+              className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
-              <div className="relative h-72 w-full overflow-hidden">
+              <div className="relative h-64 w-full">
                 <Image
                   src={stadium.image}
                   alt={stadium.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                  <span className="text-white font-bold inline-flex items-center gap-2">
-                    <MapPin className="w-4 h-4" /> View map
-                  </span>
-                </div>
               </div>
-              <div className="p-10 flex-1 flex flex-col">
-                <h3 className="text-3xl font-black text-[#05305F] mb-3 tracking-tight group-hover:text-blue-700 transition-colors uppercase italic">{stadium.name}</h3>
-
-                <div className="flex items-center gap-2 mb-8">
-                  <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest">
-                    {stadium.eventsCount.toLocaleString()} events
-                  </span>
-                  <span className="text-gray-400 font-bold text-xs uppercase tracking-widest">• Verified</span>
-                </div>
-
-                <p className="text-gray-500 font-medium mb-10 line-clamp-2 leading-relaxed">{stadium.description}</p>
+              <div className="p-8 flex-1 flex flex-col">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{stadium.name}</h3>
+                <p className="text-gray-500 text-sm mb-6">{stadium.eventsCount.toLocaleString()} upcoming events</p>
 
                 <div className="mt-auto">
                   <Link href={`/stadium/${stadium.slug}`} className="block w-full">
-                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white py-8 rounded-[1.5rem] text-lg font-black uppercase tracking-widest shadow-xl shadow-blue-200/50 transition-all active:scale-95 border-b-4 border-blue-900">
-                      Explore Venue
+                    <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
+                      See Events
                     </Button>
                   </Link>
                 </div>
