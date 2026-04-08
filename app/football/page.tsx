@@ -88,7 +88,7 @@ export default function FootballPage() {
       />
 
       <div className="container mx-auto px-4 max-w-7xl -mt-16 relative z-20 pb-32">
-        <div className="bg-white rounded-[40px] shadow-[0_32px_80px_rgba(0,0,0,0.06)] p-10 md:p-16 border border-gray-100">
+        <div className="bg-white rounded-[32px] shadow-[0_32px_80px_rgba(0,0,0,0.06)] p-10 md:p-16 border-2 border-transparent  transition-all duration-500">
 
           {/* Header & Filters */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-16">
@@ -124,13 +124,10 @@ export default function FootballPage() {
             {filteredTickets.map((ticket) => (
               <div
                 key={ticket.id}
-                className="group bg-white rounded-[24px] md:rounded-[32px] p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden"
+                className="group bg-white rounded-[24px] md:rounded-[32px] p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-10 border-2 border-transparent hover:border-[#B2955C] shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden min-h-[140px]"
               >
-                {/* Horizontal Border matching League color */}
-                <div
-                  className="absolute bottom-0 left-0 h-1 bg-blue-600 transition-all duration-700 group-hover:w-full w-0"
-                  style={{ backgroundColor: leagueColors[ticket.league] || '#3D195B' }}
-                />
+                {/* Visual Accent */}
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#B2955C] opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-1 w-full lg:w-auto min-w-0">
                   {/* Date Column */}

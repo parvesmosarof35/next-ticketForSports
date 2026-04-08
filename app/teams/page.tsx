@@ -66,33 +66,41 @@ export default function TeamsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="group relative aspect-square bg-white rounded-[32px] p-8 shadow-xl border border-gray-100/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+              className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
-              {/* Bottom Accent Bar */}
-              <div className="absolute bottom-0 left-0 w-full h-2 bg-[#05305F] group-hover:bg-[#B2955C] transition-colors duration-500" />
-              
-              <div className="flex flex-col items-center justify-between h-full w-full">
-                {/* Team Logo */}
-                <div className="flex-1 flex items-center justify-center w-full min-h-0">
-                  <div className="relative w-32 h-32 md:w-36 md:h-36 transition-all duration-700 group-hover:scale-110">
-                    <Image
-                      src={team.logo}
-                      alt={team.name}
-                      fill
-                      className="object-contain drop-shadow-xl"
-                    />
-                  </div>
+              {/* Team Logo Area */}
+              <div className="relative h-48 w-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-8 overflow-hidden">
+                <div className="relative w-24 h-24 transition-transform duration-500 group-hover:scale-110">
+                  <Image
+                    src={team.logo}
+                    alt={team.name}
+                    fill
+                    className="object-contain drop-shadow-lg"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Card Content */}
+              <div className="p-6 flex-1 flex flex-col">
+                {/* Team Name */}
+                <h3 className="text-xl font-black text-[#051d3b] uppercase tracking-tight mb-2 italic">
+                  {team.name}
+                </h3>
+
+                {/* Stats & Verified */}
+                <div className="flex items-center gap-2 text-xs font-bold mb-6">
+                  <span className="text-[#0047AB]">
+                    120+ MATCHES
+                  </span>
+                  <span className="text-gray-300">•</span>
+                  <span className="text-gray-400 uppercase tracking-wider">Verified</span>
                 </div>
 
-                {/* Team Info */}
-                <div className="w-full text-center mt-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-[#05305F] tracking-tight group-hover:text-blue-700 transition-colors mb-6 whitespace-nowrap">
-                    {team.name}
-                  </h3>
-                  
-                  <Link href={`/clubs/${team.slug}`} className="block">
-                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white h-[56px] rounded-2xl text-[14px] font-bold shadow-lg shadow-blue-200/50 transition-all active:scale-95 border-b-4 border-blue-900">
-                      Find tickets
+                <div className="mt-auto">
+                  <Link href={`/clubs/${team.slug}`} className="block w-full">
+                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white py-5 rounded-full text-sm font-black uppercase tracking-wider shadow-lg transition-all active:scale-95">
+                      Explore Team
                     </Button>
                   </Link>
                 </div>

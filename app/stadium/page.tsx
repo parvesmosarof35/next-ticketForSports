@@ -163,32 +163,47 @@ function StadiumsContent() {
       </HeroSection>
 
       {/* Grid Content */}
-      <div className="container mx-auto px-4 max-w-7xl py-20 -mt-16 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="container mx-auto px-4 max-w-6xl py-20 -mt-16 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredStadiums.map((stadium, idx) => (
             <motion.div
               key={stadium.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col"
+              className="bg-white rounded-4xl overflow-hidden shadow-lg border-[3px] hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
-              <div className="relative h-64 w-full">
+              {/* Stadium Image */}
+              <div className="relative h-56 w-full overflow-hidden">
                 <Image
                   src={stadium.image}
                   alt={stadium.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="p-8 flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{stadium.name}</h3>
-                <p className="text-gray-500 text-sm mb-6">{stadium.eventsCount.toLocaleString()} upcoming events</p>
+
+              {/* Card Content */}
+              <div className="p-6 flex-1 flex flex-col">
+                {/* Stadium Name */}
+                <h3 className="text-xl font-black text-[#051d3b] uppercase tracking-tight mb-2 italic">
+                  {stadium.name}
+                </h3>
+
+                {/* Events Count & Verified */}
+                <div className="flex items-center gap-2 text-xs font-bold mb-6">
+                  <span className="text-[#0047AB]">
+                    {stadium.eventsCount.toLocaleString()} EVENTS
+                  </span>
+                  <span className="text-gray-300">•</span>
+                  <span className="text-gray-400 uppercase tracking-wider">Verified</span>
+                </div>
 
                 <div className="mt-auto">
                   <Link href={`/stadium/${stadium.slug}`} className="block w-full">
-                    <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
-                      See Events
+                    <Button className="w-full bg-[#0047AB] hover:bg-[#003685] text-white py-5 rounded-full text-sm font-semibold uppercase tracking-wider shadow-lg transition-all active:scale-95 cursor-pointer">
+                      Explore Venue
                     </Button>
                   </Link>
                 </div>

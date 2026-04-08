@@ -108,36 +108,76 @@ export default function MatchSummaryPage() {
              <h1 className="text-3xl font-extrabold text-gray-900 mb-6">{match.team1.name} vs {match.team2.name} Tickets</h1>
              
              {/* Ticket Cards */}
-             <div className="flex flex-col gap-4 max-w-2xl mx-auto">
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center justify-between hover:shadow-lg transition-all">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                            {match.date.split(' ')[0]}
-                        </div>
-                        <div className="text-left">
-                            <h3 className="font-bold text-gray-800">{match.team1.name} vs {match.team2.name}</h3>
-                            <p className="text-sm text-gray-500">{match.location}</p>
-                        </div>
+             <div className="flex flex-col gap-4 max-w-3xl mx-auto">
+                {/* Main Match Card */}
+                <div className="group bg-white rounded-[24px] md:rounded-[32px] p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden">
+                  {/* Horizontal Border */}
+                  <div className="absolute bottom-0 left-0 h-1 bg-[#0047AB] transition-all duration-700 group-hover:w-full w-0" />
+
+                  <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-1 w-full lg:w-auto min-w-0">
+                    {/* Date Column */}
+                    <div className="flex flex-col items-center justify-center pr-3 sm:pr-4 md:pr-8 border-r border-gray-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px]">
+                      <span className="text-2xl sm:text-3xl md:text-4xl font-black text-black leading-none tracking-tighter">{match.date.split(' ')[0]}</span>
+                      <span className="text-[9px] sm:text-[10px] md:text-xs font-black text-[#9B9B9B] uppercase tracking-widest mt-1">{match.date.split(' ')[1]}</span>
                     </div>
-                    <Link href={`/football/booking/${matchId}`}>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full px-6 shadow-md">
-                            Tickets from {match.summaryStats.cheapest}
+
+                    {/* Match Content */}
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg sm:text-xl md:text-3xl font-black text-black tracking-tight mb-2">
+                        <span className="truncate">{match.team1.name}</span>
+                        <span className="text-gray-400 font-medium text-xs sm:text-sm md:text-xl shrink-0">vs</span>
+                        <span className="truncate">{match.team2.name}</span>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[9px] sm:text-[10px] md:text-xs font-bold text-[#4A4A4A]">
+                        <span className="text-blue-600 font-black">{match.date}</span>
+                        <span className="text-gray-200">|</span>
+                        <span className="truncate">{match.location}</span>
+                        <span className="text-gray-200">|</span>
+                        <div className="px-2 py-0.5 rounded-sm text-[9px] sm:text-[10px] tracking-wide text-white uppercase shrink-0 bg-[#6e27aa] font-semibold">
+                          {match.competition}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Info & Price */}
+                  <div className="flex items-center justify-between lg:justify-end gap-4 sm:gap-6 md:gap-10 w-full lg:w-auto shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-100">
+                    <div className="text-red-500 font-black text-xs sm:text-sm md:text-base whitespace-nowrap">{match.summaryStats.ticketAvailability} tickets left</div>
+                    <div className="flex flex-col items-end gap-1">
+                      <div className="text-[8px] sm:text-[9px] md:text-[10px] text-[#9B9B9B] font-black uppercase tracking-widest leading-none mr-2">Starting from</div>
+                      <Link href={`/football/booking/${matchId}`}>
+                        <Button className="h-[44px] sm:h-[50px] md:h-[64px] rounded-xl md:rounded-2xl flex items-center gap-0 p-0 overflow-hidden shadow-xl hover:shadow-2xl transition-all border-none group/btn bg-[#0047AB]">
+                          <div className="px-3 sm:px-5 md:px-8 h-full flex items-center justify-center border-r border-white/10">
+                            <span className="text-lg sm:text-xl md:text-2xl font-black text-white leading-none">{match.summaryStats.cheapest}</span>
+                          </div>
+                          <div className="px-3 sm:px-4 md:px-6 h-full flex items-center justify-center bg-black/5 hover:bg-black/10 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-white">
+                            View
+                          </div>
                         </Button>
-                    </Link>
-                </div>
-                 <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center justify-between hover:shadow-lg transition-all opacity-80">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                             VS
-                        </div>
-                        <div className="text-left">
-                            <h3 className="font-bold text-gray-800">{match.team2.name} vs {match.team1.name}</h3>
-                            <p className="text-sm text-gray-500">Reverse Fixture</p>
-                        </div>
+                      </Link>
                     </div>
-                    <Button variant="outline" className="font-bold rounded-full px-6">
-                        Notify Me
-                    </Button>
+                  </div>
+                </div>
+
+                {/* Reverse Fixture Card */}
+                <div className="group bg-white rounded-[24px] md:rounded-[32px] p-4 sm:p-6 md:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 md:gap-6 lg:gap-10 border border-gray-100 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative overflow-hidden opacity-80">
+                  <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-1 w-full lg:w-auto min-w-0">
+                    <div className="flex flex-col items-center justify-center pr-3 sm:pr-4 md:pr-8 border-r border-gray-100 min-w-[55px] sm:min-w-[70px] md:min-w-[90px]">
+                      <span className="text-lg sm:text-xl md:text-2xl font-black text-gray-400">TBD</span>
+                    </div>
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg sm:text-xl md:text-3xl font-black text-gray-500 tracking-tight">
+                        <span className="truncate">{match.team2.name}</span>
+                        <span className="text-gray-300 font-medium text-xs sm:text-sm md:text-xl shrink-0">vs</span>
+                        <span className="truncate">{match.team1.name}</span>
+                      </div>
+                      <p className="text-[10px] sm:text-xs text-gray-400 font-bold mt-1">Reverse Fixture - Date to be confirmed</p>
+                    </div>
+                  </div>
+                  <Button variant="outline" className="h-[44px] sm:h-[50px] rounded-xl md:rounded-2xl font-bold text-xs sm:text-sm border-gray-300 hover:bg-gray-50">
+                    Notify Me
+                  </Button>
                 </div>
              </div>
         </section>

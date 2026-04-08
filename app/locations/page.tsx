@@ -148,27 +148,28 @@ function LocationsContent() {
       </HeroSection>
 
       {/* Grid Content */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {sortedCities.map((city) => (
-                    <div key={city.id} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col">
-                        <div className="relative h-64 w-full">
-                            <Image 
-                                 src={city.image} 
-                                 alt={city.name} 
-                                 fill 
-                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{city.name}</h3>
-                            <p className="text-gray-500 text-sm mb-6">{city.eventsCount.toLocaleString()} upcoming events</p>
+                    <div key={city.id} className="relative aspect-square rounded-4xl overflow-hidden shadow-lg border-[3px]  hover:shadow-xl transition-all duration-300 group">
+                        {/* Background Image */}
+                        <Image 
+                            src={city.image} 
+                            alt={city.name} 
+                            fill 
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        {/* Dark Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                        
+                        {/* Content */}
+                        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center">
+                            <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{city.name}</h3>
+                            <p className="text-white/80 text-sm mb-4">{city.description}</p>
                             
-                            <div className="mt-auto">
-                                <Button className="w-full bg-[#0E2A4D] hover:bg-[#173e6d] text-white py-6 rounded-full text-lg font-bold shadow-md">
-                                    See Events
-                                </Button>
-                            </div>
+                            <Button className="w-full max-w-[200px] bg-[#0047AB] hover:bg-[#003685] text-white py-3 rounded-full text-sm font-bold shadow-lg">
+                                VIEW EVENTS
+                            </Button>
                         </div>
                     </div>
                 ))}
