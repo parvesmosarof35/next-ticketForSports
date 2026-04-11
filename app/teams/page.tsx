@@ -66,7 +66,7 @@ export default function TeamsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-lg border-[3px] border-[#C5A059] hover:shadow-xl transition-all duration-300 group flex flex-col"
+              className="bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
               {/* Team Logo Area */}
               <div className="relative h-48 w-full bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-8 overflow-hidden">
